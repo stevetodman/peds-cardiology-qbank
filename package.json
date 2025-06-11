@@ -1,0 +1,13 @@
+{
+  "name": "peds-cardiology-qbank",
+  "version": "1.0.0",
+  "description": "This is a simple web-based quiz bank focused on pediatric cardiology questions.",
+  "main": "script.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
