@@ -1,20 +1,4050 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pediatric Cardiology QBank</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>M2 CHD Study & Quiz Companion</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --text: #1d1f2b;
+      --muted: #5a6272;
+      --accent: #0b7285;
+      --accent-light: #96d9e4;
+      --danger: #b00020;
+      --success: #0f7b0f;
+      --shadow: 0 8px 20px rgba(15, 30, 80, 0.12);
+      --border: #d8deed;
+      --font-stack: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    body.dark {
+      --bg: #0e1016;
+      --surface: #181b24;
+      --text: #e9edf5;
+      --muted: #a5adc4;
+      --accent: #63c4d6;
+      --accent-light: rgba(99, 196, 214, 0.2);
+      --danger: #ff6b6b;
+      --success: #58d68d;
+      --border: #2c3242;
+      --shadow: 0 12px 28px rgba(5, 8, 18, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-stack);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 10px;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      z-index: 2000;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    header {
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .banner {
+      background: linear-gradient(120deg, rgba(11,114,133,0.85), rgba(15,21,70,0.85));
+      color: #fff;
+      padding: 0.75rem 1.2rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .topbar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    .dark-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      cursor: pointer;
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    nav button {
+      border: 1px solid transparent;
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      background: transparent;
+      cursor: pointer;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    nav button.active, nav button:focus {
+      outline: none;
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    main {
+      flex: 1;
+      padding: 1rem;
+      width: min(1100px, 100%);
+      margin: 0 auto 4rem auto;
+    }
+
+    .panel {
+      display: none;
+      background: var(--surface);
+      border-radius: 18px;
+      padding: clamp(1rem, 2vw, 2.5rem);
+      box-shadow: var(--shadow);
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .card {
+      background: rgba(255,255,255,0.6);
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    body.dark .card {
+      background: rgba(24, 27, 36, 0.7);
+    }
+
+    button.primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(11,114,133,0.4);
+    }
+
+    button.primary:focus-visible {
+      outline: 3px solid var(--accent-light);
+    }
+
+    button.secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    button.secondary:focus-visible {
+      outline: 3px solid var(--accent-light);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .quick-actions button {
+      flex: 1 1 180px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-right: 0.4rem;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    select, input, textarea {
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.65rem;
+      font: inherit;
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .question {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: rgba(11,114,133,0.05);
+    }
+
+    body.dark .question {
+      background: rgba(99,196,214,0.1);
+    }
+
+    .choices {
+      display: grid;
+      gap: 0.6rem;
+      margin: 1rem 0;
+    }
+
+    .choice {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.6rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .choice input {
+      margin-top: 0.2rem;
+    }
+
+    .choice.correct {
+      border-color: var(--success);
+      background: rgba(15,123,15,0.12);
+    }
+
+    .choice.incorrect {
+      border-color: var(--danger);
+      background: rgba(176,0,32,0.12);
+    }
+
+    .feedback {
+      min-height: 2rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 10px;
+      background: rgba(10, 120, 100, 0.08);
+      border: 1px solid transparent;
+      margin-top: 0.6rem;
+    }
+
+    .feedback.error {
+      background: rgba(176,0,32,0.12);
+      border-color: rgba(176,0,32,0.3);
+      color: var(--danger);
+    }
+
+    .feedback.success {
+      background: rgba(15,123,15,0.12);
+      border-color: rgba(15,123,15,0.3);
+      color: var(--success);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: rgba(12,60,80,0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0.6rem 0 1rem;
+    }
+
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), #4cc2d4);
+      transition: width 0.3s ease;
+    }
+
+    .timer {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .pill-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .result-table th, .result-table td {
+      padding: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .result-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .flagged {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    .review-controls {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+
+    .review-controls button {
+      flex: 1 1 120px;
+      padding: 0.6rem;
+      border-radius: 999px;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .again { background: #d0455f; }
+    .hard { background: #ff9f1c; color: #3b2d04; }
+    .good { background: #2b9348; }
+    .easy { background: #40916c; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (min-width: 900px) {
+      .topbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav {
+        justify-content: flex-end;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Pediatric Cardiology QBank</h1>
-  <div id="quiz-container">
-    <p id="question-text">Question will appear here</p>
-    <div id="options"></div>
-    <button id="submit-btn">Submit Answer</button>
-    <p id="feedback"></p>
-    <p id="score">Score: 0</p>
-  </div>
-  <script src="script.js"></script>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header>
+    <div class="banner" role="status">Educational resource only — not a substitute for medical advice or emergency management. No PHI stored.</div>
+    <div class="topbar">
+      <div class="brand">
+        <h1>Congenital Heart Disease Companion</h1>
+        <button id="darkToggle" class="dark-toggle" aria-pressed="false" type="button">
+          <span aria-hidden="true">🌙</span>
+          <span>Toggle dark mode</span>
+        </button>
+      </div>
+      <nav aria-label="Primary">
+        <button class="active" data-panel="home" type="button">Home</button>
+        <button data-panel="study" type="button">Study</button>
+        <button data-panel="quiz" type="button">Quiz</button>
+        <button data-panel="review" type="button">Review</button>
+        <button data-panel="admin" type="button">Admin</button>
+      </nav>
+    </div>
+  </header>
+  <main id="main-content">
+    <section id="home" class="panel active" tabindex="-1">
+      <h2>Welcome, M2!</h2>
+      <p>Master congenital heart disease with targeted study, adaptive quizzing, and an on-device authoring workflow.</p>
+      <div class="grid two">
+      <div class="card">
+        <h3>Quick actions</h3>
+        <div class="actions quick-actions">
+          <button class="primary" data-action="start-quiz">Start Quiz</button>
+          <button class="secondary" data-action="open-study">Study by Topic</button>
+          <button class="secondary" data-action="continue-review">Continue Review</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Import / Export</h3>
+        <p>Back up or load your local question edits, quiz history, and review queue. Data stays on this device.</p>
+        <div class="actions">
+          <button class="secondary" id="exportJson" type="button">Download JSON</button>
+          <button class="secondary" id="copyExport" type="button">Copy export to clipboard</button>
+        </div>
+        <label>Paste JSON to import
+          <textarea id="importArea" aria-label="Paste JSON data"></textarea>
+        </label>
+        <div class="actions">
+          <button class="primary" id="importJson" type="button">Import data</button>
+          <button class="secondary" id="clearData" type="button">Reset local data</button>
+        </div>
+        <div id="importSummary" class="status-pill" aria-live="polite"></div>
+      </div>
+    </div>
+    <p id="loaderNotice" class="status-pill" aria-live="polite">Loading question bank…</p>
+      <article class="card" style="margin-top:1rem;">
+        <h3>How this tool works</h3>
+        <ul>
+          <li>Study mode walks through filtered questions with instant feedback, anchored around CHD lesion categories.</li>
+          <li>Quiz mode builds configurable assessments with timer, keyboard shortcuts, and targeted remediation.</li>
+          <li>Review mode surfaces missed items via an SM-2 spaced schedule that lives in your browser.</li>
+          <li>Admin mode lets you locally author, bulk import, or tweak questions—ideal for collaborative team study.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="study" class="panel" tabindex="-1">
+      <h2>Study by Topic</h2>
+      <p>Select filters to focus on specific lesions, pathophysiology themes, or difficulty tiers. Work one question at a time with immediate rationale.</p>
+      <div class="filters" role="group" aria-label="Study filters">
+        <label for="studyClassification">Cyanosis</label>
+        <select id="studyClassification">
+          <option value="all">All</option>
+          <option value="acyanotic">Acyanotic</option>
+          <option value="cyanotic">Cyanotic</option>
+          <option value="cross">Cross-cutting</option>
+        </select>
+        <label for="studyLesion">Lesion group</label>
+        <select id="studyLesion">
+          <option value="all">All</option>
+        </select>
+        <label for="studyCategory">Category</label>
+        <select id="studyCategory">
+          <option value="all">All</option>
+        </select>
+        <label for="studyDifficulty">Difficulty</label>
+        <select id="studyDifficulty">
+          <option value="all">All</option>
+          <option value="foundation">Foundation</option>
+          <option value="core">Core</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </div>
+      <div class="question" aria-live="polite">
+        <div id="studyMeta" class="pill-group"></div>
+        <h3 id="studyPrompt"></h3>
+        <div id="studyChoices" class="choices"></div>
+        <div class="actions">
+          <button class="primary" id="studySubmit" type="button">Check answer</button>
+          <button class="secondary" id="studyReveal" type="button">Reveal rationale</button>
+          <button class="secondary" id="studyNext" type="button">Next question</button>
+        </div>
+        <div id="studyFeedback" class="feedback" aria-live="assertive"></div>
+      </div>
+      <p id="studyStatus" class="status-pill" aria-live="polite"></p>
+    </section>
+
+    <section id="quiz" class="panel" tabindex="-1">
+      <h2>Quiz yourself</h2>
+      <div id="quizConfig" class="card">
+        <h3>Configure quiz</h3>
+        <form id="quizForm">
+          <div class="filters" role="group" aria-label="Quiz filters">
+            <label for="quizLesions">Choose lesions / tags
+              <select id="quizLesions" multiple size="8" aria-describedby="lesionHelp"></select>
+            </label>
+            <label for="quizCategory">Category
+              <select id="quizCategory">
+                <option value="all">All</option>
+              </select>
+            </label>
+            <label for="quizDifficulty">Difficulty
+              <select id="quizDifficulty">
+                <option value="all">All</option>
+                <option value="foundation">Foundation</option>
+                <option value="core">Core</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </label>
+            <label for="quizCount">Number of questions
+              <input id="quizCount" type="number" min="1" max="60" value="10" />
+            </label>
+            <label for="quizTimer">Timer (minutes)
+              <input id="quizTimer" type="number" min="0" max="120" value="0" />
+            </label>
+          </div>
+          <p id="lesionHelp">Use Ctrl/Cmd + click to select multiple lesion groups.</p>
+          <div class="actions">
+            <button class="primary" type="submit">Start quiz</button>
+            <button class="secondary" type="button" id="loadMissed">Load missed items</button>
+          </div>
+        </form>
+      </div>
+      <div id="quizTake" class="card" hidden>
+        <div class="progress-bar" aria-hidden="true"><span id="quizProgress"></span></div>
+        <div class="pill-group" style="justify-content: space-between; align-items: center;">
+          <span id="quizCounter" class="pill"></span>
+          <span id="quizTimerDisplay" class="timer" aria-live="polite"></span>
+        </div>
+        <div id="quizMeta" class="pill-group" aria-live="polite"></div>
+        <h3 id="quizPrompt"></h3>
+        <div id="quizChoices" class="choices" role="radiogroup"></div>
+        <div class="actions">
+          <button class="secondary" id="quizFlag" type="button">Flag for review</button>
+          <button class="primary" id="quizSubmit" type="button">Submit</button>
+        </div>
+        <div id="quizFeedback" class="feedback" aria-live="assertive"></div>
+      </div>
+      <div id="quizResults" class="card" hidden>
+        <h3>Results</h3>
+        <p id="quizSummary"></p>
+        <div id="quizRemediation" class="pill-group"></div>
+        <table class="result-table" aria-label="Performance by lesion">
+          <thead>
+            <tr><th>Lesion</th><th>Correct / Total</th><th>Details</th></tr>
+          </thead>
+          <tbody id="resultTableBody"></tbody>
+        </table>
+        <div class="actions" style="margin-top:1rem;">
+          <button class="primary" type="button" id="retakeQuiz">Retake with same settings</button>
+          <button class="secondary" type="button" id="returnToConfig">Back to configure</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="review" class="panel" tabindex="-1">
+      <h2>Spaced Review</h2>
+      <p>Prioritize items you previously missed or flagged. Ratings use a simplified SM-2 algorithm to schedule future reviews.</p>
+      <div class="card">
+        <div id="reviewStatus" class="pill-group" aria-live="polite"></div>
+        <div id="reviewContent" hidden>
+          <div id="reviewMeta" class="pill-group"></div>
+          <h3 id="reviewPrompt"></h3>
+          <div id="reviewChoices" class="choices"></div>
+          <button class="secondary" id="reviewShow" type="button">Show rationale</button>
+          <div id="reviewRationale" class="feedback"></div>
+          <div class="review-controls">
+            <button class="again" data-quality="1" type="button">Again (1)</button>
+            <button class="hard" data-quality="3" type="button">Hard (3)</button>
+            <button class="good" data-quality="4" type="button">Good (4)</button>
+            <button class="easy" data-quality="5" type="button">Easy (5)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="admin" class="panel" tabindex="-1">
+      <h2>Admin-lite (local authoring)</h2>
+      <p>Create new questions or override existing ones. All edits stay on this device and merge with the core bank.</p>
+      <div class="grid two">
+        <div class="card">
+          <h3>Edit single question</h3>
+          <label for="adminSelect">Select question</label>
+          <select id="adminSelect" size="10" aria-label="Select question to edit"></select>
+          <button class="secondary" id="loadQuestion" type="button">Load question</button>
+          <form id="adminForm" style="margin-top:0.8rem;">
+            <label>ID
+              <input id="adminId" required />
+            </label>
+            <label>Lesion group
+              <input id="adminLesion" required />
+            </label>
+            <label>Short key
+              <input id="adminKey" required />
+            </label>
+            <label>Classification
+              <select id="adminClass">
+                <option value="acyanotic">Acyanotic</option>
+                <option value="cyanotic">Cyanotic</option>
+                <option value="cross">Cross-cutting</option>
+              </select>
+            </label>
+            <label>Category
+              <select id="adminCategory"></select>
+            </label>
+            <label>Difficulty
+              <select id="adminDifficulty">
+                <option value="foundation">Foundation</option>
+                <option value="core">Core</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </label>
+            <label>Tags (comma-separated)
+              <input id="adminTags" />
+            </label>
+            <label>Prompt
+              <textarea id="adminPrompt" required></textarea>
+            </label>
+            <label>Options JSON (array of {"key","text","correct"})
+              <textarea id="adminOptions" required></textarea>
+            </label>
+            <label>Rationale
+              <textarea id="adminRationale" required></textarea>
+            </label>
+            <label>Remediation tip
+              <textarea id="adminRemediation"></textarea>
+            </label>
+            <div class="actions">
+              <button class="primary" type="submit">Save / Override</button>
+              <button class="secondary" id="deleteOverride" type="button">Remove override</button>
+            </div>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Bulk add via JSON</h3>
+          <p>Paste an array of question objects matching the data model. Existing IDs will be overridden.</p>
+          <textarea id="bulkArea" aria-label="Bulk JSON"></textarea>
+          <div class="actions">
+            <button class="primary" id="bulkImport" type="button">Add questions</button>
+            <button class="secondary" id="downloadTemplate" type="button">Copy template</button>
+          </div>
+          <h3>Local question count</h3>
+          <p id="localCount"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>Designed for second-year medical students reviewing congenital heart disease. Feedback welcome—tune the question bank to your needs.</p>
+  </footer>
+<script type="module">
+const QUESTION_SCHEMA = {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Congenital Heart Disease Question",
+  "description": "Schema for congenital heart disease study questions",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "topic": {
+      "type": "string",
+      "enum": [
+        "acyanotic",
+        "cyanotic",
+        "cross-cutting"
+      ]
+    },
+    "lesion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "pathophysiology",
+        "presentation",
+        "exam/murmur",
+        "imaging_ecg_cxr",
+        "management_initial"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "mcq",
+        "tf",
+        "multi"
+      ]
+    },
+    "stem": {
+      "type": "string",
+      "minLength": 1
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2
+    },
+    "answerIndex": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "answerIndices": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "minItems": 1
+    },
+    "answerBool": {
+      "type": "boolean"
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "default": 2
+    },
+    "objective": {
+      "type": "string",
+      "default": ""
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "version": {
+      "type": "string",
+      "default": "v1"
+    }
+  },
+  "required": [
+    "id",
+    "topic",
+    "lesion",
+    "category",
+    "type",
+    "stem",
+    "explanation",
+    "tags",
+    "difficulty",
+    "objective",
+    "version"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "mcq"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "options",
+          "answerIndex"
+        ],
+        "properties": {
+          "options": {
+            "minItems": 2
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "multi"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "options",
+          "answerIndices"
+        ],
+        "properties": {
+          "answerIndices": {
+            "minItems": 2
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "tf"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "answerBool"
+        ]
+      }
+    }
+  ]
+};
+
+const QBANK = [
+  {
+    "id": "ASD_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Atrial Septal Defect (secundum/primum/sinus venosus)",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "A 6-year-old with a secundum ASD has right atrial and ventricular dilation on echocardiogram. Which physiologic consequence best explains this finding?",
+    "options": [
+      "Right atrial and ventricular volume overload from chronic left-to-right shunt",
+      "Systemic hypoxemia from reduced pulmonary blood flow",
+      "Pressure overload of the left ventricle from systemic hypertension",
+      "Obstruction to pulmonary venous return across the atrial septum"
+    ],
+    "answerIndex": 0,
+    "explanation": "Because left atrial pressure exceeds right atrial pressure, secundum ASDs create a left-to-right shunt that chronically volume loads the right heart and pulmonary circulation.",
+    "tags": [
+      "left-to-right shunt",
+      "fixed split S2"
+    ],
+    "difficulty": 2,
+    "objective": "Revisit the hemodynamics that produce right-sided dilation and a fixed, split S2 in ASD.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "ASD_EXAM_2",
+    "topic": "acyanotic",
+    "lesion": "Atrial Septal Defect (secundum/primum/sinus venosus)",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "On physical exam, which auscultatory finding most strongly suggests an atrial septal defect?",
+    "options": [
+      "Fixed, widely split S2 that does not vary with respiration",
+      "Continuous machinery murmur at the left infraclavicular area",
+      "Late systolic murmur with mid-systolic click at the apex",
+      "Holosystolic murmur at the apex radiating to the axilla"
+    ],
+    "answerIndex": 0,
+    "explanation": "A fixed and wide splitting of S2 reflects prolonged right ventricular ejection time from the ASD shunt and is classic for ASD.",
+    "tags": [
+      "fixed split S2",
+      "murmur"
+    ],
+    "difficulty": 1,
+    "objective": "Pair auscultation practice with diagrams of S2 splitting patterns to reinforce ASD recognition.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "VSD_PRESENT_1",
+    "topic": "acyanotic",
+    "lesion": "Ventricular Septal Defect (perimembranous/muscular)",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 2-month-old with a moderate perimembranous VSD has tachypnea, poor weight gain, and a harsh holosystolic murmur at the left lower sternal border. What drives these symptoms?",
+    "options": [
+      "Excess pulmonary blood flow causing pulmonary overcirculation and heart failure",
+      "Systemic hypoxemia from obligate right-to-left shunt",
+      "Acute closure of the ductus arteriosus reducing systemic flow",
+      "Arrhythmia-mediated cardiogenic shock"
+    ],
+    "answerIndex": 0,
+    "explanation": "Large or moderate VSDs deliver significant left-to-right shunting once pulmonary vascular resistance falls, overloading the pulmonary circulation and left heart, leading to CHF symptoms in infancy.",
+    "tags": [
+      "failure to thrive",
+      "holosystolic murmur"
+    ],
+    "difficulty": 1,
+    "objective": "Connect VSD size with timing of symptoms as pulmonary vascular resistance normalizes after birth.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "VSD_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Ventricular Septal Defect (perimembranous/muscular)",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "An infant with a large VSD and failure to thrive remains symptomatic despite adequate calories. What is the best initial management step while awaiting surgical evaluation?",
+    "options": [
+      "Start diuretics and afterload reduction to control pulmonary overcirculation",
+      "Begin prostaglandin E1 to maintain ductal patency",
+      "Recommend endocardial cushion defect repair immediately",
+      "Switch to low-iron formula to reduce metabolic demand"
+    ],
+    "answerIndex": 0,
+    "explanation": "Medical management with diuretics (\u00b1ACE inhibition) alleviates congestive symptoms while definitive repair is arranged for a large VSD.",
+    "tags": [
+      "heart failure therapy"
+    ],
+    "difficulty": 2,
+    "objective": "Review the bridge-to-surgery measures for volume-overload lesions like sizable VSDs.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AVSD_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Atrioventricular Septal Defect (partial/complete)",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "Complete AVSD in a neonate with Down syndrome most commonly causes which hemodynamic issue?",
+    "options": [
+      "Common AV valve regurgitation with massive left-to-right shunting at both atrial and ventricular levels",
+      "Isolated obstruction to pulmonary venous return into the left atrium",
+      "Right ventricular outflow tract obstruction leading to cyanosis",
+      "Severe systemic outflow obstruction causing differential cyanosis"
+    ],
+    "answerIndex": 0,
+    "explanation": "Failure of endocardial cushion fusion creates defects at both septa and a common AV valve, producing significant left-to-right shunting and AV valve regurgitation.",
+    "tags": [
+      "endocardial cushion",
+      "Down syndrome"
+    ],
+    "difficulty": 2,
+    "objective": "Map the shared AV valve anatomy to understand regurgitation and pulmonary overcirculation in AVSD.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AVSD_IMAGING_2",
+    "topic": "acyanotic",
+    "lesion": "Atrioventricular Septal Defect (partial/complete)",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which study best confirms the diagnosis of an atrioventricular septal defect in a symptomatic infant?",
+    "options": [
+      "Transthoracic echocardiogram demonstrating a common AV valve and primum defect",
+      "Chest radiograph showing boot-shaped cardiac silhouette",
+      "Electrocardiogram with right axis deviation and RVH",
+      "Cardiac MRI showing anomalous pulmonary venous return"
+    ],
+    "answerIndex": 0,
+    "explanation": "Echocardiography delineates the common AV valve, inlet VSD, and primum ASD that define AVSD.",
+    "tags": [
+      "echocardiogram",
+      "left axis deviation"
+    ],
+    "difficulty": 2,
+    "objective": "Practice reading apical four-chamber echo views that highlight the primum defect and common valve leaflets.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PDA_EXAM_1",
+    "topic": "acyanotic",
+    "lesion": "Patent Ductus Arteriosus",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "A premature infant has a continuous \u201cmachinery\u201d murmur best heard at the left infraclavicular area. Which lesion does this finding suggest?",
+    "options": [
+      "Patent ductus arteriosus with left-to-right shunt",
+      "Pulmonary stenosis with ejection click",
+      "Coarctation of the aorta with collateral flow",
+      "Tricuspid regurgitation from Ebstein anomaly"
+    ],
+    "answerIndex": 0,
+    "explanation": "The classic continuous machinery murmur localized to the left infraclavicular region signifies persistent ductal flow in PDA.",
+    "tags": [
+      "continuous murmur"
+    ],
+    "difficulty": 1,
+    "objective": "Link murmur timing to hemodynamics\u2014continuous murmurs reflect persistent systolic and diastolic gradients as in PDA.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PDA_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Patent Ductus Arteriosus",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A preterm neonate with respiratory distress syndrome develops a hemodynamically significant PDA. Which initial therapy is most appropriate?",
+    "options": [
+      "Administer indomethacin or ibuprofen to promote ductal closure",
+      "Begin prostaglandin E1 infusion",
+      "Schedule immediate surgical ligation without medical trial",
+      "Start propranolol to reduce ductal flow"
+    ],
+    "answerIndex": 0,
+    "explanation": "Cyclooxygenase inhibitors such as indomethacin/ibuprofen are first-line to close a symptomatic PDA in a premature infant.",
+    "tags": [
+      "indomethacin",
+      "prematurity"
+    ],
+    "difficulty": 2,
+    "objective": "Remember the opposing roles of prostaglandins: inhibit them to close PDA, infuse them to keep duct-dependent lesions open.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PAPVR_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Partial Anomalous Pulmonary Venous Return",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "Partial anomalous pulmonary venous return (PAPVR) most commonly produces which physiologic effect?",
+    "options": [
+      "Left-to-right shunt with right-sided volume overload due to anomalous pulmonary veins draining to the right atrium",
+      "Right-to-left shunt causing profound cyanosis in the newborn period",
+      "Obstruction to pulmonary venous return with pulmonary edema and hemoptysis",
+      "Systemic outflow obstruction leading to upper extremity hypertension"
+    ],
+    "answerIndex": 0,
+    "explanation": "When one or more pulmonary veins drain anomalously to the right atrium or SVC, oxygenated blood recirculates to the right heart, creating a left-to-right shunt and right-sided dilation.",
+    "tags": [
+      "right heart dilation"
+    ],
+    "difficulty": 3,
+    "objective": "Contrast PAPVR with TAPVR\u2014partial lesions are often acyanotic and mimic ASD physiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PAPVR_IMAGING_2",
+    "topic": "acyanotic",
+    "lesion": "Partial Anomalous Pulmonary Venous Return",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which imaging modality best defines the anomalous pulmonary venous connection in PAPVR when echocardiography is inconclusive?",
+    "options": [
+      "Cardiac CT angiography delineating anomalous pulmonary venous drainage",
+      "Chest radiograph demonstrating rib notching",
+      "Electrocardiogram with delta waves",
+      "Holter monitor capturing junctional tachycardia"
+    ],
+    "answerIndex": 0,
+    "explanation": "Cross-sectional imaging (CT or MRI) clearly visualizes anomalous pulmonary venous pathways when transthoracic echo windows are limited.",
+    "tags": [
+      "MRI",
+      "CT angiography"
+    ],
+    "difficulty": 2,
+    "objective": "Know when to escalate from echo to advanced imaging to map pulmonary venous anatomy.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AP_WINDOW_PRESENT_1",
+    "topic": "acyanotic",
+    "lesion": "Aortopulmonary Window",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 3-week-old presents with tachypnea, bounding pulses, and a continuous murmur. Echo shows a communication between the ascending aorta and main pulmonary artery. What explains the rapid heart failure?",
+    "options": [
+      "Massive left-to-right flow from systemic to pulmonary circulation causing pulmonary overcirculation",
+      "Obstruction of pulmonary venous return at the level of the atrium",
+      "Right-to-left shunting across an unrestrictive VSD",
+      "Loss of ductal flow leading to systemic hypoperfusion"
+    ],
+    "answerIndex": 0,
+    "explanation": "An aortopulmonary window allows unregulated systemic flow into the pulmonary artery, driving severe overcirculation and heart failure early in life.",
+    "tags": [
+      "heart failure",
+      "continuous murmur"
+    ],
+    "difficulty": 2,
+    "objective": "Differentiate aortopulmonary window from PDA\u2014location is proximal, but physiology is similar high-flow left-to-right shunt.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AP_WINDOW_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Aortopulmonary Window",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "Initial stabilization of an infant with an aortopulmonary window and heart failure should prioritize which action?",
+    "options": [
+      "Initiate intravenous diuretics and arrange urgent surgical closure",
+      "Begin prostaglandin E1 to maintain ductal flow",
+      "Start high-dose beta blockers to reduce heart rate",
+      "Delay intervention until pulmonary vascular resistance falls"
+    ],
+    "answerIndex": 0,
+    "explanation": "Medical stabilization with diuretics and rapid surgical repair is critical because uncorrected aortopulmonary windows can lead quickly to pulmonary vascular disease.",
+    "tags": [
+      "surgical emergency"
+    ],
+    "difficulty": 3,
+    "objective": "Recognize that aortopulmonary window demands expedited surgical closure similar to large PDA physiology but often more urgent.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "COARC_PRESENT_1",
+    "topic": "acyanotic",
+    "lesion": "Coarctation of the Aorta",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 5-day-old develops poor feeding, lethargy, and lower extremity mottling shortly after the ductus arteriosus closes. Upper extremity pulses are bounding while lower pulses are weak. What lesion best explains this?",
+    "options": [
+      "Coarctation of the aorta causing duct-dependent systemic perfusion",
+      "Tetralogy of Fallot with severe pulmonary stenosis",
+      "Patent ductus arteriosus with large left-to-right shunt",
+      "Total anomalous pulmonary venous return"
+    ],
+    "answerIndex": 0,
+    "explanation": "Critical coarctation relies on a patent ductus for lower body perfusion; closure precipitates shock with differential pulses.",
+    "tags": [
+      "differential pulses"
+    ],
+    "difficulty": 1,
+    "objective": "Associate ductal closure with acute decompensation in duct-dependent systemic lesions like coarctation.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "COARC_IMAGING_2",
+    "topic": "acyanotic",
+    "lesion": "Coarctation of the Aorta",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which chest radiograph finding is classically associated with long-standing coarctation of the aorta in older children?",
+    "options": [
+      "Rib notching from collateral intercostal arteries",
+      "Egg-on-a-string heart silhouette",
+      "Snowman (figure-of-eight) mediastinum",
+      "Boot-shaped heart with upturned apex"
+    ],
+    "answerIndex": 0,
+    "explanation": "Chronic coarctation produces collateral circulation via intercostal arteries, eroding the inferior margins of ribs seen as rib notching.",
+    "tags": [
+      "rib notching",
+      "figure 3 sign"
+    ],
+    "difficulty": 2,
+    "objective": "Link radiographic figure-3 sign and rib notching with coarctation to differentiate from cyanotic imaging patterns.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AS_STEN_EXAM_1",
+    "topic": "acyanotic",
+    "lesion": "Aortic Stenosis (valvar/subvalvar/supravalvar)",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "Which physical exam finding is most consistent with valvar aortic stenosis in an adolescent?",
+    "options": [
+      "Harsh systolic ejection murmur with systolic click at the right upper sternal border",
+      "Diastolic rumble with opening snap at the apex",
+      "Continuous murmur over the left infraclavicular area",
+      "Holosystolic murmur at the left lower sternal border"
+    ],
+    "answerIndex": 0,
+    "explanation": "Valvar aortic stenosis classically produces a systolic ejection murmur and click at the right upper sternal border.",
+    "tags": [
+      "systolic ejection murmur",
+      "click"
+    ],
+    "difficulty": 1,
+    "objective": "Remember that systolic ejection clicks indicate semilunar valve stenosis such as valvar AS or PS.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AS_STEN_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Aortic Stenosis (valvar/subvalvar/supravalvar)",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A neonate with critical valvar aortic stenosis presents in shock after the ductus arteriosus closes. What is the most important immediate intervention?",
+    "options": [
+      "Start prostaglandin E1 to reopen the ductus and restore systemic perfusion",
+      "Administer high-dose beta blockers",
+      "Schedule elective balloon valvuloplasty next week",
+      "Begin ACE inhibitor therapy alone"
+    ],
+    "answerIndex": 0,
+    "explanation": "Critical neonatal AS is duct-dependent for systemic flow; prostaglandin E1 is lifesaving until balloon valvuloplasty or surgery can be performed.",
+    "tags": [
+      "duct-dependent systemic flow"
+    ],
+    "difficulty": 2,
+    "objective": "Identify which obstructive lesions become duct-dependent systemically and respond to prostaglandin infusion.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PS_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Pulmonary Stenosis (valvar/subvalvar/supravalvar)",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "How does moderate valvar pulmonary stenosis affect right ventricular physiology?",
+    "options": [
+      "Creates systolic pressure overload and post-stenotic dilation of the pulmonary artery",
+      "Causes volume overload with pulmonary overcirculation",
+      "Leads to fixed split S2 from delayed aortic valve closure",
+      "Results in left ventricular hypertrophy due to increased afterload"
+    ],
+    "answerIndex": 0,
+    "explanation": "Pulmonary stenosis imposes pressure overload on the RV, which hypertrophies and produces post-stenotic dilation of the pulmonary artery due to turbulent flow.",
+    "tags": [
+      "right ventricular pressure overload"
+    ],
+    "difficulty": 1,
+    "objective": "Differentiate pressure overload patterns (stenosis) from volume overload (shunts) in lesion pathophysiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PS_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Pulmonary Stenosis (valvar/subvalvar/supravalvar)",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A symptomatic adolescent with valvar pulmonary stenosis has a peak gradient of 70 mm Hg. What is the preferred initial intervention?",
+    "options": [
+      "Balloon pulmonary valvuloplasty to relieve the obstruction",
+      "Observation only because the lesion is benign",
+      "Systemic anticoagulation with warfarin",
+      "Propranolol therapy to reduce myocardial oxygen demand"
+    ],
+    "answerIndex": 0,
+    "explanation": "For significant valvar pulmonary stenosis with symptoms or high gradients, catheter-based balloon valvuloplasty is first-line.",
+    "tags": [
+      "balloon valvuloplasty"
+    ],
+    "difficulty": 2,
+    "objective": "Match severity thresholds with interventions for semilunar valve stenosis in pediatrics.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "BAV_IMAGING_1",
+    "topic": "acyanotic",
+    "lesion": "Bicuspid Aortic Valve",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which echocardiographic feature defines a bicuspid aortic valve?",
+    "options": [
+      "Two functional leaflets with a raphe between fused commissures",
+      "Doming pulmonary valve leaflets in systole",
+      "Membranous ridge below the aortic valve causing subvalvar obstruction",
+      "Supravalvar hourglass narrowing of the ascending aorta"
+    ],
+    "answerIndex": 0,
+    "explanation": "Bicuspid valves have two functional cusps and often a raphe reflecting fused commissures, readily seen on parasternal short-axis echocardiography.",
+    "tags": [
+      "echocardiogram",
+      "raphe"
+    ],
+    "difficulty": 1,
+    "objective": "Review parasternal short-axis views to distinguish bicuspid from tricuspid semilunar valves.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "BAV_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Bicuspid Aortic Valve",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A 14-year-old is incidentally found to have a bicuspid aortic valve with normal gradients. What initial management is recommended?",
+    "options": [
+      "Obtain baseline transthoracic echocardiography and screen first-degree relatives",
+      "Schedule emergent surgical valve replacement",
+      "Start prophylactic indomethacin therapy",
+      "Restrict from all athletics immediately"
+    ],
+    "answerIndex": 0,
+    "explanation": "Bicuspid valves warrant longitudinal surveillance of valve function and aortopathy; family screening is advised due to heritability.",
+    "tags": [
+      "screening relatives"
+    ],
+    "difficulty": 2,
+    "objective": "Pair incidental bicuspid valve findings with counseling on surveillance imaging and family screening.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "SHONE_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Shone Complex",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "What defines the pathophysiology of Shone complex?",
+    "options": [
+      "Multiple left-sided obstructive lesions including supravalvar mitral membrane, parachute mitral valve, subaortic stenosis, and coarctation",
+      "Combination of right ventricular outflow tract obstructions and ASD",
+      "Single ventricle physiology with pulmonary atresia",
+      "Anomalous origin of coronary arteries from the pulmonary artery"
+    ],
+    "answerIndex": 0,
+    "explanation": "Shone complex is a spectrum of left-sided obstructive lesions that together impair pulmonary venous inflow and systemic output.",
+    "tags": [
+      "multilevel left-sided obstruction"
+    ],
+    "difficulty": 3,
+    "objective": "Create a mental checklist of the four classic Shone components to anticipate combined obstruction physiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "SHONE_PRESENT_2",
+    "topic": "acyanotic",
+    "lesion": "Shone Complex",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "An infant with Shone complex presents with tachypnea and pulmonary edema. Which finding is most consistent with the underlying anatomy?",
+    "options": [
+      "Obstruction at multiple levels causing elevated left atrial pressure and pulmonary congestion",
+      "Primary pulmonary venous atresia",
+      "Right-to-left shunting causing systemic cyanosis",
+      "Coronary steal phenomenon from an anomalous origin"
+    ],
+    "answerIndex": 0,
+    "explanation": "Combined mitral and aortic level obstructions in Shone complex raise left atrial pressure, resulting in pulmonary congestion and heart failure symptoms.",
+    "tags": [
+      "pulmonary edema",
+      "mitral obstruction"
+    ],
+    "difficulty": 2,
+    "objective": "Trace the pressure build-up proximally from each obstructive lesion to explain pulmonary edema in Shone complex.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "COR_TRI_PRESENT_1",
+    "topic": "acyanotic",
+    "lesion": "Cor Triatriatum",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 4-month-old has tachypnea, poor feeding, and pulmonary venous congestion despite a structurally normal mitral valve. Echo reveals a membrane within the left atrium. What is the diagnosis?",
+    "options": [
+      "Cor triatriatum causing obstruction to pulmonary venous inflow",
+      "Partial anomalous pulmonary venous return",
+      "Ebstein anomaly",
+      "Total anomalous pulmonary venous return"
+    ],
+    "answerIndex": 0,
+    "explanation": "Cor triatriatum features a fibromuscular membrane dividing the left atrium, obstructing pulmonary venous return and mimicking mitral stenosis.",
+    "tags": [
+      "pulmonary venous obstruction"
+    ],
+    "difficulty": 3,
+    "objective": "Differentiate cor triatriatum from mitral stenosis by noting the intra-atrial membrane on imaging.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "COR_TRI_IMAGING_2",
+    "topic": "acyanotic",
+    "lesion": "Cor Triatriatum",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which imaging study most clearly defines the anatomy of cor triatriatum for surgical planning?",
+    "options": [
+      "Transesophageal echocardiography demonstrating the intra-atrial membrane and fenestration",
+      "Electrocardiogram with left axis deviation",
+      "Chest radiograph with boot-shaped heart",
+      "CT scan showing rib notching"
+    ],
+    "answerIndex": 0,
+    "explanation": "TEE delineates the membrane, its attachments, and fenestrations essential for surgical resection.",
+    "tags": [
+      "transesophageal echo"
+    ],
+    "difficulty": 3,
+    "objective": "Plan imaging escalation\u2014TEE or MRI\u2014to map rare left atrial obstructive lesions like cor triatriatum.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DCRV_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Double-Chambered Right Ventricle",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "Double-chambered right ventricle (DCRV) results from which anatomic abnormality?",
+    "options": [
+      "Hypertrophied muscular bundle dividing the right ventricle into high- and low-pressure chambers",
+      "Failure of endocardial cushion fusion",
+      "Absence of the tricuspid valve orifice",
+      "Single arterial trunk overriding a VSD"
+    ],
+    "answerIndex": 0,
+    "explanation": "In DCRV, aberrant muscular bundles create obstruction within the RV cavity, effectively partitioning it.",
+    "tags": [
+      "muscular bundle"
+    ],
+    "difficulty": 3,
+    "objective": "Visualize the intraventricular muscle bundle that produces subinfundibular obstruction in DCRV.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DCRV_IMAGING_2",
+    "topic": "acyanotic",
+    "lesion": "Double-Chambered Right Ventricle",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "What imaging modality best characterizes the obstructing muscle bundle in double-chambered right ventricle?",
+    "options": [
+      "Cardiac MRI or advanced echocardiography showing the anomalous muscle bundle",
+      "Chest radiograph showing snowman sign",
+      "Electrocardiogram with delta wave",
+      "Abdominal ultrasound evaluating the liver"
+    ],
+    "answerIndex": 0,
+    "explanation": "High-resolution imaging (MRI or specialized echo views) is needed to visualize and plan resection of the obstructing RV muscle bundle.",
+    "tags": [
+      "cardiac MRI",
+      "subinfundibular stenosis"
+    ],
+    "difficulty": 2,
+    "objective": "Pair DCRV diagnosis with the role of multimodality imaging for intracardiac anatomy.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "ALCAPA_PRESENT_1",
+    "topic": "acyanotic",
+    "lesion": "Anomalous Left Coronary Artery from the Pulmonary Artery",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 2-month-old develops diaphoresis with feeds, irritability, and signs of heart failure. Echocardiogram shows dilated LV and mitral regurgitation. Which diagnosis best fits?",
+    "options": [
+      "Anomalous left coronary artery from the pulmonary artery causing myocardial ischemia",
+      "Coarctation of the aorta",
+      "Tetralogy of Fallot",
+      "Pulmonary atresia with intact septum"
+    ],
+    "answerIndex": 0,
+    "explanation": "ALCAPA results in coronary steal once pulmonary artery pressures fall, leading to ischemia, LV dysfunction, and MR in early infancy.",
+    "tags": [
+      "ischemia",
+      "infant heart failure"
+    ],
+    "difficulty": 2,
+    "objective": "Connect feeding intolerance, ischemic ECG changes, and MR in infancy with anomalous coronary origin.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "ALCAPA_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Anomalous Left Coronary Artery from the Pulmonary Artery",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "What is the key initial management for an infant with suspected ALCAPA presenting in heart failure?",
+    "options": [
+      "Stabilize with inotropes and diuretics while expediting surgical reimplantation of the left coronary artery into the aorta",
+      "Start prostaglandin E1 infusion to open the ductus",
+      "Recommend beta-blocker therapy as definitive treatment",
+      "Advise watchful waiting because it often resolves"
+    ],
+    "answerIndex": 0,
+    "explanation": "Myocardial ischemia mandates urgent surgical correction after stabilizing perfusion; medical therapy alone is insufficient.",
+    "tags": [
+      "surgical emergency"
+    ],
+    "difficulty": 3,
+    "objective": "Remember that ischemic cardiomyopathy in infancy from ALCAPA requires surgical revascularization.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TOF_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "Tetralogy of Fallot",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "What combination of defects causes cyanosis in Tetralogy of Fallot?",
+    "options": [
+      "VSD with overriding aorta, pulmonary stenosis, and right ventricular hypertrophy",
+      "ASD with anomalous pulmonary venous return",
+      "Tricuspid atresia with intact ventricular septum",
+      "Single ventricle physiology with common AV valve"
+    ],
+    "answerIndex": 0,
+    "explanation": "Pulmonary outflow obstruction forces right-to-left shunting across the VSD with overriding aorta, producing cyanosis in TOF.",
+    "tags": [
+      "right-to-left shunt",
+      "RVOT obstruction"
+    ],
+    "difficulty": 1,
+    "objective": "Memorize the four classic components of TOF to reason through cyanosis pathophysiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TOF_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Tetralogy of Fallot",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A toddler with repaired TOF develops a hypercyanotic \u201ctet\u201d spell during play. What immediate maneuver should be attempted first?",
+    "options": [
+      "Place the child in a knee-chest position and provide oxygen",
+      "Administer loop diuretics",
+      "Start high-dose beta blockers long term",
+      "Begin prostaglandin E1 infusion"
+    ],
+    "answerIndex": 0,
+    "explanation": "Knee-chest positioning increases systemic vascular resistance, reducing right-to-left shunting; supplemental oxygen and calming measures follow.",
+    "tags": [
+      "tet spell"
+    ],
+    "difficulty": 2,
+    "objective": "Rehearse the sequence for managing tet spells: knee-chest, oxygen, morphine, beta blockers as needed.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TOF_PA_PRESENT_1",
+    "topic": "cyanotic",
+    "lesion": "TOF with Pulmonary Atresia (VSD + PA)",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A newborn is profoundly cyanotic with no audible pulmonary flow murmur. Echocardiography shows TOF with pulmonary atresia. Why is the ductus arteriosus critical?",
+    "options": [
+      "Pulmonary blood flow depends on the ductus arteriosus supplying the pulmonary arteries",
+      "Systemic blood flow requires ductal runoff to the descending aorta",
+      "Coronary perfusion relies on ductal flow into the coronary arteries",
+      "The ductus is unnecessary once the foramen ovale remains patent"
+    ],
+    "answerIndex": 0,
+    "explanation": "With pulmonary atresia, antegrade flow from the RV is absent; pulmonary circulation is supplied by ductus arteriosus or collateral vessels.",
+    "tags": [
+      "duct-dependent pulmonary flow"
+    ],
+    "difficulty": 3,
+    "objective": "Identify lesions that are duct-dependent for pulmonary flow, including TOF with pulmonary atresia.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TOF_PA_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "TOF with Pulmonary Atresia (VSD + PA)",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "Initial management of a neonate with TOF and pulmonary atresia includes which step?",
+    "options": [
+      "Start prostaglandin E1 to maintain ductal patency and plan staged surgical reconstruction",
+      "Administer indomethacin to close the ductus",
+      "Give diuretics to treat pulmonary congestion",
+      "Delay intervention because cyanosis will self-resolve"
+    ],
+    "answerIndex": 0,
+    "explanation": "Maintaining the ductus is essential to sustain pulmonary blood flow until definitive unifocalization or shunt placement can be performed.",
+    "tags": [
+      "prostaglandin"
+    ],
+    "difficulty": 3,
+    "objective": "Remember: any duct-dependent pulmonary lesion needs prostaglandin infusion upon presentation.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TRICUSPID_ATRESIA_IMAGING_1",
+    "topic": "cyanotic",
+    "lesion": "Tricuspid Atresia",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which ECG finding is classic for tricuspid atresia in the newborn period?",
+    "options": [
+      "Left axis deviation with diminished R waves in the right precordium",
+      "Right axis deviation with tall R waves in V1",
+      "Short PR interval with delta waves",
+      "Diffuse ST elevations with PR depressions"
+    ],
+    "answerIndex": 0,
+    "explanation": "Tricuspid atresia lacks right ventricular forces, yielding left axis deviation and LV-dominant forces on neonatal ECG.",
+    "tags": [
+      "left axis deviation",
+      "single ventricle physiology"
+    ],
+    "difficulty": 2,
+    "objective": "Associate left axis deviation in a cyanotic neonate with tricuspid atresia or AVSD.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TRICUSPID_ATRESIA_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Tricuspid Atresia",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "What is the initial management for a neonate with tricuspid atresia and decreased pulmonary blood flow?",
+    "options": [
+      "Initiate prostaglandin E1 and arrange for atrial septostomy with staged palliation",
+      "Start indomethacin to close the ductus arteriosus",
+      "Begin high-dose diuretics to reduce preload",
+      "Delay intervention until the child is symptomatic with exercise"
+    ],
+    "answerIndex": 0,
+    "explanation": "Maintaining ductal patency ensures pulmonary blood flow while planning staged palliation (BT shunt, Glenn, Fontan).",
+    "tags": [
+      "duct-dependent pulmonary flow"
+    ],
+    "difficulty": 2,
+    "objective": "Pair tricuspid atresia with early prostaglandin therapy and staged single-ventricle palliation.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PAIVS_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "Pulmonary Atresia with Intact Ventricular Septum",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "Pulmonary atresia with intact ventricular septum typically leads to which structural change?",
+    "options": [
+      "Severely hypoplastic right ventricle with hypertrophied tricuspid valve annulus",
+      "Hypertrophied right ventricle with coronary sinusoids due to outflow obstruction",
+      "Dilated left ventricle with mitral regurgitation",
+      "Enlarged pulmonary arteries with high flow murmurs"
+    ],
+    "answerIndex": 1,
+    "explanation": "Severe RV outflow obstruction in PA/IVS results in RV hypertrophy and sinusoids connecting to the coronary circulation, limiting decompression options.",
+    "tags": [
+      "hypoplastic right ventricle"
+    ],
+    "difficulty": 3,
+    "objective": "Differentiate PA/IVS from TOF: intact septum, hypoplastic RV, and coronary sinusoids are hallmarks.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PAIVS_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Pulmonary Atresia with Intact Ventricular Septum",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "Initial stabilization for a neonate with pulmonary atresia and intact ventricular septum should include which step?",
+    "options": [
+      "Start prostaglandin E1 and plan for urgent valvotomy or shunt with atrial septostomy",
+      "Administer indomethacin to close the ductus",
+      "Begin chronic beta-blocker therapy alone",
+      "Recommend watchful waiting because pulmonary flow is adequate"
+    ],
+    "answerIndex": 0,
+    "explanation": "Maintaining ductal flow plus decompressing the right heart via valvotomy or shunt is required to establish pulmonary blood flow.",
+    "tags": [
+      "prostaglandin",
+      "atrial septostomy"
+    ],
+    "difficulty": 3,
+    "objective": "Remember the dual goals in PA/IVS: keep the duct open and provide a route for pulmonary blood flow.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "EBSTEIN_PRESENT_1",
+    "topic": "cyanotic",
+    "lesion": "Ebstein Anomaly",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "An adolescent with Ebstein anomaly presents with cyanosis, exercise intolerance, and episodes of supraventricular tachycardia. What anatomic feature explains these findings?",
+    "options": [
+      "Apical displacement of the tricuspid valve causing severe tricuspid regurgitation and atrialization of the RV",
+      "Absent pulmonary valve leaflets leading to free pulmonary regurgitation",
+      "Common AV valve with primum defect",
+      "Isolated pulmonary venous obstruction"
+    ],
+    "answerIndex": 0,
+    "explanation": "Ebstein anomaly features apically displaced tricuspid leaflets, severe regurgitation, right atrial dilation, and accessory pathways predisposing to arrhythmias.",
+    "tags": [
+      "tricuspid regurgitation",
+      "arrhythmia"
+    ],
+    "difficulty": 2,
+    "objective": "Link arrhythmia risk and cyanosis in Ebstein anomaly to the atrialized RV and ASD/PFO.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "EBSTEIN_EXAM_2",
+    "topic": "cyanotic",
+    "lesion": "Ebstein Anomaly",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "Which auscultatory finding is expected in Ebstein anomaly?",
+    "options": [
+      "Holosystolic murmur at the left lower sternal border increasing with inspiration",
+      "Continuous machinery murmur at the infraclavicular area",
+      "Ejection click with systolic murmur at the right upper sternal border",
+      "Diastolic rumble with opening snap at the apex"
+    ],
+    "answerIndex": 0,
+    "explanation": "Severe tricuspid regurgitation in Ebstein anomaly produces a holosystolic murmur that intensifies with inspiration due to increased venous return.",
+    "tags": [
+      "murmur",
+      "tricuspid regurgitation"
+    ],
+    "difficulty": 1,
+    "objective": "Remember Carvallo sign\u2014inspiration accentuates right-sided regurgitant murmurs.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DTGA_IMAGING_1",
+    "topic": "cyanotic",
+    "lesion": "d-Transposition of the Great Arteries",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "A term neonate with profound cyanosis has a chest radiograph showing a narrow mediastinum with an \u201cegg-on-a-string\u201d appearance. Which diagnosis is most likely?",
+    "options": [
+      "d-Transposition of the great arteries",
+      "Tetralogy of Fallot",
+      "Total anomalous pulmonary venous return",
+      "Pulmonary atresia with intact septum"
+    ],
+    "answerIndex": 0,
+    "explanation": "The narrow mediastinum and globular heart silhouette (egg-on-a-string) are classic for d-TGA due to great artery malposition.",
+    "tags": [
+      "egg on a string"
+    ],
+    "difficulty": 1,
+    "objective": "Match hallmark CXR findings with cyanotic lesions: egg-on-a-string for d-TGA, boot-shaped heart for TOF.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DTGA_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "d-Transposition of the Great Arteries",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "What initial management is essential for a newborn with d-TGA and restrictive atrial septum?",
+    "options": [
+      "Start prostaglandin E1 and perform balloon atrial septostomy to improve mixing",
+      "Administer indomethacin to close the ductus arteriosus",
+      "Begin ACE inhibitor therapy for afterload reduction",
+      "Schedule elective repair at 6 months without interim intervention"
+    ],
+    "answerIndex": 0,
+    "explanation": "Maintaining ductal patency and creating an adequate atrial level shunt allow systemic oxygenation until arterial switch surgery.",
+    "tags": [
+      "balloon atrial septostomy",
+      "prostaglandin"
+    ],
+    "difficulty": 2,
+    "objective": "Remember the neonatal sequence for d-TGA: PGE1, balloon atrial septostomy if restrictive, arterial switch.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "LTGA_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "l-Transposition / Congenitally Corrected TGA",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "In congenitally corrected transposition (l-TGA), which statement best describes the circulation?",
+    "options": [
+      "The morphologic right ventricle supports systemic circulation due to atrioventricular and ventriculoarterial discordance",
+      "Pulmonary veins drain directly to the right atrium without an atrial septum",
+      "Both great arteries arise from the right ventricle with no VSD",
+      "Systemic and pulmonary venous blood mix fully in a single ventricle"
+    ],
+    "answerIndex": 0,
+    "explanation": "l-TGA features atrioventricular and ventriculoarterial discordance, so the morphologic RV pumps to the aorta, predisposing it to failure and conduction disease.",
+    "tags": [
+      "ventricular inversion",
+      "systemic RV"
+    ],
+    "difficulty": 3,
+    "objective": "Remember that \u201ccorrected\u201d TGA still requires surveillance because the systemic RV eventually fails and AV block is common.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "LTGA_PRESENT_2",
+    "topic": "cyanotic",
+    "lesion": "l-Transposition / Congenitally Corrected TGA",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "An adolescent with l-TGA develops fatigue and presyncope. ECG shows complete heart block. What explains this finding?",
+    "options": [
+      "Progressive fibrosis of the conduction system in l-TGA leading to AV block",
+      "Electrolyte-induced arrhythmia from dehydration",
+      "Accessory pathway-mediated tachycardia",
+      "Acute myocarditis due to viral infection"
+    ],
+    "answerIndex": 0,
+    "explanation": "The conduction axis is displaced in l-TGA, so progressive AV block is a common presentation in adolescence or adulthood.",
+    "tags": [
+      "conduction block"
+    ],
+    "difficulty": 2,
+    "objective": "Associate l-TGA with conduction abnormalities and the need for pacing in symptomatic block.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TAPVR_IMAGING_1",
+    "topic": "cyanotic",
+    "lesion": "Total Anomalous Pulmonary Venous Return",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which chest radiograph finding suggests unobstructed supracardiac TAPVR?",
+    "options": [
+      "\u201cSnowman\u201d or figure-of-eight mediastinal silhouette",
+      "Boot-shaped heart with decreased pulmonary markings",
+      "Rib notching from collateral flow",
+      "Egg-on-a-string appearance"
+    ],
+    "answerIndex": 0,
+    "explanation": "The snowman sign reflects enlarged vertical vein and SVC in unobstructed supracardiac TAPVR.",
+    "tags": [
+      "snowman sign"
+    ],
+    "difficulty": 1,
+    "objective": "Correlate chest radiograph patterns with cyanotic CHD differentials to speed recognition.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TAPVR_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Total Anomalous Pulmonary Venous Return",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A neonate with obstructed infracardiac TAPVR is in respiratory distress with severe hypoxemia. What is the priority management?",
+    "options": [
+      "Urgent surgical repair to relieve pulmonary venous obstruction",
+      "Observation because pulmonary blood flow is adequate",
+      "Start indomethacin to close the ductus arteriosus",
+      "Administer high-dose diuretics and wait"
+    ],
+    "answerIndex": 0,
+    "explanation": "Obstructed TAPVR is a surgical emergency requiring immediate repair to restore pulmonary venous drainage.",
+    "tags": [
+      "obstructed TAPVR"
+    ],
+    "difficulty": 3,
+    "objective": "Recognize the difference between unobstructed (stable) and obstructed (emergent) TAPVR presentations.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TRUNCUS_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "Truncus Arteriosus",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "What anatomic lesion defines truncus arteriosus?",
+    "options": [
+      "Single arterial trunk giving rise to systemic, pulmonary, and coronary circulations with VSD",
+      "Absent pulmonary valve leaflets with free regurgitation",
+      "Single ventricle receiving systemic and pulmonary venous return",
+      "Right ventricular outflow obstruction with intact ventricular septum"
+    ],
+    "answerIndex": 0,
+    "explanation": "Truncus arteriosus features a single arterial trunk overriding a VSD, supplying both systemic and pulmonary circulations.",
+    "tags": [
+      "single arterial trunk"
+    ],
+    "difficulty": 1,
+    "objective": "Connect persistent truncus arteriosus with failure of conotruncal septation and DiGeorge associations.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TRUNCUS_EXAM_2",
+    "topic": "cyanotic",
+    "lesion": "Truncus Arteriosus",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "Which physical finding is typical in an infant with truncus arteriosus?",
+    "options": [
+      "Single loud S2 with bounding pulses due to diastolic runoff",
+      "Fixed split S2 with right ventricular heave",
+      "Harsh crescendo-decrescendo murmur at the right upper sternal border",
+      "Holosystolic murmur at the apex radiating to the axilla"
+    ],
+    "answerIndex": 0,
+    "explanation": "Truncus arteriosus often has a single S2 (single semilunar valve) and bounding pulses from diastolic runoff into the pulmonary circulation.",
+    "tags": [
+      "single S2",
+      "bounding pulses"
+    ],
+    "difficulty": 2,
+    "objective": "Link single S2 and wide pulse pressure with truncus arteriosus pathophysiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DORV_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "Double Outlet Right Ventricle",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "What defines double outlet right ventricle?",
+    "options": [
+      "Both great arteries arise predominantly from the right ventricle with a VSD supplying systemic output",
+      "Single arterial trunk overrides a VSD",
+      "Right ventricular outflow obstruction with intact septum",
+      "Left ventricular outflow tract obstruction with ductal dependence"
+    ],
+    "answerIndex": 0,
+    "explanation": "In DORV, both aorta and pulmonary artery originate from the RV; systemic flow depends on VSD location relative to the great vessels.",
+    "tags": [
+      "VSD location"
+    ],
+    "difficulty": 2,
+    "objective": "Relate VSD position in DORV to physiology\u2014subaortic VSD behaves like VSD, subpulmonic like TGA (Taussig-Bing).",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DORV_IMAGING_2",
+    "topic": "cyanotic",
+    "lesion": "Double Outlet Right Ventricle",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which imaging study best characterizes the relationship of the VSD to the great arteries in DORV?",
+    "options": [
+      "Echocardiography delineating VSD location and outflow tract relationships",
+      "Chest radiograph with boot-shaped heart",
+      "Electrocardiogram showing left axis deviation",
+      "Pulse oximetry trend showing differential saturations"
+    ],
+    "answerIndex": 0,
+    "explanation": "Detailed echocardiography demonstrates whether the VSD is subaortic, subpulmonic, or doubly committed, guiding surgical planning.",
+    "tags": [
+      "echocardiogram"
+    ],
+    "difficulty": 3,
+    "objective": "Practice interpreting segmental echocardiographic anatomy to plan DORV repairs.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "HLHS_PRESENT_1",
+    "topic": "cyanotic",
+    "lesion": "Hypoplastic Left Heart Syndrome",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 2-day-old with hypoplastic left heart syndrome becomes gray and hypotensive after the ductus arteriosus begins to close. What explains this deterioration?",
+    "options": [
+      "Loss of ductal flow eliminates systemic perfusion because the right ventricle supplies the body",
+      "Pulmonary overcirculation from increased left-to-right shunting",
+      "Sudden obstruction of pulmonary venous return",
+      "Acute arrhythmia due to accessory pathways"
+    ],
+    "answerIndex": 0,
+    "explanation": "In HLHS, systemic output depends on the ductus; closure results in shock and acidosis.",
+    "tags": [
+      "duct-dependent systemic flow"
+    ],
+    "difficulty": 2,
+    "objective": "Connect ductal dependency of systemic lesions (HLHS, critical AS, coarctation) with the need for emergent PGE1.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "HLHS_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Hypoplastic Left Heart Syndrome",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "What is the immediate management for a neonate with HLHS who develops shock as the ductus closes?",
+    "options": [
+      "Initiate prostaglandin E1 infusion and stabilize for Stage I Norwood palliation",
+      "Administer high-dose diuretics only",
+      "Delay intervention until ventricular function improves",
+      "Close the ductus to prevent pulmonary steal"
+    ],
+    "answerIndex": 0,
+    "explanation": "Reopening the ductus with prostaglandin restores systemic perfusion while preparing for staged surgical palliation.",
+    "tags": [
+      "prostaglandin",
+      "staged palliation"
+    ],
+    "difficulty": 3,
+    "objective": "Remember the Norwood-Glenn-Fontan sequence and the need for PGE1 in duct-dependent systemic lesions.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "SINGLE_V_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "Single-Ventricle Physiology (e.g., double inlet LV, Fontan)",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "What hemodynamic principle underlies Fontan circulation in single-ventricle physiology?",
+    "options": [
+      "Systemic venous blood flows passively to the pulmonary arteries without a subpulmonary ventricle",
+      "Pulmonary venous blood drains directly into the right atrium causing cyanosis",
+      "Right-to-left shunt across an atrial septal defect provides systemic output",
+      "Left ventricle pumps both systemic and pulmonary circulations simultaneously"
+    ],
+    "answerIndex": 0,
+    "explanation": "Fontan physiology depends on low pulmonary vascular resistance so venous blood can flow passively to the lungs, freeing the single ventricle for systemic output.",
+    "tags": [
+      "Fontan circulation"
+    ],
+    "difficulty": 2,
+    "objective": "Recall the vulnerabilities of Fontan circulation\u2014elevated pulmonary pressures or dehydration compromise preload.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "SINGLE_V_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Single-Ventricle Physiology (e.g., double inlet LV, Fontan)",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A newborn with suspected single-ventricle physiology and diminished systemic perfusion is evaluated. What initial management is appropriate?",
+    "options": [
+      "Start prostaglandin E1 to maintain ductal patency while planning staged palliation",
+      "Discontinue oxygen to promote ductal closure",
+      "Treat with loop diuretics only",
+      "Delay evaluation until symptoms worsen"
+    ],
+    "answerIndex": 0,
+    "explanation": "Many single-ventricle lesions are duct-dependent for either systemic or pulmonary blood flow; prostaglandin buys time for diagnostic workup and surgical planning.",
+    "tags": [
+      "duct-dependent",
+      "staged palliation"
+    ],
+    "difficulty": 2,
+    "objective": "Recognize the consistent role of PGE1 in stabilizing duct-dependent single-ventricle neonates.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_MURMUR_VSD",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Murmurs",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "A harsh holosystolic murmur with a palpable thrill at the left lower sternal border is most consistent with which lesion?",
+    "options": [
+      "Ventricular septal defect",
+      "Pulmonary stenosis",
+      "Patent ductus arteriosus",
+      "Aortic regurgitation"
+    ],
+    "answerIndex": 0,
+    "explanation": "A loud holosystolic murmur with thrill at the left lower sternal border typifies a sizable VSD.",
+    "tags": [
+      "murmur recognition"
+    ],
+    "difficulty": 1,
+    "objective": "Use location, timing, and thrill to distinguish murmurs: VSD (LLSB holosystolic), PDA (continuous), AS (RUSB ejection).",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_SHUNT_EISENMENGER",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Shunt Physiology",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "A teenager with unrepaired large VSD develops exertional cyanosis and clubbing. What pathophysiologic change best explains this?",
+    "options": [
+      "Pulmonary vascular remodeling increased resistance leading to reversal of shunt (Eisenmenger syndrome)",
+      "Acute ductal closure decreasing pulmonary blood flow",
+      "Sudden drop in systemic vascular resistance producing right-to-left atrial shunting",
+      "Loss of atrial septal tissue causing free mixing"
+    ],
+    "answerIndex": 0,
+    "explanation": "Long-standing large left-to-right shunts cause pulmonary vascular disease that reverses the shunt direction, producing cyanosis.",
+    "tags": [
+      "eisenmenger"
+    ],
+    "difficulty": 2,
+    "objective": "Connect chronic volume-loaded lesions to pulmonary hypertension and Eisenmenger physiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_HYPEROXIA",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Hyperoxia Test",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A cyanotic neonate has a PaO2 that remains &lt;100 mm Hg after breathing 100% oxygen. What does this hyperoxia test result suggest?",
+    "options": [
+      "Presence of cyanotic congenital heart disease with mixing rather than primary lung disease",
+      "Severe surfactant deficiency as the primary cause of hypoxemia",
+      "Normal transition to extrauterine life",
+      "Methemoglobinemia due to oxidant stress"
+    ],
+    "answerIndex": 0,
+    "explanation": "Failure to raise PaO2 with 100% oxygen implies shunting/mixing typical of cyanotic CHD rather than parenchymal lung disease.",
+    "tags": [
+      "diagnostics"
+    ],
+    "difficulty": 2,
+    "objective": "Incorporate hyperoxia test interpretation into neonatal cyanosis algorithms.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_PGE1",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Prostaglandin Strategy",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "Which scenario most clearly requires immediate prostaglandin E1 infusion?",
+    "options": [
+      "Newborn with suspected duct-dependent systemic flow (shock after ductal closure)",
+      "Term infant with mild PPS murmur and normal perfusion",
+      "Adolescent with asymptomatic bicuspid aortic valve",
+      "Infant with small muscular VSD and no heart failure"
+    ],
+    "answerIndex": 0,
+    "explanation": "Duct-dependent systemic lesions such as HLHS or critical coarctation require emergent prostaglandin to restore systemic perfusion.",
+    "tags": [
+      "duct-dependent"
+    ],
+    "difficulty": 2,
+    "objective": "When in doubt in a shocky neonate with differential pulses, start PGE1 while obtaining imaging.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_ECG_AXIS",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: ECG Patterns",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which lesion is classically associated with left axis deviation on neonatal ECG?",
+    "options": [
+      "Tricuspid atresia",
+      "Tetralogy of Fallot",
+      "Pulmonary stenosis",
+      "d-Transposition of the great arteries"
+    ],
+    "answerIndex": 0,
+    "explanation": "Left axis deviation with diminished right-sided forces suggests tricuspid atresia or AVSD.",
+    "tags": [
+      "axis deviation"
+    ],
+    "difficulty": 2,
+    "objective": "Memorize hallmark ECG axes: left axis for AV canal/tricuspid atresia, right axis for TOF/PA-IVS.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_PULM_FLOW",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Pulmonary Blood Flow",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "A cyanotic infant\u2019s chest radiograph shows oligemic (dark) lung fields. What does this pattern indicate?",
+    "options": [
+      "Decreased pulmonary blood flow such as severe pulmonary stenosis or TOF",
+      "Pulmonary edema from TAPVR obstruction",
+      "Increased pulmonary blood flow from large left-to-right shunts",
+      "Normal transitional circulation"
+    ],
+    "answerIndex": 0,
+    "explanation": "Dark lung fields with paucity of vascular markings signal decreased pulmonary blood flow common in TOF spectrum lesions.",
+    "tags": [
+      "CXR interpretation"
+    ],
+    "difficulty": 2,
+    "objective": "Compare oligemic vs plethoric lung fields when differentiating cyanotic lesions on imaging.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_SAT_GAP",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Saturation Gaps",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A neonate has higher preductal (right arm) oxygen saturation than postductal (leg) saturation. Which physiology best explains this differential cyanosis?",
+    "options": [
+      "Duct-dependent systemic lesion such as coarctation causing lower-body hypoxemia after ductal constriction",
+      "Primary lung disease with uniform shunting",
+      "Patent foramen ovale with transient right-to-left shunt",
+      "Methemoglobinemia"
+    ],
+    "answerIndex": 0,
+    "explanation": "Lower extremity desaturation with preserved right arm saturation indicates ductal flow supplying systemic circulation, as in coarctation or interrupted aortic arch.",
+    "tags": [
+      "differential cyanosis"
+    ],
+    "difficulty": 2,
+    "objective": "Use pre/postductal saturation gaps to triage duct-dependent systemic lesions.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_IMAGING_FIRST",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Initial Imaging",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "For a stable infant with suspected CHD after abnormal pulse oximetry screening, what is the best initial imaging modality?",
+    "options": [
+      "Transthoracic echocardiography to define anatomy and physiology",
+      "Cardiac catheterization in all patients",
+      "MRI of the chest as first-line",
+      "No imaging is needed if the infant is stable"
+    ],
+    "answerIndex": 0,
+    "explanation": "Echocardiography is the noninvasive gold standard to evaluate suspected congenital heart disease in infants.",
+    "tags": [
+      "diagnostic strategy"
+    ],
+    "difficulty": 2,
+    "objective": "Remember to escalate to echo promptly after abnormal screens; advanced imaging follows as needed.",
+    "references": [],
+    "version": "v1"
+  }
+];
+
+const DEFAULT_ROOT_PATH = '#';
+
+class Ajv {
+  constructor(options = {}) {
+    this.options = options;
+  }
+
+  compile(schema) {
+    if (!schema || typeof schema !== 'object') {
+      throw new Error('MiniAjv compile expects a schema object.');
+    }
+
+    const validator = (data) => {
+      const errors = [];
+      validateAgainstSchema(data, schema, '', errors, DEFAULT_ROOT_PATH, this.options);
+      validator.errors = errors;
+      return errors.length === 0;
+    };
+
+    return validator;
+  }
+}
+
+function validateAgainstSchema(value, schema, instancePath, errors, schemaPath = DEFAULT_ROOT_PATH, options = {}) {
+  if (!schema || typeof schema !== 'object') {
+    return;
+  }
+
+  const expectedType = schema.type;
+  const hasObjectKeywords = schemaHasObjectHints(schema);
+  const hasArrayKeywords = schemaHasArrayHints(schema);
+
+  if (expectedType) {
+    const matches = matchesType(value, expectedType);
+    if (!matches) {
+      const message = buildTypeMessage(expectedType);
+      addError(errors, instancePath, `${schemaPath}/type`, message);
+      // If we expect a specific type and it is wrong, further keyword checks are unlikely to help,
+      // but we still continue when allErrors is requested to gather additional feedback.
+      if (!options.allErrors) {
+        return;
+      }
+    }
+  }
+
+  if (schema.enum) {
+    const inEnum = schema.enum.some((allowed) => deepEqual(value, allowed));
+    if (!inEnum) {
+      addError(errors, instancePath, `${schemaPath}/enum`, 'must be equal to one of the allowed values');
+      if (!options.allErrors) {
+        return;
+      }
+    }
+  }
+
+  if (schema.const !== undefined) {
+    if (!deepEqual(value, schema.const)) {
+      addError(errors, instancePath, `${schemaPath}/const`, 'must be equal to the constant');
+      if (!options.allErrors) {
+        return;
+      }
+    }
+  }
+
+  // String specific constraints
+  if (typeof value === 'string') {
+    if (typeof schema.minLength === 'number' && value.length < schema.minLength) {
+      addError(errors, instancePath, `${schemaPath}/minLength`, `must NOT be shorter than ${schema.minLength} characters`);
+    }
+    if (typeof schema.maxLength === 'number' && value.length > schema.maxLength) {
+      addError(errors, instancePath, `${schemaPath}/maxLength`, `must NOT be longer than ${schema.maxLength} characters`);
+    }
+  }
+
+  // Numeric constraints
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    if (typeof schema.minimum === 'number' && value < schema.minimum) {
+      addError(errors, instancePath, `${schemaPath}/minimum`, `must be >= ${schema.minimum}`);
+    }
+    if (typeof schema.maximum === 'number' && value > schema.maximum) {
+      addError(errors, instancePath, `${schemaPath}/maximum`, `must be <= ${schema.maximum}`);
+    }
+  }
+
+  if (Array.isArray(value)) {
+    if (typeof schema.minItems === 'number' && value.length < schema.minItems) {
+      addError(errors, instancePath, `${schemaPath}/minItems`, `must NOT have fewer than ${schema.minItems} items`);
+    }
+    if (schema.uniqueItems) {
+      const seen = [];
+      value.forEach((item, idx) => {
+        if (seen.some((prev) => deepEqual(prev, item))) {
+          addError(errors, `${instancePath}/${idx}`, `${schemaPath}/uniqueItems`, 'must NOT contain duplicate items');
+        } else {
+          seen.push(item);
+        }
+      });
+    }
+    if (schema.items) {
+      value.forEach((item, index) => {
+        const childPath = `${instancePath}/${index}`;
+        validateAgainstSchema(item, schema.items, childPath, errors, `${schemaPath}/items`, options);
+      });
+    }
+  }
+
+  const valueIsObject = isPlainObject(value);
+  if (valueIsObject && (expectedType === 'object' || (!expectedType && hasObjectKeywords))) {
+    validateObjectKeywords(value, schema, instancePath, errors, schemaPath, options);
+  } else if (expectedType === 'object' && !valueIsObject) {
+    // Already handled by type mismatch above.
+  } else if (!expectedType && hasObjectKeywords && valueIsObject) {
+    validateObjectKeywords(value, schema, instancePath, errors, schemaPath, options);
+  }
+
+  if (Array.isArray(value) && (expectedType === 'array' || (!expectedType && hasArrayKeywords))) {
+    // Array keyword handling already performed above.
+  }
+
+  if (Array.isArray(schema.allOf)) {
+    schema.allOf.forEach((subSchema, index) => {
+      validateAgainstSchema(value, subSchema, instancePath, errors, `${schemaPath}/allOf/${index}`, options);
+    });
+  }
+
+  if (schema.if) {
+    const conditionPath = `${schemaPath}/if`;
+    const thenPath = `${schemaPath}/then`;
+    const elsePath = `${schemaPath}/else`;
+    const matches = schemaMatches(value, schema.if, instancePath, conditionPath, options);
+    if (matches) {
+      if (schema.then) {
+        validateAgainstSchema(value, schema.then, instancePath, errors, thenPath, options);
+      }
+    } else if (schema.else) {
+      validateAgainstSchema(value, schema.else, instancePath, errors, elsePath, options);
+    }
+  }
+}
+
+function validateObjectKeywords(value, schema, instancePath, errors, schemaPath, options) {
+  const properties = schema.properties || {};
+  const required = Array.isArray(schema.required) ? schema.required : [];
+
+  required.forEach((key) => {
+    if (!Object.prototype.hasOwnProperty.call(value, key)) {
+      addError(errors, instancePath, `${schemaPath}/required`, `must have required property '${key}'`);
+    }
+  });
+
+  if (schema.additionalProperties === false) {
+    Object.keys(value).forEach((key) => {
+      if (!Object.prototype.hasOwnProperty.call(properties, key)) {
+        addError(
+          errors,
+          instancePath,
+          `${schemaPath}/additionalProperties`,
+          `must NOT have additional properties ('${key}' is not allowed')`
+        );
+      }
+    });
+  }
+
+  Object.keys(properties).forEach((key) => {
+    if (!Object.prototype.hasOwnProperty.call(value, key)) {
+      return;
+    }
+    const childPath = `${instancePath}/${escapeJsonPointer(key)}`;
+    const childSchemaPath = `${schemaPath}/properties/${escapeJsonPointer(key)}`;
+    validateAgainstSchema(value[key], properties[key], childPath, errors, childSchemaPath, options);
+  });
+}
+
+function schemaMatches(value, schema, instancePath, schemaPath, options) {
+  const testErrors = [];
+  validateAgainstSchema(value, schema, instancePath, testErrors, schemaPath, options);
+  return testErrors.length === 0;
+}
+
+function matchesType(value, expected) {
+  const types = Array.isArray(expected) ? expected : [expected];
+  return types.some((type) => {
+    switch (type) {
+      case 'string':
+        return typeof value === 'string';
+      case 'integer':
+        return Number.isInteger(value);
+      case 'number':
+        return typeof value === 'number' && Number.isFinite(value);
+      case 'boolean':
+        return typeof value === 'boolean';
+      case 'array':
+        return Array.isArray(value);
+      case 'object':
+        return isPlainObject(value);
+      case 'null':
+        return value === null;
+      default:
+        return false;
+    }
+  });
+}
+
+function buildTypeMessage(expected) {
+  if (Array.isArray(expected)) {
+    const list = expected.join(', ');
+    return `must be one of: ${list}`;
+  }
+  return `must be ${expected}`;
+}
+
+function isPlainObject(value) {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function schemaHasObjectHints(schema) {
+  return Boolean(
+    schema &&
+    typeof schema === 'object' &&
+    (schema.properties || schema.required || schema.additionalProperties !== undefined)
+  );
+}
+
+function schemaHasArrayHints(schema) {
+  return Boolean(
+    schema &&
+    typeof schema === 'object' &&
+    (schema.items || schema.minItems !== undefined || schema.maxItems !== undefined)
+  );
+}
+
+function escapeJsonPointer(segment) {
+  return String(segment).replace(/~/g, '~0').replace(/\//g, '~1');
+}
+
+function addError(errors, instancePath, schemaPath, message) {
+  errors.push({
+    instancePath: instancePath || '',
+    schemaPath,
+    message
+  });
+}
+
+function deepEqual(a, b) {
+  if (a === b) {
+    return true;
+  }
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length !== b.length) return false;
+    for (let i = 0; i < a.length; i += 1) {
+      if (!deepEqual(a[i], b[i])) return false;
+    }
+    return true;
+  }
+  if (isPlainObject(a) && isPlainObject(b)) {
+    const keysA = Object.keys(a);
+    const keysB = Object.keys(b);
+    if (keysA.length !== keysB.length) return false;
+    return keysA.every((key) => deepEqual(a[key], b[key]));
+  }
+  return false;
+}
+
+
+function initAdmin(context) {
+  const {
+    CATEGORY_OPTIONS,
+    difficultyMap,
+    getBank,
+    getCoreBank,
+    getOverrides,
+    setOverrides,
+    saveOverrides,
+    getProgress,
+    setProgress,
+    saveProgress,
+    getReview,
+    setReview,
+    saveReview,
+    rebuildBankAndUI,
+    normalizeQuestion,
+    fromSchemaQuestion,
+    toSchemaQuestion,
+    slugifyLesion,
+    validator
+  } = context;
+
+  const adminSelect = document.getElementById('adminSelect');
+  if (!adminSelect) {
+    return { onBankUpdated: () => {} };
+  }
+
+  const adminForm = document.getElementById('adminForm');
+  const adminId = document.getElementById('adminId');
+  const adminLesion = document.getElementById('adminLesion');
+  const adminKey = document.getElementById('adminKey');
+  const adminClass = document.getElementById('adminClass');
+  const adminCategory = document.getElementById('adminCategory');
+  const adminDifficulty = document.getElementById('adminDifficulty');
+  const adminTags = document.getElementById('adminTags');
+  const adminPrompt = document.getElementById('adminPrompt');
+  const adminOptions = document.getElementById('adminOptions');
+  const adminRationale = document.getElementById('adminRationale');
+  const adminRemediation = document.getElementById('adminRemediation');
+  const loadQuestionBtn = document.getElementById('loadQuestion');
+  const deleteOverrideBtn = document.getElementById('deleteOverride');
+  const bulkArea = document.getElementById('bulkArea');
+  const bulkImportBtn = document.getElementById('bulkImport');
+  const downloadTemplateBtn = document.getElementById('downloadTemplate');
+  const localCount = document.getElementById('localCount');
+  const quizFeedback = document.getElementById('quizFeedback');
+
+  const importArea = document.getElementById('importArea');
+  const importJsonBtn = document.getElementById('importJson');
+  const exportJsonBtn = document.getElementById('exportJson');
+  const copyExportBtn = document.getElementById('copyExport');
+  const clearDataBtn = document.getElementById('clearData');
+  const importSummary = document.getElementById('importSummary');
+
+  populateAdminCategory();
+  updateAdminList();
+  updateLocalCount();
+
+  loadQuestionBtn?.addEventListener('click', () => {
+    const selected = adminSelect.value;
+    if (!selected) return;
+    const overrides = getOverrides();
+    const question = overrides[selected] || getBank().find(q => q.id === selected);
+    if (!question) return;
+    adminId.value = question.id;
+    adminLesion.value = question.lesionGroup;
+    adminKey.value = question.lesionKey || slugifyLesion(question.lesionGroup);
+    adminClass.value = question.classification;
+    adminCategory.value = question.category;
+    adminDifficulty.value = question.difficulty;
+    adminTags.value = (question.tags || []).join(', ');
+    adminPrompt.value = question.prompt;
+    adminOptions.value = JSON.stringify(question.options, null, 2);
+    adminRationale.value = question.rationale;
+    adminRemediation.value = question.remediation || '';
+  });
+
+  adminForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    try {
+      const parsedOptions = JSON.parse(adminOptions.value);
+      if (!Array.isArray(parsedOptions)) {
+        throw new Error('Options must be an array.');
+      }
+      const customQuestion = normalizeQuestion({
+        id: adminId.value.trim(),
+        lesionGroup: adminLesion.value.trim(),
+        lesionKey: adminKey.value.trim() || slugifyLesion(adminLesion.value.trim()),
+        classification: adminClass.value,
+        category: adminCategory.value,
+        difficulty: adminDifficulty.value,
+        difficultyLevel: difficultyMap[adminDifficulty.value] || 2,
+        tags: adminTags.value.split(',').map(t => t.trim()).filter(Boolean),
+        prompt: adminPrompt.value.trim(),
+        options: parsedOptions,
+        rationale: adminRationale.value.trim(),
+        remediation: adminRemediation.value.trim(),
+        type: 'mcq',
+        version: 'v1',
+        references: []
+      });
+      const overrides = { ...getOverrides(), [customQuestion.id]: customQuestion };
+      setOverrides(overrides);
+      saveOverrides();
+      rebuildBankAndUI();
+      updateAdminList();
+      updateLocalCount();
+      if (quizFeedback) {
+        quizFeedback.textContent = 'Question saved locally.';
+        quizFeedback.className = 'feedback success';
+      }
+    } catch (error) {
+      alert(error.message || 'Unable to save question. Check that the options JSON is valid.');
+      console.error(error);
+    }
+  });
+
+  deleteOverrideBtn?.addEventListener('click', () => {
+    const id = adminId.value.trim();
+    if (!id) return;
+    const overrides = { ...getOverrides() };
+    if (overrides[id]) {
+      delete overrides[id];
+      setOverrides(overrides);
+      saveOverrides();
+      rebuildBankAndUI();
+      updateAdminList();
+      updateLocalCount();
+    }
+  });
+
+  bulkImportBtn?.addEventListener('click', () => {
+    const raw = bulkArea.value.trim();
+    if (!raw) {
+      alert('Paste question JSON before importing.');
+      return;
+    }
+    try {
+      const result = processImport(raw, { includeState: false, mergeWithExisting: true });
+      setOverrides(result.overrides);
+      saveOverrides();
+      rebuildBankAndUI();
+      updateAdminList();
+      updateLocalCount();
+      bulkArea.value = '';
+      alert(`${result.validCount} items processed • ${result.invalidItems.length} invalid`);
+    } catch (error) {
+      console.error(error);
+      alert(error.message || 'Import failed. Ensure the JSON matches the schema.');
+    }
+  });
+
+  downloadTemplateBtn?.addEventListener('click', async () => {
+    const template = {
+      id: 'NEW_ID',
+      topic: 'acyanotic',
+      lesion: 'Descriptive lesion name',
+      category: 'pathophysiology',
+      type: 'mcq',
+      stem: 'Question stem goes here',
+      options: ['Correct answer', 'Distractor'],
+      answerIndex: 0,
+      explanation: 'Brief explanation.',
+      tags: ['example tag'],
+      difficulty: 2,
+      objective: 'Optional targeted follow-up.',
+      references: [],
+      version: 'v1'
+    };
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(template, null, 2));
+      alert('Template copied to clipboard.');
+    } catch (error) {
+      alert('Copy failed. Manually copy the template from the admin panel.');
+    }
+  });
+
+  exportJsonBtn?.addEventListener('click', () => {
+    const payload = buildExportPayload();
+    downloadJson(payload, 'questions.v1.json');
+  });
+
+  copyExportBtn?.addEventListener('click', async () => {
+    const payload = buildExportPayload();
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(payload, null, 2));
+      alert('Export copied to clipboard.');
+    } catch (error) {
+      alert('Copy failed. You may need to allow clipboard permissions.');
+    }
+  });
+
+  importJsonBtn?.addEventListener('click', () => {
+    const raw = importArea.value.trim();
+    if (!raw) {
+      alert('Paste JSON before importing.');
+      return;
+    }
+    try {
+      const result = processImport(raw, { includeState: true, mergeWithExisting: false });
+      setOverrides(result.overrides);
+      setProgress(result.progress);
+      setReview(result.review);
+      saveOverrides();
+      saveProgress();
+      saveReview();
+      rebuildBankAndUI();
+      updateAdminList();
+      updateLocalCount();
+      renderImportSummary(result, importSummary);
+      importArea.value = '';
+    } catch (error) {
+      console.error(error);
+      alert(error.message || 'Import failed. Verify that the JSON matches the schema.');
+      if (importSummary) {
+        importSummary.textContent = 'Import failed. See console for details.';
+        importSummary.classList.add('error');
+      }
+    }
+  });
+
+  clearDataBtn?.addEventListener('click', () => {
+    if (!confirm('This will erase local progress and custom questions. Continue?')) return;
+    setOverrides({});
+    setProgress({ questions: {}, quizHistory: [] });
+    setReview({ items: {} });
+    saveOverrides();
+    saveProgress();
+    saveReview();
+    rebuildBankAndUI();
+    updateAdminList();
+    updateLocalCount();
+  });
+
+  return {
+    onBankUpdated: () => {
+      updateAdminList();
+      updateLocalCount();
+    }
+  };
+
+  function populateAdminCategory() {
+    if (!adminCategory) return;
+    adminCategory.innerHTML = '';
+    CATEGORY_OPTIONS.forEach(cat => {
+      const opt = document.createElement('option');
+      opt.value = cat.value;
+      opt.textContent = cat.label;
+      adminCategory.appendChild(opt);
+    });
+  }
+
+  function updateAdminList() {
+    const overrides = getOverrides();
+    const options = getBank().slice().sort((a, b) => a.id.localeCompare(b.id));
+    adminSelect.innerHTML = '';
+    options.forEach(question => {
+      const option = document.createElement('option');
+      const isOverride = Boolean(overrides[question.id]);
+      option.value = question.id;
+      option.textContent = `${question.id} — ${question.lesionGroup}${isOverride ? ' • custom' : ''}`;
+      adminSelect.appendChild(option);
+    });
+  }
+
+  function updateLocalCount() {
+    if (!localCount) return;
+    const overrides = getOverrides();
+    const coreBank = getCoreBank();
+    const totalOverrides = Object.keys(overrides).length;
+    const extraQuestions = Object.values(overrides).filter(q => !coreBank.some(base => base.id === q.id)).length;
+    localCount.textContent = `${totalOverrides} overrides saved (${extraQuestions} new questions beyond the core ${coreBank.length}).`;
+  }
+
+  function buildExportPayload() {
+    return {
+      exportedAt: new Date().toISOString(),
+      format: 'chd-qbank',
+      version: 'v1',
+      coreSize: getCoreBank().length,
+      questions: getBank().map(question => toSchemaQuestion(question)),
+      progress: getProgress(),
+      review: getReview()
+    };
+  }
+
+  function downloadJson(payload, filename) {
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  function processImport(raw, options = {}) {
+    const { includeState = true, mergeWithExisting = false } = options;
+    const data = JSON.parse(raw);
+    const questionArray = Array.isArray(data) ? data : data && Array.isArray(data.questions) ? data.questions : null;
+    if (!questionArray) {
+      throw new Error('Expected an array of questions or an object with a "questions" array.');
+    }
+
+    const invalidItems = [];
+    const normalizedQuestions = [];
+    questionArray.forEach((item, index) => {
+      const result = validateSchemaQuestion(item, index);
+      if (!result.valid) {
+        invalidItems.push({ id: result.id, errors: result.errors });
+      } else if (result.normalized) {
+        normalizedQuestions.push(result.normalized);
+      }
+    });
+
+    const baseOverrides = mergeWithExisting ? { ...getOverrides() } : {};
+    let appliedCount = 0;
+    const coreBank = getCoreBank();
+    normalizedQuestions.forEach(question => {
+      const base = coreBank.find(entry => entry.id === question.id) || null;
+      if (!base || !questionsEqual(base, question)) {
+        const current = baseOverrides[question.id];
+        if (!current || !questionsEqual(current, question)) {
+          baseOverrides[question.id] = question;
+          appliedCount += 1;
+        }
+      } else if (mergeWithExisting && baseOverrides[question.id]) {
+        delete baseOverrides[question.id];
+      }
+    });
+
+    const nextProgress = includeState && !Array.isArray(data) && data && data.progress
+      ? sanitizeProgress(data.progress)
+      : getProgress();
+    const nextReview = includeState && !Array.isArray(data) && data && data.review
+      ? sanitizeReview(data.review)
+      : getReview();
+
+    return {
+      overrides: baseOverrides,
+      progress: nextProgress,
+      review: nextReview,
+      validCount: normalizedQuestions.length,
+      appliedCount,
+      invalidItems
+    };
+  }
+
+  function validateSchemaQuestion(item, index) {
+    const isValid = validator(item);
+    if (!isValid) {
+      const errors = (validator.errors || []).map(err => ({
+        message: err.message || 'Invalid value',
+        instancePath: err.instancePath,
+        schemaPath: err.schemaPath
+      }));
+      return {
+        valid: false,
+        normalized: null,
+        errors,
+        id: item && typeof item === 'object' && item.id ? item.id : `item-${index + 1}`
+      };
+    }
+    const normalized = normalizeQuestion(fromSchemaQuestion(item));
+    normalized.difficultyLevel = item.difficulty ?? normalized.difficultyLevel;
+    return { valid: true, normalized, errors: [], id: normalized.id };
+  }
+
+  function sanitizeProgress(data) {
+    if (!data || typeof data !== 'object') {
+      return { questions: {}, quizHistory: [] };
+    }
+    return {
+      questions: data.questions && typeof data.questions === 'object' ? data.questions : {},
+      quizHistory: Array.isArray(data.quizHistory) ? data.quizHistory : []
+    };
+  }
+
+  function sanitizeReview(data) {
+    if (!data || typeof data !== 'object') {
+      return { items: {} };
+    }
+    return {
+      items: data.items && typeof data.items === 'object' ? data.items : {}
+    };
+  }
+
+  function renderImportSummary(result, container) {
+    if (!container) return;
+    container.classList.remove('error');
+    container.innerHTML = '';
+    const summaryText = `${result.validCount} items loaded (${result.appliedCount} overrides applied) • ${result.invalidItems.length} invalid (blocked)`;
+    const summarySpan = document.createElement('span');
+    summarySpan.textContent = summaryText;
+    container.appendChild(summarySpan);
+    if (result.invalidItems.length) {
+      const list = document.createElement('ul');
+      result.invalidItems.forEach(item => {
+        const li = document.createElement('li');
+        const messages = item.errors.map(err => err.message).join('; ');
+        li.textContent = `${item.id}: ${messages}`;
+        list.appendChild(li);
+      });
+      container.appendChild(list);
+    }
+  }
+
+  function questionsEqual(a, b) {
+    return JSON.stringify(toSchemaQuestion(a)) === JSON.stringify(toSchemaQuestion(b));
+  }
+}
+
+
+
+const CATEGORY_OPTIONS = [
+  { value: 'pathophysiology', label: 'Pathophysiology' },
+  { value: 'presentation', label: 'Presentation' },
+  { value: 'exam/murmur', label: 'Exam / Murmur' },
+  { value: 'imaging_ecg_cxr', label: 'Imaging / ECG / CXR' },
+  { value: 'management_initial', label: 'Initial Management' }
+];
+
+const DIFFICULTY_STRING_TO_LEVEL = {
+  foundation: 1,
+  core: 2,
+  advanced: 3
+};
+
+const DIFFICULTY_LEVEL_TO_STRING = {
+  1: 'foundation',
+  2: 'core',
+  3: 'advanced',
+  4: 'advanced',
+  5: 'advanced'
+};
+
+const DIFFICULTY_LABELS = {
+  foundation: 'Foundation',
+  core: 'Core',
+  advanced: 'Advanced'
+};
+
+
+initApp();
+
+async function initApp() {
+  const loaderNotice = document.getElementById('loaderNotice');
+  const ajv = new Ajv({ allErrors: true, strict: false });
+
+  try {
+    const { questions, schema, validator } = await loadQuestions(ajv);
+    const baseQuestions = questions.map(fromSchemaQuestion);
+    startApp({ baseQuestions, ajv, schema, validator });
+    if (loaderNotice) {
+      loaderNotice.textContent = `Question bank loaded (${questions.length} items).`;
+      loaderNotice.classList.remove('error');
+    }
+  } catch (error) {
+    console.error(error);
+    if (loaderNotice) {
+      const detail = Array.isArray(error.details) && error.details.length
+        ? ` (${error.details[0].id || 'item'}: ${error.details[0].errors?.map(e => e.message).join('; ') || error.message})`
+        : error.message ? ` (${error.message})` : '';
+      loaderNotice.textContent = `Unable to load question bank${detail}. Please refresh or contact the maintainer.`;
+      loaderNotice.classList.add('error');
+    } else {
+      alert('Unable to load question bank. See console for details.');
+    }
+  }
+}
+
+async function loadQuestions(ajv) {
+  const schema = QUESTION_SCHEMA;
+  const questions = QBANK;
+
+  if (!Array.isArray(questions)) {
+    throw new Error('Question payload must be an array.');
+  }
+
+  const validate = ajv.compile(schema);
+  const invalidItems = [];
+  questions.forEach((item, index) => {
+    const valid = validate(item);
+    if (!valid) {
+      const errors = (validate.errors || []).map(err => ({
+        message: err.message,
+        instancePath: err.instancePath,
+        schemaPath: err.schemaPath
+      }));
+      invalidItems.push({ index, id: item && typeof item === 'object' ? item.id || `index-${index}` : `index-${index}`, errors });
+    }
+  });
+
+  if (invalidItems.length) {
+    const error = new Error('Question validation failed');
+    error.details = invalidItems;
+    throw error;
+  }
+
+  const ids = new Set();
+  const duplicates = [];
+  questions.forEach(q => {
+    if (ids.has(q.id)) {
+      duplicates.push(q.id);
+    } else {
+      ids.add(q.id);
+    }
+  });
+  if (duplicates.length) {
+    const error = new Error(`Duplicate question ids detected: ${duplicates.join(', ')}`);
+    error.details = duplicates;
+    throw error;
+  }
+
+  return { questions, schema, validator: validate };
+}
+
+function fromSchemaQuestion(raw) {
+  const classification = raw.topic === 'cross-cutting' ? 'cross' : raw.topic;
+  const type = raw.type || 'mcq';
+  const difficultyString = DIFFICULTY_LEVEL_TO_STRING[raw.difficulty] || 'core';
+  const options = Array.isArray(raw.options)
+    ? raw.options.map((text, index) => ({
+        key: String.fromCharCode(65 + index),
+        text,
+        correct: type === 'multi'
+          ? Array.isArray(raw.answerIndices) && raw.answerIndices.includes(index)
+          : type === 'tf'
+          ? ((raw.answerBool === true && index === 0) || (raw.answerBool === false && index === 1))
+          : raw.answerIndex === index
+      }))
+    : [];
+
+  if (type === 'tf' && options.length === 0) {
+    options.push({ key: 'A', text: 'True', correct: raw.answerBool === true });
+    options.push({ key: 'B', text: 'False', correct: raw.answerBool === false });
+  }
+
+  return {
+    id: raw.id,
+    lesionKey: slugifyLesion(raw.lesion),
+    lesionGroup: raw.lesion,
+    classification,
+    tags: Array.isArray(raw.tags) ? raw.tags : [],
+    category: raw.category,
+    difficulty: difficultyString,
+    prompt: raw.stem,
+    options,
+    rationale: raw.explanation,
+    remediation: raw.objective || '',
+    type,
+    difficultyLevel: raw.difficulty,
+    version: raw.version || 'v1',
+    references: Array.isArray(raw.references) ? raw.references : []
+  };
+}
+
+function toSchemaQuestion(question) {
+  const difficultyLevel = DIFFICULTY_STRING_TO_LEVEL[question.difficulty] || 2;
+  const base = {
+    id: question.id,
+    topic: question.classification === 'cross' ? 'cross-cutting' : question.classification,
+    lesion: question.lesionGroup,
+    category: question.category,
+    type: question.type || 'mcq',
+    stem: question.prompt,
+    explanation: question.rationale,
+    tags: Array.isArray(question.tags) ? question.tags : [],
+    difficulty: question.difficultyLevel || difficultyLevel,
+    objective: question.remediation || '',
+    references: Array.isArray(question.references) ? question.references : [],
+    version: question.version || 'v1'
+  };
+
+  if (base.type === 'tf') {
+    base.answerBool = question.options?.[0]?.correct === true;
+    base.options = ['True', 'False'];
+  } else if (base.type === 'multi') {
+    base.options = (question.options || []).map(opt => opt.text);
+    base.answerIndices = (question.options || []).reduce((acc, opt, index) => {
+      if (opt.correct) acc.push(index);
+      return acc;
+    }, []);
+  } else {
+    base.options = (question.options || []).map(opt => opt.text);
+    base.answerIndex = (question.options || []).findIndex(opt => opt.correct);
+  }
+
+  return base;
+}
+
+function slugifyLesion(label) {
+  return (label || '')
+    .toUpperCase()
+    .replace(/[^A-Z0-9]+/g, '_')
+    .replace(/^_|_$/g, '')
+    .slice(0, 40) || 'LESION';
+}
+
+function startApp({ baseQuestions, ajv, schema, validator }) {
+  const CORE_BANK = baseQuestions.map(normalizeQuestion);
+  const STORAGE_KEYS = {
+    progress: 'chd_progress_v1',
+    review: 'chd_review_v1',
+    overrides: 'chd_overrides_v1',
+    dark: 'chd_dark_mode_v1'
+  };
+
+  let overrides = loadOverrides();
+  let progress = loadProgress();
+  let reviewData = loadReview();
+  let bank = buildBank();
+  let adminApi = null;
+
+  function rebuildBankAndUI() {
+    bank = buildBank();
+    populateDynamicSelects();
+    applyStudyFilters();
+    if (adminApi && typeof adminApi.onBankUpdated === 'function') {
+      adminApi.onBankUpdated();
+    }
+    loadReviewStatus();
+    loadNextReview();
+  }
+
+  function loadOverrides() {
+    try {
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEYS.overrides) || '{}');
+      if (data && typeof data === 'object') {
+        return data;
+      }
+    } catch (error) {
+      console.warn('Unable to parse overrides', error);
+    }
+    return {};
+  }
+
+  function saveOverrides() {
+    try {
+      localStorage.setItem(STORAGE_KEYS.overrides, JSON.stringify(overrides));
+    } catch (error) {
+      console.warn('Unable to save overrides', error);
+    }
+  }
+
+  function loadProgress() {
+    try {
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEYS.progress) || 'null');
+      if (data && typeof data === 'object') {
+        data.questions = data.questions || {};
+        data.quizHistory = data.quizHistory || [];
+        return data;
+      }
+    } catch (error) {
+      console.warn('Unable to parse progress', error);
+    }
+    return { questions: {}, quizHistory: [] };
+  }
+
+  function saveProgress() {
+    try {
+      localStorage.setItem(STORAGE_KEYS.progress, JSON.stringify(progress));
+    } catch (error) {
+      console.warn('Unable to save progress', error);
+    }
+  }
+
+  function loadReview() {
+    try {
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEYS.review) || 'null');
+      if (data && typeof data === 'object') {
+        data.items = data.items || {};
+        return data;
+      }
+    } catch (error) {
+      console.warn('Unable to parse review data', error);
+    }
+    return { items: {} };
+  }
+
+  function saveReview() {
+    try {
+      localStorage.setItem(STORAGE_KEYS.review, JSON.stringify(reviewData));
+    } catch (error) {
+      console.warn('Unable to save review data', error);
+    }
+  }
+
+  function buildBank() {
+    const baseMap = new Map(CORE_BANK.map(q => [q.id, q]));
+    const merged = [];
+    baseMap.forEach((value, id) => {
+      merged.push(overrides[id] ? normalizeQuestion(overrides[id]) : value);
+    });
+    Object.entries(overrides).forEach(([id, question]) => {
+      if (!baseMap.has(id)) {
+        merged.push(normalizeQuestion(question));
+      }
+    });
+    return merged;
+  }
+
+  function normalizeQuestion(question) {
+    const copy = JSON.parse(JSON.stringify(question));
+    copy.tags = Array.isArray(copy.tags) ? copy.tags : [];
+    copy.options = Array.isArray(copy.options) ? copy.options : [];
+    copy.difficultyLevel = copy.difficultyLevel ?? DIFFICULTY_STRING_TO_LEVEL[copy.difficulty] || 2;
+    copy.type = copy.type || 'mcq';
+    copy.version = copy.version || 'v1';
+    copy.references = Array.isArray(copy.references) ? copy.references : [];
+    return copy;
+  }
+
+  function getQuestionById(id) {
+    return bank.find(q => q.id === id) || null;
+  }
+  const panelButtons = document.querySelectorAll('nav button[data-panel]');
+  const panels = {
+    home: document.getElementById('home'),
+    study: document.getElementById('study'),
+    quiz: document.getElementById('quiz'),
+    review: document.getElementById('review'),
+    admin: document.getElementById('admin')
+  };
+
+  let activePanel = 'home';
+
+  panelButtons.forEach(button => {
+    button.addEventListener('click', () => switchPanel(button.dataset.panel));
+  });
+
+  function switchPanel(panelId) {
+    if (!panels[panelId]) return;
+    panels[activePanel].classList.remove('active');
+    document.querySelector(`nav button[data-panel="${activePanel}"]`).classList.remove('active');
+    activePanel = panelId;
+    panels[activePanel].classList.add('active');
+    document.querySelector(`nav button[data-panel="${activePanel}"]`).classList.add('active');
+    panels[activePanel].focus();
+    if (panelId === 'study') {
+      applyStudyFilters();
+    } else if (panelId === 'review') {
+      loadReviewStatus();
+      loadNextReview();
+    }
+  }
+
+  const darkToggle = document.getElementById('darkToggle');
+  const storedDark = localStorage.getItem(STORAGE_KEYS.dark);
+  if (storedDark === 'true') {
+    document.body.classList.add('dark');
+    darkToggle.setAttribute('aria-pressed', 'true');
+  }
+
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    darkToggle.setAttribute('aria-pressed', String(isDark));
+    try {
+      localStorage.setItem(STORAGE_KEYS.dark, String(isDark));
+    } catch (error) {
+      console.warn('Unable to store dark preference', error);
+    }
+  });
+
+  const quickActions = document.querySelectorAll('[data-action]');
+  quickActions.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = btn.dataset.action;
+      if (action === 'start-quiz') {
+        switchPanel('quiz');
+        document.getElementById('quizForm').scrollIntoView({ behavior: 'smooth' });
+      } else if (action === 'open-study') {
+        switchPanel('study');
+      } else if (action === 'continue-review') {
+        switchPanel('review');
+        if (!loadNextReview()) {
+          announce('No review items are due yet.');
+        }
+      }
+    });
+  });
+
+  function announce(message) {
+    const live = document.getElementById('studyStatus');
+    if (live) {
+      live.textContent = message;
+    }
+  }
+  const studyClassification = document.getElementById('studyClassification');
+  const studyLesion = document.getElementById('studyLesion');
+  const studyCategory = document.getElementById('studyCategory');
+  const studyDifficulty = document.getElementById('studyDifficulty');
+  const quizLesions = document.getElementById('quizLesions');
+  const quizCategory = document.getElementById('quizCategory');
+  const quizDifficulty = document.getElementById('quizDifficulty');
+
+  function populateCategorySelect(select) {
+    select.innerHTML = '';
+    const optionAll = document.createElement('option');
+    optionAll.value = 'all';
+    optionAll.textContent = 'All';
+    select.appendChild(optionAll);
+    CATEGORY_OPTIONS.forEach(cat => {
+      const opt = document.createElement('option');
+      opt.value = cat.value;
+      opt.textContent = cat.label;
+      select.appendChild(opt);
+    });
+  }
+
+  populateCategorySelect(studyCategory);
+  populateCategorySelect(quizCategory);
+
+  function getUniqueLesions() {
+    const map = new Map();
+    bank.forEach(q => {
+      if (!map.has(q.lesionKey)) {
+        map.set(q.lesionKey, {
+          key: q.lesionKey,
+          label: q.lesionGroup,
+          classification: q.classification
+        });
+      }
+    });
+    return Array.from(map.values()).sort((a, b) => a.label.localeCompare(b.label));
+  }
+
+  function populateDynamicSelects() {
+    const lesions = getUniqueLesions();
+    studyLesion.innerHTML = '<option value="all">All</option>';
+    lesions.forEach(item => {
+      const opt = document.createElement('option');
+      opt.value = item.key;
+      opt.textContent = `${item.label} (${capitalize(item.classification)})`;
+      studyLesion.appendChild(opt);
+    });
+    quizLesions.innerHTML = '';
+    lesions.forEach(item => {
+      const opt = document.createElement('option');
+      opt.value = item.key;
+      opt.textContent = `${item.label} (${capitalize(item.classification)})`;
+      quizLesions.appendChild(opt);
+    });
+  }
+
+  function capitalize(value) {
+    if (!value) return '';
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  }
+
+  populateDynamicSelects();
+  const studyPrompt = document.getElementById('studyPrompt');
+  const studyChoices = document.getElementById('studyChoices');
+  const studySubmit = document.getElementById('studySubmit');
+  const studyReveal = document.getElementById('studyReveal');
+  const studyNext = document.getElementById('studyNext');
+  const studyFeedback = document.getElementById('studyFeedback');
+  const studyMeta = document.getElementById('studyMeta');
+  const studyStatus = document.getElementById('studyStatus');
+
+  const studyState = {
+    pool: [],
+    index: 0,
+    answered: false
+  };
+
+  [studyClassification, studyLesion, studyCategory, studyDifficulty].forEach(select => {
+    select.addEventListener('change', applyStudyFilters);
+  });
+
+  function applyStudyFilters() {
+    const classification = studyClassification.value;
+    const lesion = studyLesion.value;
+    const category = studyCategory.value;
+    const difficulty = studyDifficulty.value;
+    const filtered = bank.filter(q => {
+      const matchesClassification = classification === 'all' || q.classification === classification;
+      const matchesLesion = lesion === 'all' || q.lesionKey === lesion;
+      const matchesCategory = category === 'all' || q.category === category;
+      const matchesDifficulty = difficulty === 'all' || q.difficulty === difficulty;
+      return matchesClassification && matchesLesion && matchesCategory && matchesDifficulty;
+    });
+    studyState.pool = filtered;
+    studyState.index = 0;
+    renderStudyQuestion();
+  }
+
+  function renderMeta(container, question) {
+    container.innerHTML = '';
+    const createPill = (text) => {
+      const span = document.createElement('span');
+      span.className = 'pill';
+      span.textContent = text;
+      container.appendChild(span);
+    };
+    createPill(`${capitalize(question.classification)} lesion`);
+    createPill(question.lesionGroup);
+    const categoryLabel = CATEGORY_OPTIONS.find(cat => cat.value === question.category);
+    if (categoryLabel) createPill(categoryLabel.label);
+    createPill(`${capitalize(question.difficulty)} level`);
+    question.tags.slice(0, 3).forEach(tag => createPill(tag));
+  }
+
+  function renderStudyQuestion() {
+    studyFeedback.textContent = '';
+    studyFeedback.className = 'feedback';
+    if (!studyState.pool.length) {
+      studyPrompt.textContent = 'No questions match your filters yet. Adjust the filters to continue studying.';
+      studyChoices.innerHTML = '';
+      studyMeta.innerHTML = '';
+      studyStatus.textContent = '0 questions available.';
+      return;
+    }
+    const question = studyState.pool[studyState.index];
+    renderMeta(studyMeta, question);
+    studyPrompt.textContent = question.prompt;
+    studyChoices.innerHTML = '';
+    question.options.forEach(option => {
+      const wrapper = document.createElement('label');
+      wrapper.className = 'choice';
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'studyChoice';
+      input.value = option.key;
+      input.setAttribute('aria-label', `${option.key}: ${option.text}`);
+      const text = document.createElement('span');
+      text.innerHTML = `<strong>${option.key}.</strong> ${option.text}`;
+      wrapper.appendChild(input);
+      wrapper.appendChild(text);
+      studyChoices.appendChild(wrapper);
+    });
+    studyState.answered = false;
+    studyStatus.textContent = `Question ${studyState.index + 1} of ${studyState.pool.length}`;
+  }
+
+  studySubmit.addEventListener('click', () => {
+    if (!studyState.pool.length) return;
+    const selected = studyChoices.querySelector('input[name="studyChoice"]:checked');
+    if (!selected) {
+      studyFeedback.textContent = 'Please choose an answer before checking.';
+      studyFeedback.className = 'feedback error';
+      return;
+    }
+    if (studyState.answered) {
+      studyFeedback.textContent = 'Already checked. Move to the next question.';
+      return;
+    }
+    const question = studyState.pool[studyState.index];
+    const correctOption = question.options.find(opt => opt.correct);
+    const isCorrect = selected.value === correctOption.key;
+    studyChoices.querySelectorAll('.choice').forEach(choice => {
+      const input = choice.querySelector('input');
+      if (input.value === correctOption.key) {
+        choice.classList.add('correct');
+      }
+      if (input.checked && !isCorrect) {
+        choice.classList.add('incorrect');
+      }
+      input.disabled = true;
+    });
+    studyFeedback.textContent = `${isCorrect ? '✅ Correct' : '❌ Not quite'} — ${question.rationale}`;
+    studyFeedback.className = isCorrect ? 'feedback success' : 'feedback error';
+    studyState.answered = true;
+    recordAttempt(question.id, isCorrect, 'study');
+    if (!isCorrect) {
+      enqueueForReview(question.id, true);
+    }
+  });
+
+  studyReveal.addEventListener('click', () => {
+    if (!studyState.pool.length) return;
+    const question = studyState.pool[studyState.index];
+    const correctOption = question.options.find(opt => opt.correct);
+    studyChoices.querySelectorAll('.choice').forEach(choice => {
+      const input = choice.querySelector('input');
+      if (input.value === correctOption.key) {
+        choice.classList.add('correct');
+      }
+      input.disabled = true;
+    });
+    studyFeedback.textContent = `Answer ${correctOption.key}: ${correctOption.text}. ${question.rationale}`;
+    studyFeedback.className = 'feedback';
+    studyState.answered = true;
+  });
+
+  studyNext.addEventListener('click', () => {
+    if (!studyState.pool.length) return;
+    studyState.index = (studyState.index + 1) % studyState.pool.length;
+    renderStudyQuestion();
+  });
+  const quizForm = document.getElementById('quizForm');
+  const quizConfig = document.getElementById('quizConfig');
+  const quizTake = document.getElementById('quizTake');
+  const quizResults = document.getElementById('quizResults');
+  const quizPrompt = document.getElementById('quizPrompt');
+  const quizChoices = document.getElementById('quizChoices');
+  const quizFeedback = document.getElementById('quizFeedback');
+  const quizProgress = document.getElementById('quizProgress');
+  const quizCounter = document.getElementById('quizCounter');
+  const quizTimerDisplay = document.getElementById('quizTimerDisplay');
+  const quizMeta = document.getElementById('quizMeta');
+  const quizSubmit = document.getElementById('quizSubmit');
+  const quizFlag = document.getElementById('quizFlag');
+  const quizSummary = document.getElementById('quizSummary');
+  const quizRemediation = document.getElementById('quizRemediation');
+  const resultTableBody = document.getElementById('resultTableBody');
+  const retakeQuiz = document.getElementById('retakeQuiz');
+  const returnToConfig = document.getElementById('returnToConfig');
+  const loadMissed = document.getElementById('loadMissed');
+  const quizCountInput = document.getElementById('quizCount');
+  const quizTimerInput = document.getElementById('quizTimer');
+
+  let quizState = null;
+  let lastQuizSettings = null;
+
+  quizForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const lesionSelection = Array.from(quizLesions.selectedOptions).map(opt => opt.value);
+    const config = {
+      lesions: lesionSelection,
+      category: quizCategory.value,
+      difficulty: quizDifficulty.value,
+      count: Math.max(1, Math.min(parseInt(quizCountInput.value, 10) || 1, bank.length)),
+      timer: Math.max(0, parseInt(quizTimerInput.value, 10) || 0)
+    };
+    startQuiz(config);
+  });
+
+  loadMissed.addEventListener('click', () => {
+    const missed = Object.entries(progress.questions)
+      .filter(([, stats]) => stats.lastResult === 'incorrect')
+      .map(([id]) => getQuestionById(id))
+      .filter(Boolean);
+    if (!missed.length) {
+      quizFeedback.textContent = 'No missed questions recorded yet. Complete a quiz first!';
+      quizFeedback.className = 'feedback error';
+      switchPanel('quiz');
+      return;
+    }
+    const config = {
+      lesions: [],
+      category: 'all',
+      difficulty: 'all',
+      count: missed.length,
+      timer: 0,
+      presetPool: shuffleArray(missed)
+    };
+    startQuiz(config);
+  });
+
+  quizFlag.addEventListener('click', () => {
+    if (!quizState) return;
+    const question = quizState.questions[quizState.index];
+    if (quizState.flagged.has(question.id)) {
+      quizState.flagged.delete(question.id);
+      quizFlag.textContent = 'Flag for review';
+    } else {
+      quizState.flagged.add(question.id);
+      quizFlag.textContent = 'Unflag';
+      enqueueForReview(question.id, true);
+    }
+    quizFlag.setAttribute('aria-pressed', String(quizState.flagged.has(question.id)));
+  });
+
+  quizSubmit.addEventListener('click', handleQuizSubmit);
+
+  retakeQuiz.addEventListener('click', () => {
+    if (lastQuizSettings) {
+      startQuiz(lastQuizSettings);
+    }
+  });
+
+  returnToConfig.addEventListener('click', () => {
+    showQuizConfig();
+  });
+
+  resultTableBody.addEventListener('click', event => {
+    const target = event.target.closest('button[data-lesion]');
+    if (!target) return;
+    const lesionKey = target.dataset.lesion;
+    switchPanel('study');
+    studyLesion.value = lesionKey;
+    applyStudyFilters();
+  });
+
+  function startQuiz(config) {
+    quizFeedback.textContent = '';
+    quizFeedback.className = 'feedback';
+    const pool = config.presetPool ? config.presetPool : buildQuizPool(config);
+    if (!pool.length) {
+      quizFeedback.textContent = 'No questions match your selections. Try broadening the filters.';
+      quizFeedback.className = 'feedback error';
+      return;
+    }
+    lastQuizSettings = Object.assign({}, config);
+    quizState = {
+      questions: pool,
+      index: 0,
+      responses: [],
+      flagged: new Set(),
+      showingFeedback: false,
+      timed: config.timer > 0,
+      remainingSeconds: config.timer > 0 ? config.timer * 60 : 0,
+      timerId: null,
+      startTime: Date.now()
+    };
+    quizConfig.hidden = true;
+    quizTake.hidden = false;
+    quizResults.hidden = true;
+    renderQuizQuestion();
+    if (quizState.timed) {
+      updateTimerDisplay();
+      quizState.timerId = setInterval(() => {
+        quizState.remainingSeconds -= 1;
+        if (quizState.remainingSeconds <= 0) {
+          quizState.remainingSeconds = 0;
+          updateTimerDisplay();
+          clearInterval(quizState.timerId);
+          handleTimeExpired();
+        } else {
+          updateTimerDisplay();
+        }
+      }, 1000);
+    } else {
+      quizTimerDisplay.textContent = 'Untimed';
+    }
+  }
+
+  function buildQuizPool(config) {
+    let pool = bank.slice();
+    if (config.lesions && config.lesions.length) {
+      pool = pool.filter(q => config.lesions.includes(q.lesionKey));
+    }
+    if (config.category && config.category !== 'all') {
+      pool = pool.filter(q => q.category === config.category);
+    }
+    if (config.difficulty && config.difficulty !== 'all') {
+      pool = pool.filter(q => q.difficulty === config.difficulty);
+    }
+    pool = shuffleArray(pool);
+    return pool.slice(0, config.count);
+  }
+
+  function renderQuizQuestion() {
+    if (!quizState) return;
+    const total = quizState.questions.length;
+    if (quizState.index >= total) {
+      endQuiz(false);
+      return;
+    }
+    const question = quizState.questions[quizState.index];
+    renderMeta(quizMeta, question);
+    quizPrompt.textContent = question.prompt;
+    quizChoices.innerHTML = '';
+    question.options.forEach(option => {
+      const label = document.createElement('label');
+      label.className = 'choice';
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'quizChoice';
+      input.value = option.key;
+      input.id = `quiz_${question.id}_${option.key}`;
+      const text = document.createElement('span');
+      text.innerHTML = `<strong>${option.key}.</strong> ${option.text}`;
+      label.appendChild(input);
+      label.appendChild(text);
+      quizChoices.appendChild(label);
+    });
+    quizFeedback.textContent = '';
+    quizFeedback.className = 'feedback';
+    quizSubmit.textContent = 'Submit';
+    quizState.showingFeedback = false;
+    quizProgress.style.width = `${(quizState.index / total) * 100}%`;
+    quizCounter.textContent = `Question ${quizState.index + 1} of ${total}`;
+    quizFlag.textContent = quizState.flagged.has(question.id) ? 'Unflag' : 'Flag for review';
+    quizFlag.setAttribute('aria-pressed', String(quizState.flagged.has(question.id)));
+  }
+
+  function handleQuizSubmit() {
+    if (!quizState) return;
+    if (!quizState.showingFeedback) {
+      const selected = quizChoices.querySelector('input[name="quizChoice"]:checked');
+      if (!selected) {
+        quizFeedback.textContent = 'Select an answer or use number keys (1–9) before submitting.';
+        quizFeedback.className = 'feedback error';
+        return;
+      }
+      gradeCurrentQuestion(selected.value);
+    } else {
+      quizState.index += 1;
+      renderQuizQuestion();
+    }
+  }
+
+  function gradeCurrentQuestion(selectedKey) {
+    const question = quizState.questions[quizState.index];
+    const correctOption = question.options.find(opt => opt.correct);
+    const isCorrect = selectedKey === correctOption.key;
+    quizChoices.querySelectorAll('.choice').forEach(choice => {
+      const input = choice.querySelector('input');
+      input.disabled = true;
+      if (input.value === correctOption.key) {
+        choice.classList.add('correct');
+      }
+      if (selectedKey && input.value === selectedKey && !isCorrect) {
+        choice.classList.add('incorrect');
+      }
+    });
+    quizFeedback.textContent = `${isCorrect ? '✅ Correct' : '❌ Keep reviewing'} — ${question.rationale}`;
+    quizFeedback.className = isCorrect ? 'feedback success' : 'feedback error';
+    quizSubmit.textContent = quizState.index === quizState.questions.length - 1 ? 'Finish' : 'Next';
+    quizState.showingFeedback = true;
+    quizState.responses.push({ id: question.id, correct: isCorrect, selected: selectedKey });
+    recordAttempt(question.id, isCorrect, 'quiz');
+    if (!isCorrect) {
+      enqueueForReview(question.id, true);
+    }
+  }
+
+  function handleTimeExpired() {
+    if (!quizState) return;
+    const question = quizState.questions[quizState.index];
+    quizFeedback.textContent = '⏱️ Time expired — remaining questions marked for review.';
+    quizFeedback.className = 'feedback error';
+    quizState.responses.push({ id: question.id, correct: false, selected: null, timedOut: true });
+    recordAttempt(question.id, false, 'quiz_time');
+    enqueueForReview(question.id, true);
+    endQuiz(true);
+  }
+
+  function endQuiz(timedOut) {
+    if (!quizState) return;
+    if (quizState.timerId) {
+      clearInterval(quizState.timerId);
+    }
+    const total = quizState.questions.length;
+    if (quizState.responses.length < total) {
+      for (let i = quizState.responses.length; i < total; i += 1) {
+        const question = quizState.questions[i];
+        quizState.responses.push({ id: question.id, correct: false, selected: null, skipped: true });
+        enqueueForReview(question.id, true);
+        recordAttempt(question.id, false, 'quiz_skipped');
+      }
+    }
+    const correctCount = quizState.responses.filter(r => r.correct).length;
+    const elapsedSeconds = Math.round((Date.now() - quizState.startTime) / 1000);
+    const summaryParts = [`Score: ${correctCount} / ${total}`];
+    if (quizState.timed) {
+      summaryParts.push(`Time: ${formatTime(Math.min(elapsedSeconds, quizState.remainingSeconds + elapsedSeconds))}`);
+    } else {
+      summaryParts.push(`Time: ${formatTime(elapsedSeconds)}`);
+    }
+    if (timedOut) summaryParts.push('Quiz ended when the timer expired.');
+    quizSummary.textContent = summaryParts.join(' • ');
+    const breakdown = new Map();
+    quizState.responses.forEach((response, index) => {
+      const question = quizState.questions[index];
+      if (!breakdown.has(question.lesionGroup)) {
+        breakdown.set(question.lesionGroup, {
+          correct: 0,
+          total: 0,
+          lesionKey: question.lesionKey
+        });
+      }
+      const entry = breakdown.get(question.lesionGroup);
+      entry.total += 1;
+      if (response.correct) entry.correct += 1;
+    });
+    resultTableBody.innerHTML = '';
+    breakdown.forEach((entry, lesion) => {
+      const row = document.createElement('tr');
+      const lesionCell = document.createElement('td');
+      lesionCell.textContent = lesion;
+      const scoreCell = document.createElement('td');
+      scoreCell.textContent = `${entry.correct}/${entry.total}`;
+      const actionCell = document.createElement('td');
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'secondary';
+      button.dataset.lesion = entry.lesionKey;
+      button.textContent = 'Study this lesion';
+      actionCell.appendChild(button);
+      row.appendChild(lesionCell);
+      row.appendChild(scoreCell);
+      row.appendChild(actionCell);
+      resultTableBody.appendChild(row);
+    });
+    quizRemediation.innerHTML = '';
+    const reviewButton = document.createElement('button');
+    reviewButton.type = 'button';
+    reviewButton.className = 'secondary';
+    reviewButton.textContent = 'Open review queue';
+    reviewButton.addEventListener('click', () => {
+      switchPanel('review');
+      loadReviewStatus();
+      loadNextReview();
+    });
+    quizRemediation.appendChild(reviewButton);
+    quizProgress.style.width = '100%';
+    quizTake.hidden = true;
+    quizResults.hidden = false;
+    quizConfig.hidden = false;
+    quizState = null;
+  }
+
+  function updateTimerDisplay() {
+    if (!quizState) return;
+    quizTimerDisplay.textContent = formatTime(quizState.remainingSeconds);
+  }
+
+  function showQuizConfig() {
+    if (quizState && quizState.timerId) clearInterval(quizState.timerId);
+    quizState = null;
+    quizTake.hidden = true;
+    quizResults.hidden = false;
+    quizConfig.hidden = false;
+  }
+
+  function formatTime(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }
+
+  function shuffleArray(array) {
+    const copy = array.slice();
+    for (let i = copy.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  document.addEventListener('keydown', event => {
+    if (!quizState || quizTake.hidden) return;
+    if (event.key >= '1' && event.key <= '9') {
+      const index = parseInt(event.key, 10) - 1;
+      const choice = quizChoices.querySelectorAll('input[name="quizChoice"]')[index];
+      if (choice) {
+        choice.checked = true;
+      }
+    }
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleQuizSubmit();
+    }
+  });
+  const reviewStatus = document.getElementById('reviewStatus');
+  const reviewContent = document.getElementById('reviewContent');
+  const reviewPrompt = document.getElementById('reviewPrompt');
+  const reviewChoices = document.getElementById('reviewChoices');
+  const reviewShow = document.getElementById('reviewShow');
+  const reviewRationale = document.getElementById('reviewRationale');
+  const reviewMeta = document.getElementById('reviewMeta');
+  const reviewButtons = document.querySelectorAll('.review-controls button');
+
+  const reviewState = {
+    currentId: null
+  };
+
+  reviewButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const quality = parseInt(button.dataset.quality, 10);
+      if (reviewState.currentId) {
+        updateReviewItem(reviewState.currentId, quality);
+        loadReviewStatus();
+        loadNextReview();
+      }
+    });
+  });
+
+  reviewShow.addEventListener('click', () => {
+    if (!reviewState.currentId) return;
+    const question = getQuestionById(reviewState.currentId);
+    if (!question) return;
+    reviewRationale.textContent = question.rationale;
+    reviewRationale.className = 'feedback success';
+  });
+
+  function loadReviewStatus() {
+    const items = Object.values(reviewData.items);
+    const due = items.filter(item => item.due <= Date.now()).length;
+    const total = items.length;
+    reviewStatus.innerHTML = '';
+    const duePill = document.createElement('span');
+    duePill.className = 'pill';
+    duePill.textContent = `Due now: ${due}`;
+    const totalPill = document.createElement('span');
+    totalPill.className = 'pill';
+    totalPill.textContent = `Scheduled: ${total}`;
+    reviewStatus.appendChild(duePill);
+    reviewStatus.appendChild(totalPill);
+  }
+
+  function loadNextReview() {
+    const entries = Object.entries(reviewData.items)
+      .sort((a, b) => a[1].due - b[1].due);
+    const now = Date.now();
+    let nextEntry = entries.find(([, data]) => data.due <= now);
+    if (!nextEntry && entries.length) {
+      nextEntry = entries[0];
+    }
+    if (!nextEntry) {
+      reviewContent.hidden = true;
+      reviewRationale.textContent = '';
+      return false;
+    }
+    const [questionId] = nextEntry;
+    const question = getQuestionById(questionId);
+    if (!question) {
+      delete reviewData.items[questionId];
+      saveReview();
+      return loadNextReview();
+    }
+    reviewState.currentId = questionId;
+    renderMeta(reviewMeta, question);
+    reviewPrompt.textContent = question.prompt;
+    reviewChoices.innerHTML = '';
+    question.options.forEach(option => {
+      const div = document.createElement('div');
+      div.className = 'choice';
+      div.innerHTML = `<strong>${option.key}.</strong> ${option.text}`;
+      reviewChoices.appendChild(div);
+    });
+    reviewRationale.textContent = '';
+    reviewRationale.className = 'feedback';
+    reviewContent.hidden = false;
+    return true;
+  }
+
+  function updateReviewItem(questionId, quality) {
+    const now = Date.now();
+    const item = reviewData.items[questionId] || { interval: 0, repetition: 0, ease: 2.5 };
+    const q = getQuestionById(questionId);
+    if (!q) {
+      delete reviewData.items[questionId];
+      return;
+    }
+    item.lastQuality = quality;
+    if (quality < 3) {
+      item.repetition = 0;
+      item.interval = 1;
+    } else {
+      item.repetition += 1;
+      if (item.repetition === 1) item.interval = 1;
+      else if (item.repetition === 2) item.interval = 6;
+      else item.interval = Math.round(item.interval * item.ease);
+      item.ease = Math.max(1.3, item.ease + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
+    }
+    item.lastReviewed = now;
+    item.due = now + item.interval * 24 * 60 * 60 * 1000;
+    reviewData.items[questionId] = item;
+    saveReview();
+  }
+  const DAY = 24 * 60 * 60 * 1000;
+
+  function recordAttempt(questionId, correct, context) {
+    const now = Date.now();
+    if (!progress.questions[questionId]) {
+      progress.questions[questionId] = { attempts: 0, correct: 0, lastResult: null, lastSeen: null, contexts: [] };
+    }
+    const stats = progress.questions[questionId];
+    stats.attempts += 1;
+    if (correct) stats.correct += 1;
+    stats.lastResult = correct ? 'correct' : 'incorrect';
+    stats.lastSeen = now;
+    stats.contexts = stats.contexts || [];
+    stats.contexts.push({ context, correct, timestamp: now });
+    if (stats.contexts.length > 10) stats.contexts.shift();
+    progress.quizHistory = progress.quizHistory || [];
+    progress.quizHistory.push({ questionId, correct, context, timestamp: now });
+    if (progress.quizHistory.length > 200) progress.quizHistory.shift();
+    saveProgress();
+  }
+
+  function enqueueForReview(questionId, urgent) {
+    const now = Date.now();
+    if (!reviewData.items[questionId]) {
+      reviewData.items[questionId] = { interval: 0, repetition: 0, ease: 2.5, due: now, lastQueued: now };
+    } else if (urgent) {
+      reviewData.items[questionId].due = now;
+      reviewData.items[questionId].lastQueued = now;
+    }
+    saveReview();
+  }
+  adminApi = initAdmin({
+    CATEGORY_OPTIONS,
+    difficultyMap: DIFFICULTY_STRING_TO_LEVEL,
+    getBank: () => bank,
+    getCoreBank: () => CORE_BANK,
+    getOverrides: () => overrides,
+    setOverrides: next => { overrides = next; },
+    saveOverrides,
+    getProgress: () => progress,
+    setProgress: next => { progress = next; },
+    saveProgress,
+    getReview: () => reviewData,
+    setReview: next => { reviewData = next; },
+    saveReview,
+    rebuildBankAndUI,
+    normalizeQuestion,
+    fromSchemaQuestion,
+    toSchemaQuestion,
+    slugifyLesion,
+    validator
+  });
+
+  applyStudyFilters();
+  loadReviewStatus();
+  loadNextReview();
+    
+
+}
+</script>
 </body>
 </html>
