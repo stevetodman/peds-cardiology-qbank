@@ -1,116 +1,1494 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pediatric Cardiology QBank</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="page-header">
-    <h1>Pediatric Cardiology QBank</h1>
-    <p class="tagline">Quickly review key murmurs and their likely causes.</p>
-  </header>
-
-  <main class="content-layout">
-    <section id="quiz-section" class="card">
-      <h2>Warm-up Quiz</h2>
-
-      <div class="quiz-top">
-        <div class="quiz-meta">
-          <p id="question-count" class="question-count">Question 1 of 5</p>
-          <p id="score" class="score">Score: 0/5</p>
-        </div>
-        <div
-          id="progress-track"
-          class="progress-track"
-          role="progressbar"
-          aria-label="Quiz progress"
-          aria-valuemin="0"
-          aria-valuemax="5"
-          aria-valuenow="0"
-        >
-          <span id="progress-bar" class="progress-value"></span>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🚀 Pediatric Cardiology QBank — Master Prompt Pack</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <noscript>
+      <div class="noscript-notice" role="alert">
+        JavaScript is disabled. Turn it on to enable navigation helpers, progress tracking, and the JSON Batch Library.
       </div>
-
-      <p id="question-text" class="question-text">Question will appear here</p>
-
-      <form id="quiz-form" class="quiz-form" novalidate>
-        <fieldset class="quiz-fieldset">
-          <legend class="visually-hidden">Answer choices</legend>
-          <div id="options" class="options"></div>
-        </fieldset>
-
-        <div class="quiz-feedback">
-          <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
-          <p id="explanation" class="explanation" aria-live="polite"></p>
-        </div>
-
-        <div class="quiz-actions">
-          <button id="submit-btn" type="submit" class="primary">Check answer</button>
-          <button id="restart-btn" type="button" class="secondary" hidden>Restart quiz</button>
-        </div>
-      </form>
-
-      <div id="result-summary" class="result-summary" hidden></div>
-    </section>
-
-    <section id="murmur-diagram" class="card">
-      <h2>Heart Murmur Diagnostic Flow</h2>
-      <p class="card-intro">
-        Use this flowchart to narrow the differential diagnosis when a heart murmur is
-        detected on exam. Follow the timing, quality, and radiation of the sound to focus
-        your differential.
+    </noscript>
+    <header class="hero">
+      <p class="eyebrow">Master Prompt Pack · 5,000 Machine-Ready MCQs</p>
+      <h1>🚀 Pediatric Cardiology QBank</h1>
+      <p class="tagline">
+        Production-ready prompts, schema, and workflows to build an exam-quality pediatric cardiology question bank without hallucinations.
       </p>
-      <div class="mermaid">
-graph TD
-    A[Heart Murmur Detected] --> B{Timing in Cardiac Cycle}
-    B -->|Systolic| C{Quality and Location}
-    B -->|Diastolic| L{Type of Diastolic Murmur}
-    B -->|Continuous| T[Continuous Murmur<br/>(machine-like?): PDA until proven otherwise]
-    C -->|Harsh, holosystolic<br/>LLSB| D[VSD (check if small vs large; differential: TR)]
-    C -->|Harsh, systolic ejection<br/>LUSB +/- click| E[PS (pulmonic stenosis); if click varies with inspiration, PS confirmed]
-    C -->|Harsh, systolic ejection<br/>RUSB +/- click| F[AS (aortic stenosis); check carotid pulse (parvus et tardus) and BP difference UE vs LE (coarc?)]
-    C -->|Blowing holosystolic<br/>LLSB, radiates to liver| G[TR (tricuspid regurgitation); consider Ebstein if neonatal cyanosis]
-    C -->|Blowing holosystolic<br/>apex, radiates to axilla| H[MR (mitral regurgitation); not primary CHD cause in neonate (think AV canal or MVP in older child)]
-    C -->|Crescendo-decrescendo<br/>LLSB increases on inspiration| I[Hypertrophic Cardiomyopathy (rare in infant, inborn errors or maternal diabetes); in older child with syncope]
-    C -->|High-pitched ejection<br/>infraclavicular, radiates to back| J[Branch Pulmonary Artery Stenosis (common newborn benign murmur, esp. in preemies)]
-    D --> U[Small VSD: loud murmur, thrill, asymptomatic; Large VSD: softer murmur, heart failure]
-    E --> V[Noonan syndrome? Valvuloplasty indicated if gradient high]
-    F --> W[If suprasternal thrill and BP UE&lt;LE, consider supravalvular AS (Williams) vs coarctation]
-    L -->|Rumbling diastolic, apex<br/>with opening snap| M[MS (unlikely congenital except cor triatriatum or neonatal lupus); think rheumatic in teen]
-    L -->|Rumbling diastolic, LLSB<br/>increases on inspiration| N[TS (very rare; think Carcinoid in adult, or neonatal Epstein Barr - not common)]
-    L -->|High-pitched diastolic decrescendo<br/>LUSB| O[Pulmonary Regurgitation (post-TOF repair or PHTN)]
-    L -->|High-pitched diastolic decrescendo<br/>RUSB| P[Aortic Regurgitation (bicuspid AV with regurg, or truncal valve regurg); in infant, think truncus if with cyanosis]
-    L -->|Continuous machine-like<br/>infraclavicular| Q[PDA (or surgical shunt); bounding pulses if large PDA]
+      <div class="hero-actions">
+        <a class="primary" href="#quick-start">Jump to Quick Start</a>
+        <a class="ghost" href="#system-developer">Copy System Instructions</a>
       </div>
-    </section>
-  </main>
+    </header>
 
-  <footer class="page-footer">
-    <p>
-      Built for rapid pediatric cardiology review. Pair the flowchart with targeted practice
-      questions for best retention.
-    </p>
-  </footer>
+    <nav class="page-nav" aria-label="Section navigation">
+      <div class="nav-inner">
+        <ul>
+          <li><a href="#quick-start">Quick Start</a></li>
+          <li><a href="#pinned-shortcuts">Pinned</a></li>
+          <li><a href="#whats-improved">What's Improved</a></li>
+          <li><a href="#system-developer">System Instructions</a></li>
+          <li><a href="#schema">JSON Schema</a></li>
+          <li><a href="#blueprint">Blueprint</a></li>
+          <li><a href="#batch-prompts">Batch Prompts</a></li>
+          <li><a href="#json-database">JSON Library</a></li>
+          <li><a href="#quality">Quality Controls</a></li>
+        </ul>
+        <div class="nav-tools">
+          <button
+            type="button"
+            id="command-toggle"
+            class="command-toggle"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-label="Open command palette (Ctrl+K or ⌘K)"
+          >
+            ⌘K Command palette
+          </button>
+          <label class="sr-only" for="section-search">Search sections</label>
+          <input
+            id="section-search"
+            type="search"
+            name="section-search"
+            placeholder="Search the prompt pack (press /)"
+            autocomplete="off"
+          />
+          <button
+            type="button"
+            id="mode-toggle"
+            class="mode-toggle"
+            aria-pressed="false"
+          >
+            🌙 Dark mode
+          </button>
+        </div>
+      </div>
+      <p id="search-feedback" class="search-feedback" role="status" aria-live="polite"></p>
+    </nav>
 
-  <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: "forest",
-      themeVariables: {
-        fontFamily: "'Poppins', 'Segoe UI', sans-serif",
-        primaryColor: "#0f766e",
-        primaryTextColor: "#0f172a",
-        primaryBorderColor: "#0f766e",
-        lineColor: "#0891b2",
-        secondaryColor: "#ccfbf1",
-        tertiaryColor: "#f8fafc"
+    <main id="main-content">
+      <section
+        id="quick-start"
+        class="panel"
+        data-panel-title="Quick Start Workflow"
+        data-panel-description="Step-by-step overview of the production pipeline"
+      >
+        <div class="panel-heading">
+          <h2>Quick Start Workflow</h2>
+          <div class="panel-actions">
+            <button
+              type="button"
+              class="pin-toggle"
+              data-panel-target="quick-start"
+              aria-pressed="false"
+            >
+              📌 Pin
+            </button>
+          </div>
+        </div>
+        <ol class="steps">
+          <li><strong>Set the system message:</strong> Copy the full developer brief from <a href="#system-developer">Section B</a>.</li>
+          <li><strong>Generate stems:</strong> Use the Batch Generation Prompt (Section E) to produce 100 vetted stems at a time.</li>
+          <li><strong>Review + approve:</strong> Apply the Reviewer Packet (Section J) and Acceptance Criteria (Section K).</li>
+          <li><strong>Author explanations:</strong> Run the Explanations Pass Prompt (Section F) on approved stems.</li>
+          <li><strong>Ship batches:</strong> Track blueprint progress and spaced-repetition metadata to integrate into the app.</li>
+        </ol>
+        <div class="toolbar" aria-label="Detail controls">
+          <button type="button" class="toolbar-btn" data-action="expand">Expand all sections</button>
+          <button type="button" class="toolbar-btn" data-action="collapse">Collapse all sections</button>
+        </div>
+      </section>
+
+      <section
+        id="pinned-shortcuts"
+        class="panel pinned-panel"
+        data-panel-title="Pinned Shortcuts"
+        data-panel-description="Quick links you have saved from across the prompt pack"
+        data-pinnable="false"
+      >
+        <div class="panel-heading">
+          <h2>Pinned Shortcuts</h2>
+        </div>
+        <p class="panel-intro">
+          Capture your most-used sections for instant access. Use the 📌 button on any panel or select <strong>Pin</strong> from the command palette.
+        </p>
+        <ul id="pinned-list" class="pinned-list" role="list" hidden></ul>
+        <p id="pinned-empty" class="pinned-empty">
+          You haven’t pinned anything yet. Start by pinning a favorite panel—your shortcuts will appear here.
+        </p>
+      </section>
+
+      <section
+        id="workflow-tracker"
+        class="panel"
+        data-panel-title="Workflow Progress Tracker"
+        data-panel-description="Track progress across the six core production milestones"
+      >
+        <div class="panel-heading">
+          <h2>Workflow Progress Tracker</h2>
+          <div class="panel-actions">
+            <button
+              type="button"
+              class="pin-toggle"
+              data-panel-target="workflow-tracker"
+              aria-pressed="false"
+            >
+              📌 Pin
+            </button>
+          </div>
+        </div>
+        <p class="panel-intro">
+          Keep teams aligned by marking each production milestone as you complete it. Your selections are saved in this browser so you can pick up where you left off.
+        </p>
+        <div class="progress-wrapper" role="status" aria-live="polite">
+          <div
+            class="progress-bar"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div class="progress-bar-fill"></div>
+          </div>
+          <p id="progress-label" class="progress-label">0 of 6 steps complete (0%)</p>
+        </div>
+        <ul class="tracker-list">
+          <li>
+            <label>
+              <input type="checkbox" data-progress-step="system" />
+              <span>Load the System / Developer instructions into your session.</span>
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" data-progress-step="blueprint" />
+              <span>Confirm the blueprint targets you plan to fill in the next batch.</span>
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" data-progress-step="stems" />
+              <span>Generate 100 stems using the Batch Generation Prompt.</span>
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" data-progress-step="review" />
+              <span>Run the reviewer rubric on a 20-item sample and address flagged issues.</span>
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" data-progress-step="explanations" />
+              <span>Convert approved stems using the Explanations Pass Prompt.</span>
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" data-progress-step="handoff" />
+              <span>Update acceptance tracking and hand off the batch for integration.</span>
+            </label>
+          </li>
+        </ul>
+        <div class="tracker-actions">
+          <button type="button" class="tracker-reset">Reset tracker</button>
+        </div>
+      </section>
+
+      <section
+        id="json-database"
+        class="panel"
+        data-panel-title="JSON Batch Library"
+        data-panel-description="Store, preview, and exchange validated JSON batches in your browser"
+      >
+        <div class="panel-heading">
+          <h2>JSON Batch Library</h2>
+          <div class="panel-actions">
+            <button
+              type="button"
+              class="pin-toggle"
+              data-panel-target="json-database"
+              aria-pressed="false"
+            >
+              📌 Pin
+            </button>
+          </div>
+        </div>
+        <p class="panel-intro">
+          Save approved question batches as easy-to-reuse cards. Paste JSON from the prompt pack, store it locally, and reopen it whenever you need to continue production.
+        </p>
+        <div class="json-db-grid">
+          <form class="json-db-form" autocomplete="off">
+            <div class="form-field">
+              <label for="json-entry-title">Title</label>
+              <input id="json-entry-title" type="text" name="json-entry-title" maxlength="80" placeholder="e.g., Batch 3 · Arrhythmias" />
+            </div>
+            <div class="form-field">
+              <label for="json-entry-notes">Notes (optional)</label>
+              <input id="json-entry-notes" type="text" name="json-entry-notes" maxlength="120" placeholder="Key reminders or reviewer to-dos" />
+            </div>
+            <div class="form-field">
+              <label for="json-entry-payload">Paste JSON payload</label>
+              <textarea id="json-entry-payload" name="json-entry-payload" rows="10" spellcheck="false" placeholder="Paste the validated JSON array here"></textarea>
+            </div>
+            <div class="json-db-actions">
+              <button type="button" class="json-action primary" data-json-action="save">Save to library</button>
+              <button type="button" class="json-action" data-json-action="clear">Clear form</button>
+              <button type="button" class="json-action" data-json-action="sample">Insert sample JSON</button>
+            </div>
+            <p id="json-db-feedback" class="json-db-feedback" role="status" aria-live="polite"></p>
+          </form>
+          <div class="json-db-library" aria-live="polite">
+            <div id="json-db-status" class="json-db-status" role="alert" hidden></div>
+            <div class="library-header">
+              <h3>Saved batches</h3>
+              <button type="button" class="json-action" data-json-action="refresh">Refresh list</button>
+            </div>
+            <ul id="json-entry-list" class="json-entry-list" role="listbox" aria-label="Saved JSON batches"></ul>
+            <div class="library-actions">
+              <button type="button" class="json-action warning" data-json-action="export">Export all</button>
+              <button type="button" class="json-action danger" data-json-action="delete" disabled>Delete selected</button>
+              <button type="button" class="json-action" data-json-action="import">Import library</button>
+              <input
+                type="file"
+                id="json-entry-upload"
+                name="json-entry-upload"
+                accept="application/json"
+                class="sr-only"
+                aria-hidden="true"
+              />
+            </div>
+            <div class="preview-wrap">
+              <h4 id="json-preview-title">Preview</h4>
+              <pre id="json-preview" class="json-preview" aria-labelledby="json-preview-title">Select a saved batch to view its JSON.</pre>
+            </div>
+          </div>
+        </div>
+        <p class="panel-note">All entries stay in this browser using IndexedDB. Export or import library files to sync batches across teammates without a server.</p>
+      </section>
+
+      <section
+        id="whats-improved"
+        class="panel"
+        data-panel-title="A. What’s Improved"
+        data-panel-description="Snapshot of the production-ready upgrades in this prompt pack"
+      >
+        <div class="panel-heading">
+          <h2>A. What’s Improved (at a glance)</h2>
+          <div class="panel-actions">
+            <button
+              type="button"
+              class="pin-toggle"
+              data-panel-target="whats-improved"
+              aria-pressed="false"
+            >
+              📌 Pin
+            </button>
+          </div>
+        </div>
+        <ul class="feature-list">
+          <li><strong>Blueprint for 5,000 items</strong> with exact per-domain targets (no hand-waving about “coverage”).</li>
+          <li><strong>JSON output schema</strong> (machine-ingestible) + self-validation block covering accuracy and distribution requirements.</li>
+          <li><strong>Non-hallucination safeguards</strong> via VERIFY_NEEDED flags and PHI-safe defaults.</li>
+          <li><strong>Batching protocol</strong> that enforces answer-key balance, duplication checks, and progress tags.</li>
+          <li><strong>Enhanced distractor taxonomy</strong>, peer comparison matrix, low-evidence flags, blueprint alignment, Bloom tagging, spaced-repetition metadata, difficulty rubric, image placeholders, and batch acceptance rules.</li>
+        </ul>
+      </section>
+
+      <section
+        id="system-developer"
+        class="panel"
+        data-panel-title="B. System / Developer Instructions"
+        data-panel-description="Copy-ready system message that encodes safety, rigor, and pediatric rules"
+      >
+        <div class="panel-heading">
+          <h2>B. System / Developer Instructions</h2>
+          <div class="panel-actions">
+            <button
+              type="button"
+              class="pin-toggle"
+              data-panel-target="system-developer"
+              aria-pressed="false"
+            >
+              📌 Pin
+            </button>
+          </div>
+        </div>
+        <p class="panel-intro">Paste the following as the <strong>system message</strong> when generating questions. It encodes safety, pediatric specificity, and distractor quality requirements.</p>
+        <div class="prompt-block">
+          <div class="prompt-header">
+            <h3>System Prompt</h3>
+            <button type="button" class="copy-btn" data-copy-target="system-prompt">Copy</button>
+          </div>
+          <pre id="system-prompt" class="prompt-text">You are a medical education content generator specializing in pediatric cardiology board preparation. 
+
+Your mission: Produce original, exam-ready multiple-choice questions (MCQs) that teach through realistic distractors, evidence-based explanations, and clinically accurate reasoning.
+
+═══════════════════════════════════════════════════════════════
+
+CLINICAL ACCURACY &amp; GUIDELINES
+
+• Align all recommendations with current authoritative sources:
+  - ACC/AHA Congenital Heart Disease Guidelines (2018 or latest)
+  - Moss &amp; Adams' Heart Disease in Infants, Children, and Adolescents (latest edition)
+  - AAP Pediatric Advanced Life Support (PALS) standards
+  - ESC/EACTS guidelines where not contradicted by ACC/AHA
+
+• Do NOT invent facts, dosing, or citations. If uncertain, mark with certainty: "VERIFY_NEEDED" and flag the claim for human verification.
+
+• For each question, ask yourself: "Would a pediatric cardiologist boarding or maintaining certification find this clinically sound?"
+
+═══════════════════════════════════════════════════════════════
+
+PEDIATRICS-SPECIFIC REQUIREMENTS
+
+• Age-appropriate normal values: Always state age context when citing vital signs, ECG axes, echo dimensions, or lab values. Example: "In a 2-year-old, the normal QTc is &lt;460 ms; in a 10-year-old, &lt;450 ms."
+
+• Pediatric dosing: If a medication is mentioned, confirm dose is weight-based or age-specific (never use adult dosing). Mark doses as "VERIFY_NEEDED" if unsure.
+
+• Growth and development: Recognize that presentations, normal variants, and disease severity differ by age. A "normal" ECG finding at age 1 may be abnormal at age 15.
+
+═══════════════════════════════════════════════════════════════
+
+SAFETY &amp; PHI (De-identification)
+
+• Use American English throughout.
+• No protected health information (PHI): Replace names with pseudonyms ("Patient A," "Child X"). 
+• Dates: Use year only; never MM/DD or specific month+year unless teaching temporal concept.
+• Locations: Replace specific cities/counties with "rural area," "urban center," or 3-digit ZIP equivalents (e.g., "Southern region").
+• Identifiers: No MRNs, device serials, hospital IDs, or provider names.
+• Age masking: Treat any age ≥90 as "90+ years" (not applicable to peds, but included for consistency).
+
+Example: ✗ "John Smith, age 7, from Springfield, IL, was admitted on 3/15/2024 to Children's Hospital Cincinnati."
+        ✓ "Patient A, age 7, from a rural Midwest area, was admitted in 2025 and presented with..."
+
+═══════════════════════════════════════════════════════════════
+
+QUESTION INTEGRITY &amp; COGNITIVE RIGOR
+
+• Each item must have ONE unambiguously correct answer. No ambiguity.
+• Avoid "All of the above" or "None of the above" constructions.
+• If using negative phrasing (e.g., "EXCEPT," "NOT"), highlight it with caps and justify why negative framing is pedagogically necessary.
+• Distractors must represent real clinical reasoning errors, not random wrong facts.
+• Each distractor should carry a cognitive trap (e.g., "common age-based normal value confusion," "pharmacodynamic misunderstanding," "imaging interpretation mistake").
+
+═══════════════════════════════════════════════════════════════
+
+QUESTION DESIGN (Bloom's Taxonomy)
+
+Tag each question with ONE cognitive level:
+
+1. KNOWLEDGE: Recall of facts (e.g., "Normal PR interval in a 5-year-old is...")
+2. COMPREHENSION: Understanding relationships (e.g., "Why does a VSD cause a holosystolic murmur?")
+3. APPLICATION: Use knowledge in clinical context (e.g., "A 4-year-old presents with... which medication dosing is correct?")
+4. ANALYSIS: Compare, differentiate, reason through multiple variables (e.g., "Distinguish this arrhythmia from that one using the ECG and clinical context.")
+5. SYNTHESIS: Integration across domains (e.g., "Given echo findings + physiology + ECG, what's the defect and next management step?")
+
+Most board-level questions are APPLICATION (60%), ANALYSIS (30%), SYNTHESIS (10%).
+Beginner questions are KNOWLEDGE/COMPREHENSION.
+
+═══════════════════════════════════════════════════════════════
+
+DISTRACTOR DESIGN &amp; TAXONOMY
+
+Each wrong answer must teach and trap realistically. Name the cognitive trap:
+
+• TRAP_NORMAL_VARIANT: Confuses age-appropriate normal with pathology (e.g., "normal sleeping HR in infants is 60–100, not 40–60").
+• TRAP_ADULT_PHYSIOLOGY: Applies adult rules to pediatric case (e.g., "In adults, QRS &lt;120 ms; in kids, this is different").
+• TRAP_TREATMENT_ESCALATION: Jumps to higher-intensity therapy when stepwise approach is correct.
+• TRAP_GUIDELINE_OUTDATED: Reflects older/discredited practice (clearly note this and correct).
+• TRAP_SIMILAR_DIAGNOSIS: Confuses related condition (e.g., TAPVR vs. PAPVR, SVT vs. sinus tachycardia).
+• TRAP_OPPOSITE_PHYSIOLOGY: Reverses a key relationship (e.g., increased PVR vs. decreased PVR).
+• TRAP_MEDICATION_ERROR: Wrong drug, wrong dose, wrong class, or wrong indication.
+• TRAP_IMAGING_MISREAD: Common echo/ECG/CXR interpretation error.
+• TRAP_TIMING_ERROR: Confuses when to intervene (too early, too late, or sequence reversed).
+• TRAP_POPULATION_ERROR: Applies to wrong age group or risk stratum.
+
+Each why_wrong explanation must explicitly name the trap so learners recognize the reasoning error.
+
+═══════════════════════════════════════════════════════════════
+
+FORMATTING &amp; OUTPUT
+
+• Output: Valid JSON conforming to the schema provided (Section C, below). 
+• Validation: Include a self-check block (validation.* fields) confirming the item meets all constraints.
+• No commentary outside JSON. Let the JSON speak.
+• Consistency: Every field must be populated; no null values. Use empty string "" if not applicable.
+
+═══════════════════════════════════════════════════════════════
+
+INTELLECTUAL PROPERTY
+
+• Create original questions. Do NOT mimic or reproduce proprietary provider (UWorld, NEJM Knowledge+, etc.) phrasing or questions.
+• Do NOT copy explanations from textbooks; instead, synthesize and cite.
+• Paraphrase clinical concepts in your own voice.
+
+═══════════════════════════════════════════════════════════════</pre>
+        </div>
+      </section>
+
+      <section
+        id="schema"
+        class="panel"
+        data-panel-title="C. Enhanced Output Schema"
+        data-panel-description="Full JSON schema reference with validation requirements"
+      >
+        <div class="panel-heading">
+          <h2>C. Enhanced Output Schema (Strict JSON)</h2>
+          <div class="panel-actions">
+            <button
+              type="button"
+              class="pin-toggle"
+              data-panel-target="schema"
+              aria-pressed="false"
+            >
+              📌 Pin
+            </button>
+          </div>
+        </div>
+        <p class="panel-intro">Use this schema for every item. Validation failures automatically flag batches before SME review.</p>
+        <div class="prompt-block">
+          <div class="prompt-header">
+            <h3>JSON Schema</h3>
+            <button type="button" class="copy-btn" data-copy-target="json-schema">Copy</button>
+          </div>
+          <pre id="json-schema" class="prompt-text">{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "qid", "topic", "subtopic", "difficulty", "question_type",
+      "learning_objective", "stem", "lead_in", "options", "correct_option",
+      "explanations", "citations", "metadata", "validation",
+      "cognitive_level", "distractor_traps", "test_blueprint_map", "spaced_rep_metadata"
+    ],
+    "properties": {
+      "qid": {
+        "type": "string",
+        "pattern": "^PEDCARD-[0-9]{5}(_v[0-9])?$",
+        "description": "Unique ID: PEDCARD-00001 format, optionally with version suffix (_v1, _v2, etc.)"
+      },
+      "topic": {
+        "type": "string",
+        "description": "One of the 10 major domains (e.g., 'Congenital Heart Disease', 'Arrhythmias &amp; Electrophysiology')"
+      },
+      "subtopic": {
+        "type": "string",
+        "description": "Specific subdomain (e.g., 'Septal Defects', 'SVT/AVRT/WPW')"
+      },
+      "difficulty": {
+        "type": "string",
+        "enum": ["Beginner", "Intermediate", "Advanced", "Board-style"],
+        "description": "Difficulty tier"
+      },
+      "question_type": {
+        "type": "string",
+        "enum": ["Single Best Answer", "Case-Based", "Image-Based", "Clinical Scenario"],
+        "description": "Question format"
+      },
+      "learning_objective": {
+        "type": "string",
+        "description": "Explicit learning objective (e.g., 'Diagnose ASD vs. VSD using murmur characteristics and echo')"
+      },
+      "cognitive_level": {
+        "type": "string",
+        "enum": ["Knowledge", "Comprehension", "Application", "Analysis", "Synthesis"],
+        "description": "Bloom's taxonomy level"
+      },
+      "stem": {
+        "type": "string",
+        "description": "Clinical scenario (1–3 sentences); includes age, context, key findings"
+      },
+      "lead_in": {
+        "type": "string",
+        "pattern": "^(Which of the following|What is the next best|What is the most likely|Regarding|Based on the above)",
+        "description": "Explicit question task"
+      },
+      "options": {
+        "type": "object",
+        "required": ["A", "B", "C", "D", "E"],
+        "properties": {
+          "A": { "type": "string" },
+          "B": { "type": "string" },
+          "C": { "type": "string" },
+          "D": { "type": "string" },
+          "E": { "type": "string" }
+        }
+      },
+      "correct_option": {
+        "type": "string",
+        "enum": ["A", "B", "C", "D", "E"]
+      },
+      "distractor_traps": {
+        "type": "object",
+        "required": ["A", "B", "C", "D", "E"],
+        "properties": {
+          "A": { "type": "string", "enum": ["TRAP_NORMAL_VARIANT", "TRAP_ADULT_PHYSIOLOGY", "TRAP_TREATMENT_ESCALATION", "TRAP_GUIDELINE_OUTDATED", "TRAP_SIMILAR_DIAGNOSIS", "TRAP_OPPOSITE_PHYSIOLOGY", "TRAP_MEDICATION_ERROR", "TRAP_IMAGING_MISREAD", "TRAP_TIMING_ERROR", "TRAP_POPULATION_ERROR", "CORRECT_ANSWER"] },
+          "B": { "type": "string" },
+          "C": { "type": "string" },
+          "D": { "type": "string" },
+          "E": { "type": "string" }
+        }
+      },
+      "explanations": {
+        "type": "object",
+        "required": ["why_right", "why_wrong", "clinical_pearl"],
+        "properties": {
+          "why_right": {
+            "type": "string",
+            "description": "150–300 words; starts with 1-sentence answer, then pathophysiology/reasoning, then key facts"
+          },
+          "why_wrong": {
+            "type": "object",
+            "required": ["A", "B", "C", "D", "E"],
+            "properties": {
+              "A": { "type": "string", "description": "50–100 words; names the trap and explains why wrong" },
+              "B": { "type": "string" },
+              "C": { "type": "string" },
+              "D": { "type": "string" },
+              "E": { "type": "string" }
+            }
+          },
+          "clinical_pearl": {
+            "type": "string",
+            "description": "1 sentence; key takeaway for retention"
+          }
+        }
+      },
+      "citations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["source_type", "citation_text", "link_or_doi", "certainty", "relevant_claim"],
+          "properties": {
+            "source_type": {
+              "type": "string",
+              "enum": ["Guideline", "Textbook", "Peer-reviewed", "Other"]
+            },
+            "citation_text": {
+              "type": "string",
+              "description": "Full citation (e.g., 'ACC/AHA 2018 Congenital Heart Disease Guidelines: Class IIa, LOE B for...')"
+            },
+            "link_or_doi": {
+              "type": "string",
+              "description": "URL or DOI; use 'VERIFY_NEEDED' if unknown"
+            },
+            "certainty": {
+              "type": "string",
+              "enum": ["Certain", "VERIFY_NEEDED"],
+              "description": "Flagged if citation needs human verification"
+            },
+            "relevant_claim": {
+              "type": "string",
+              "description": "Which sentence/fact does this citation support?"
+            }
+          }
+        },
+        "maxItems": 3,
+        "description": "0–3 citations; VERIFY_NEEDED for uncertain sources"
+      },
+      "metadata": {
+        "type": "object",
+        "required": [
+          "age_group", "age_range_years", "normal_values_used", "dosing_used",
+          "image_required", "image_description", "image_type",
+          "answer_rationale_tags", "difficulty_justification",
+          "board_relevance", "epidemiology_note", "common_mistake"
+        ],
+        "properties": {
+          "age_group": {
+            "type": "string",
+            "enum": ["Neonate (0–28 days)", "Infant (29 days–12 months)", "Toddler (1–3 years)", "Preschool (3–5 years)", "School-age (6–11 years)", "Adolescent (12–18 years)", "Mixed ages"]
+          },
+          "age_range_years": {
+            "type": "string",
+            "description": "Specific range (e.g., '2–5 years' or '1–3 months')"
+          },
+          "normal_values_used": {
+            "type": "boolean",
+            "description": "Does the question cite pediatric norms (HR, BP, ECG, echo measurements, labs)?"
+          },
+          "dosing_used": {
+            "type": "boolean",
+            "description": "Does the question cite pediatric medication dosing?"
+          },
+          "image_required": {
+            "type": "boolean"
+          },
+          "image_type": {
+            "type": "string",
+            "enum": ["ECG", "Echocardiogram", "Chest X-ray", "Cardiac CT", "Cardiac MRI", "Cardiac catheterization", "Heart sound", "None"],
+            "description": "If image_required=true, specify the type"
+          },
+          "image_description": {
+            "type": "string",
+            "description": "Detailed text description of what the image shows (for placeholder until real image is inserted). Include findings, axis/planes, abnormalities."
+          },
+          "answer_rationale_tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Tags for cross-referencing (e.g., ['physiology', 'SVR', 'tet-spell', 'immediate-management'])"
+          },
+          "difficulty_justification": {
+            "type": "string",
+            "description": "Why is this Beginner vs. Intermediate vs. Advanced? (e.g., 'Intermediate because requires linking two pathophysiologic concepts; not just recall.')"
+          },
+          "board_relevance": {
+            "type": "string",
+            "enum": ["High", "Medium", "Low"],
+            "description": "Likelihood of appearing on official board exam"
+          },
+          "epidemiology_note": {
+            "type": "string",
+            "description": "Optional epidemiology fact (e.g., 'ASD accounts for ~10% of CHD'; used to contextualize importance)"
+          },
+          "common_mistake": {
+            "type": "string",
+            "description": "Brief note on what residents commonly get wrong (e.g., 'Confuse pulmonary stenosis severity with RVH')"
+          }
+        }
+      },
+      "test_blueprint_map": {
+        "type": "object",
+        "required": ["peds_cardio_subspecialty_blueprint_domain", "moc_category"],
+        "properties": {
+          "peds_cardio_subspecialty_blueprint_domain": {
+            "type": "string",
+            "description": "Maps to official ABP Pediatric Cardiology subspecialty exam blueprint (e.g., 'Congenital Heart Disease → Diagnosis &amp; Management'; request from ABP if needed)"
+          },
+          "moc_category": {
+            "type": "string",
+            "description": "Maps to MOC (Maintenance of Certification) category for practicing cardiologists (e.g., 'Category A: Diagnostic Skills')"
+          }
+        }
+      },
+      "spaced_rep_metadata": {
+        "type": "object",
+        "required": ["initial_review_interval_days", "estimated_retention_difficulty"],
+        "properties": {
+          "initial_review_interval_days": {
+            "type": "integer",
+            "description": "Suggested days until first spaced-rep review (SM-2 algorithm: easier questions → longer interval)"
+          },
+          "estimated_retention_difficulty": {
+            "type": "string",
+            "enum": ["Easy", "Medium", "Hard"],
+            "description": "Intrinsic difficulty for retention (not question difficulty; 'Hard' = learners forget this easily, needs shorter intervals)"
+          }
+        }
+      },
+      "validation": {
+        "type": "object",
+        "required": [
+          "single_best_answer_check", "option_length_balance_check",
+          "guideline_alignment_check", "word_counts", "duplication_check",
+          "pediatric_appropriateness_check", "grammatical_tell_check"
+        ],
+        "properties": {
+          "single_best_answer_check": {
+            "type": "boolean",
+            "description": "Confirmed exactly one answer is unambiguously correct?"
+          },
+          "option_length_balance_check": {
+            "type": "boolean",
+            "description": "Longest and shortest options differ by ≤10 words?"
+          },
+          "guideline_alignment_check": {
+            "type": "string",
+            "enum": ["Aligned", "Flagged_for_review", "VERIFY_NEEDED"],
+            "description": "Does the question align with current guidelines?"
+          },
+          "pediatric_appropriateness_check": {
+            "type": "boolean",
+            "description": "Age-specific norms cited? No adult standards misapplied?"
+          },
+          "grammatical_tell_check": {
+            "type": "boolean",
+            "description": "Confirmed no grammatical hints give away the answer (e.g., 'a' vs. 'an', singular vs. plural, verb tense)?"
+          },
+          "word_counts": {
+            "type": "object",
+            "required": ["stem_sentences", "why_right_words", "why_wrong_words_per_option"],
+            "properties": {
+              "stem_sentences": {
+                "type": "integer",
+                "description": "Target: 1–3 sentences"
+              },
+              "why_right_words": {
+                "type": "integer",
+                "description": "Target: 150–300 words"
+              },
+              "why_wrong_words_per_option": {
+                "type": "object",
+                "additionalProperties": { "type": "integer" },
+                "description": "Target: 50–100 words per distractor"
+              }
+            }
+          },
+          "duplication_check": {
+            "type": "string",
+            "enum": ["No similar prior item", "Possible overlap—needs review", "Duplicate_rejected"],
+            "description": "Is this concept novel or does a similar question already exist?"
+          }
+        }
       }
-    });
-  </script>
-  <script src="script.js"></script>
-</body>
+    }
+  }
+}
+</pre>
+        </div>
+      </section>
+
+      <section
+        id="blueprint"
+        class="panel"
+        data-panel-title="D. Bank Blueprint"
+        data-panel-description="Difficulty, format, and domain targets for the full 5,000-item plan"
+      >
+        <div class="panel-heading">
+          <h2>D. Bank Blueprint (5,000 items total)</h2>
+          <div class="panel-actions">
+            <button
+              type="button"
+              class="pin-toggle"
+              data-panel-target="blueprint"
+              aria-pressed="false"
+            >
+              📌 Pin
+            </button>
+          </div>
+        </div>
+        <div class="blueprint-grid">
+          <article>
+            <h3>Difficulty Mix</h3>
+            <table>
+              <thead>
+                <tr><th>Difficulty</th><th>Target %</th><th>Count</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Beginner</td><td>20%</td><td>1,000</td></tr>
+                <tr><td>Intermediate</td><td>45%</td><td>2,250</td></tr>
+                <tr><td>Advanced</td><td>30%</td><td>1,500</td></tr>
+                <tr><td>Board-style</td><td>5%</td><td>250</td></tr>
+              </tbody>
+            </table>
+          </article>
+          <article>
+            <h3>Question Type Mix</h3>
+            <table>
+              <thead>
+                <tr><th>Type</th><th>Target %</th><th>Count</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Single Best Answer</td><td>70%</td><td>3,500</td></tr>
+                <tr><td>Case-Based</td><td>15%</td><td>750</td></tr>
+                <tr><td>Image-Based</td><td>10%</td><td>500</td></tr>
+                <tr><td>Clinical Scenario</td><td>5%</td><td>250</td></tr>
+              </tbody>
+            </table>
+          </article>
+          <article class="blueprint-table">
+            <h3>Domain Targets</h3>
+            <p>Keep totals fixed; adjust subtopic mix as needed.</p>
+            <table>
+              <thead>
+                <tr><th>Domain</th><th>Count</th><th>Subtopics</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Congenital Heart Disease (CHD)</td>
+                  <td>2,000</td>
+                  <td>Septal defects 373 · Outflow tract anomalies 373 · Great vessel anomalies 267 · Venous return anomalies 160 · Single ventricle/HLHS/Fontan 267 · Congenital valve lesions 320 · Coronary anomalies 107 · Heterotaxy/dextrocardia/misc 133</td>
+                </tr>
+                <tr>
+                  <td>Arrhythmias &amp; Electrophysiology</td>
+                  <td>700</td>
+                  <td>SVT/AVRT/AVNRT/WPW 187 · Atrial arrhythmias 93 · Ventricular arrhythmias 140 · Conduction disease/devices 140 · Channelopathies 140</td>
+                </tr>
+                <tr>
+                  <td>Cardiomyopathy / Myocarditis / Heart Failure</td>
+                  <td>500</td>
+                  <td>Dilated 167 · Hypertrophic 150 · Restrictive 50 · Myocarditis (incl. MIS-C) 83 · HF/transplant/VAD 50</td>
+                </tr>
+                <tr>
+                  <td>Pulmonary Hypertension</td>
+                  <td>250</td>
+                  <td>Diagnosis/classification 100 · Acute crises 75 · Long-term therapy 75</td>
+                </tr>
+                <tr>
+                  <td>Imaging &amp; Diagnostics</td>
+                  <td>400</td>
+                  <td>ECG 100 · Echocardiography 150 · Chest X-ray 50 · Cardiac MRI/CT 60 · Cath hemodynamics 40</td>
+                </tr>
+                <tr>
+                  <td>Interventional Cardiology</td>
+                  <td>300</td>
+                  <td>Catheter-based intervention 150 · Device closure 100 · Hybrid procedures 50</td>
+                </tr>
+                <tr>
+                  <td>Cardiac Surgery &amp; Post-op</td>
+                  <td>200</td>
+                  <td>Pre-op assessment 50 · Surgical repair/reconstruction 75 · Post-op complications 75</td>
+                </tr>
+                <tr>
+                  <td>Pharmacology</td>
+                  <td>300</td>
+                  <td>Inotropes/vasopressors 80 · Diuretics/afterload reducers 80 · Antiarrhythmics 60 · Anticoagulation 50 · Other (PGE1, pulmonary vasodilators) 30</td>
+                </tr>
+                <tr>
+                  <td>Preventive / Lipids / Sports</td>
+                  <td>150</td>
+                  <td>Familial hypercholesterolemia 60 · Pediatric hypertension 38 · Sports clearance / SCD risk 52</td>
+                </tr>
+                <tr>
+                  <td>Infections</td>
+                  <td>200</td>
+                  <td>Kawasaki disease 90 · Acute rheumatic fever 40 · Endocarditis 70</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="batch-prompts"
+        class="panel"
+        data-panel-title="E–M. Generation & Review Prompts"
+        data-panel-description="Copy-ready prompts for stems, explanations, reviewers, and QA"
+      >
+        <div class="panel-heading">
+          <h2>E–M. Generation &amp; Review Prompts</h2>
+          <div class="panel-actions">
+            <button
+              type="button"
+              class="pin-toggle"
+              data-panel-target="batch-prompts"
+              aria-pressed="false"
+            >
+              📌 Pin
+            </button>
+          </div>
+        </div>
+        <p class="panel-intro">Each expandable card below includes copy-ready prompts for every phase of the workflow.</p>
+        <details class="accordion" open>
+          <summary>E. Batch Generation Prompt (100 stems)</summary>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <h3>Batch Generation Prompt</h3>
+              <button type="button" class="copy-btn" data-copy-target="batch-generation">Copy</button>
+            </div>
+            <pre id="batch-generation" class="prompt-text">You are generating BATCH [#] of 100 MCQ STEMS (explanations will come next) for the Pediatric Cardiology QBank.
+
+CONSTRAINTS FOR THIS BATCH:
+
+1. Blueprint fill:
+   Current domain totals: [PASTE RUNNING TALLY, e.g., "CHD: 0/2000; Arrhythmias: 0/700; ..." ]
+   Prioritize filling the most under-represented domain/subtopic.
+
+2. Difficulty mix (must hit exactly):
+   Beginner: 20 items
+   Intermediate: 45 items
+   Advanced: 30 items
+   Board-style: 5 items
+
+3. Question types (must hit exactly):
+   Single Best Answer: 70 items
+   Case-Based: 15 items
+   Image-Based: 10 items
+   Clinical Scenario: 5 items
+
+4. Correct-answer letter distribution (must hit exactly):
+   A: 20 items | B: 20 items | C: 20 items | D: 20 items | E: 20 items
+
+5. Cognitive level distribution (approximate):
+   Knowledge: 10% (10 items)
+   Comprehension: 15% (15 items)
+   Application: 60% (60 items)
+   Analysis: 12% (12 items)
+   Synthesis: 3% (3 items)
+
+6. Stem quality:
+   - 1–3 sentences; explicit lead-in.
+   - Age + clinical context clearly stated.
+   - Realistic pediatric presentation (no implausible scenarios).
+   - Pediatric-specific normal values cited where relevant (e.g., age-appropriate HR, BP).
+   - No grammatical hints revealing the answer.
+
+7. Distractor quality:
+   - All 5 options are plausible (a junior resident might reasonably choose any).
+   - Each distractor represents a real cognitive trap (see taxonomy in System instructions).
+   - Options balanced in length (±10 words).
+
+8. Image-based questions:
+   For the 10 image-based items, populate metadata.image_description with detailed text (we'll insert actual images later).
+   Example: "Parasternal short-axis view at the level of the papillary muscles shows a hyperechoic mass attached to the septum, 1.2 cm diameter, with restricted mobility during systole. Color Doppler shows laminar flow across the LVOT. No pericardial effusion. No global dysfunction."
+
+OUTPUT FORMAT:
+
+Return a JSON array of 100 items using the schema from Section C, but OMIT explanations:
+- Set explanations.why_right = "" (empty string)
+- Set explanations.why_wrong = { "A": "", "B": "", ... } (all empty)
+- Set explanations.clinical_pearl = ""
+- For citations, include placeholder(s) with certainty: "VERIFY_NEEDED"
+- Populate all metadata and validation fields (single_best_answer_check can be marked provisional; set to true if confident).
+- Use QID range provided (e.g., PEDCARD-00001 to PEDCARD-00100 for batch 1).
+
+INTERNAL SELF-CHECK (before returning):
+□ Exactly 100 items generated.
+□ Difficulty mix verified (20+45+30+5 = 100).
+□ Question-type mix verified (70+15+10+5 = 100).
+□ Answer-letter distribution verified (20+20+20+20+20 = 100).
+□ No two items test the exact same learning objective.
+□ Each stem is 1–3 sentences.
+□ Each lead-in is explicit and matches the approved pattern.
+□ All image_descriptions are detailed (not placeholders).
+□ All QIDs are unique and sequential.
+
+Return ONLY the JSON array. No commentary.</pre>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>F. Explanations Pass Prompt</summary>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <h3>Explanations Pass Prompt</h3>
+              <button type="button" class="copy-btn" data-copy-target="explanations-pass">Copy</button>
+            </div>
+            <pre id="explanations-pass" class="prompt-text">Convert the following QIDs to FULL MCQs with complete explanations. Fill all fields per the schema in Section C.
+
+QID LIST (approved stems):
+[PASTE QIDS, e.g., "PEDCARD-00001, PEDCARD-00005, PEDCARD-00012, ..."]
+
+RULES FOR EXPLANATIONS:
+
+1. Why-right (150–300 words):
+   - Sentence 1: Concise, one-sentence answer (e.g., "The next best step is to administer intravenous furosemide.").
+   - Then: Explain the pathophysiology or clinical reasoning.
+   - Then: Key supporting facts (guideline class/level if relevant, epidemiology, normal ranges).
+   - Then: Link to the correct answer choice.
+   - Avoid: Just restating the stem or explaining all 5 options.
+
+2. Why-wrong (50–100 words per distractor):
+   - Start by naming the cognitive trap (e.g., "TRAP_NORMAL_VARIANT: This confuses...").
+   - Explain why a learner might choose this answer.
+   - Clearly state why it is clinically wrong.
+   - Do NOT just say "This is wrong"; teach the error.
+
+3. Clinical pearl (exactly 1 sentence):
+   - Memorable, high-yield takeaway for retention.
+   - Example: "A knee-chest position increases systemic vascular resistance, improving pulmonary blood flow during tet spells."
+
+4. Distractor traps (match each option):
+   - Populate distractor_traps.A, .B, .C, .D, .E with the appropriate trap type (see taxonomy in System instructions).
+   - The correct answer gets "CORRECT_ANSWER".
+
+5. Citations (0–3 per question):
+   - Provide precise citations for any claim that is guideline-based, dosing, or normative value.
+   - If uncertain, mark certainty: "VERIFY_NEEDED" and flag the claim.
+   - Citation format examples:
+     * "ACC/AHA 2018 Congenital Heart Disease Guidelines: Class IIa, Level of Evidence B for prostaglandin E1 in ductal-dependent lesions."
+     * "Moss &amp; Adams' Heart Disease in Infants, Children, and Adolescents, 10th edition, Chapter 7: Tetralogy of Fallot."
+     * "Hollander et al. (2020), Circulation, Vol. 142: Propranolol dosing for tet spells in infants is 0.1–0.15 mg/kg/dose."
+   - Never fabricate DOIs or URLs; use "VERIFY_NEEDED" if unknown.
+
+6. Pediatric-specific accuracy:
+   - For all normal values (HR, BP, PR interval, QTc, echo dimensions, labs): cite age-specific range.
+   - For all medications: confirm weight-based or age-based dosing (never adult dosing).
+   - If unsure of a pediatric norm or dose, mark citation as VERIFY_NEEDED.
+
+7. PHI &amp; Safety:
+   - Use pseudonyms only ("Patient A," "Child X"); no real names.
+   - Dates: year only.
+   - Locations: "rural area," "urban center," 3-digit ZIP, or region only.
+   - No device serials, MRNs, provider names.
+
+8. Validation self-check:
+   - word_counts populated with actual counts.
+   - option_length_balance_check: true if longest and shortest options differ by ≤10 words.
+   - guideline_alignment_check: "Aligned" or "Flagged_for_review" (mark VERIFY_NEEDED if unsure).
+   - Single best answer confirmed unambiguous.
+   - No grammatical hints.
+
+OUTPUT:
+
+Return ONLY a JSON array matching Section C schema for the requested QIDs. All explanations, citations, traps, and metadata fully populated. No commentary outside JSON.</pre>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>G. Style &amp; Quality Constraints</summary>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <h3>Style &amp; Quality Checklist</h3>
+              <button type="button" class="copy-btn" data-copy-target="style-constraints">Copy</button>
+            </div>
+            <pre id="style-constraints" class="prompt-text">QUESTION CONSTRUCTION
+
+- Stems: 1–3 sentences. Avoid trivia; test a learning objective.
+- Lead-in: Make the task explicit. Approved patterns: “Which of the following…?” | “What is the next best step?” | “What is the most likely diagnosis?” | “Regarding… which statement is true?” | “Based on the above findings, what should you do?”
+- Options: 5 (A–E). Plausible, commonly-confused distractors. Balance length (±10 words).
+- One unambiguous correct answer. No “all/none of the above.”
+
+EXPLANATIONS
+
+- Why-right: 150–300 words. Evidence-based. Start with 1-sentence answer; include pathophysiology, key facts, guideline references (if relevant). Do NOT just recap stem.
+- Why-wrong: 50–100 words each. Name the cognitive trap. Explain why learner chooses it; explain why clinically wrong.
+- Clinical pearl: 1 sentence. High-yield, memorable takeaway.
+- Citations: 0–3 per item. Precise if known; otherwise “VERIFY_NEEDED.”
+
+CLINICAL ACCURACY
+
+- Pediatric norms &amp; dosing only. Explicitly state age-context for vitals, ECG axes, echo dimensions, labs.
+- Guideline-consistent management. If uncertain, flag with VERIFY_NEEDED.
+- No outdated recommendations. If a distractor is intentionally outdated (to teach why not to do it), clearly label the trap as TRAP_GUIDELINE_OUTDATED.
+
+FORMATTING RED FLAGS
+
+- ✗ “All of the above” / “None of the above”
+- ✗ Unmarked negative phrasing (e.g., “NOT” without emphasis)
+- ✗ Grammatical hints (e.g., “a VSD” with options starting “an…” or “a…”) 
+- ✗ Unbalanced option lengths (diff &gt;10 words)
+- ✗ Invented citations or DOIs
+- ✗ Adult norms applied to pediatric case</pre>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>H. Anti-Hallucination &amp; Citation Policy</summary>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <h3>Citation Policy</h3>
+              <button type="button" class="copy-btn" data-copy-target="citation-policy">Copy</button>
+            </div>
+            <pre id="citation-policy" class="prompt-text">CITATION STANDARDS
+
+- 0–3 citations per item. Quality over quantity.
+- If certain: full citation + link_or_doi + certainty: “Certain”
+- If uncertain: placeholder with certainty: “VERIFY_NEEDED” and tag the sentence in why_right/why_wrong for human verification.
+
+ACCEPTABLE CITATION FORMATS
+
+- “ACC/AHA Pediatric Congenital Heart Disease Guideline (2018): Class IIa, Level B evidence for [specific claim].”
+- “Moss &amp; Adams’ Heart Disease in Infants, Children, and Adolescents, 10th ed., Chapter [#]: [Topic]”
+- “Peer-reviewed: Author(s), Year, Journal, Volume/Pages—brief finding.”
+- “AAP PALS Guidelines (current year): [Specific recommendation]”
+
+NEVER ACCEPTABLE
+
+- ✗ Fabricated DOIs or URLs
+- ✗ Vague references (“Some studies show…” without citation)
+- ✗ Guessed guideline class/level
+- ✗ Paraphrased textbook text without attribution
+
+VERIFY_NEEDED WORKFLOW
+
+- Mark any uncertain claim with a flag in the explanation.
+- Example: “Propranolol dosing for tet spells is [0.1–0.15 mg/kg/dose; VERIFY_NEEDED].”
+- Include in citations array: { “certainty”: “VERIFY_NEEDED”, “relevant_claim”: “Propranolol dosing” }
+- Human reviewer confirms or corrects before final approval.</pre>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>I. Duplication &amp; Coverage Controls</summary>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <h3>Duplication &amp; Coverage</h3>
+              <button type="button" class="copy-btn" data-copy-target="duplication-controls">Copy</button>
+            </div>
+            <pre id="duplication-controls" class="prompt-text">PER-BATCH DUPLICATION CHECK
+
+- Each batch of 100 must include duplication_check for all items.
+- “No similar prior item” = learning objective is novel within bank.
+- “Possible overlap—needs review” = SME should check if concept is redundant.
+- “Duplicate_rejected” = item failed duplication check in prior rounds; do not re-draft.
+
+COVERAGE ENFORCEMENT
+
+- Track running totals for all 10 domains and all subtopics.
+- Before each batch, paste the current tally so model prioritizes under-filled domains.
+- Example:
+  Current totals (target = 5,000):
+  CHD: 150/2000 ← PRIORITY
+  Arrhythmias: 0/700 ← PRIORITY
+  Cardiomyopathy: 0/500 ← PRIORITY
+  Pulm HTN: 0/250
+  Imaging: 0/400
+  ...
+- Stop filling a domain once it hits its target.
+
+PEER COMPARISON MATRIX (optional but recommended)
+
+Learning objective | # items in bank | Risk of redundancy?
+“Diagnose ASD vs VSD” | 3 | Low (different angles: murmur, echo, ECG)
+“Manage tet spell” | 2 | Medium (both teach acute management; ensure one is diagnosis, one is Rx)
+
+Use this to decide if a new item is truly novel or a re-hash.</pre>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>J. Reviewer Packet Prompt</summary>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <h3>Reviewer Packet Prompt</h3>
+              <button type="button" class="copy-btn" data-copy-target="reviewer-packet">Copy</button>
+            </div>
+            <pre id="reviewer-packet" class="prompt-text">You are a pediatric cardiology content reviewer. For each MCQ JSON object provided, complete the review below.
+
+REVIEW TASK:
+
+For each item, score on these dimensions (1–5 scale, with rubric):
+
+1. ACCURACY (1–5)
+   5 = Unambiguously correct; all facts, norms, dosing, guidelines are current and precise.
+   3 = Correct but with minor clarifications needed (e.g., cite the guideline class explicitly).
+   1 = Incorrect or outdated; needs major revision.
+
+2. CLARITY (1–5)
+   5 = Stem is unambiguous; lead-in is explicit; options are easily distinguished.
+   3 = Mostly clear but could be tightened (e.g., remove extraneous detail or rephrase one option).
+   1 = Confusing or ambiguous; learner cannot understand what is being asked.
+
+3. COGNITIVE LEVEL (1–5)
+   5 = Correctly tagged and appropriate for stated difficulty (Beginner vs. Intermediate vs. Advanced).
+   3 = Correctly tagged but difficulty feels off (e.g., labeled "Advanced" but feels "Intermediate").
+   1 = Incorrectly tagged; does not match claimed cognitive level.
+
+4. DISTRACTOR QUALITY (1–5)
+   5 = All distractors are plausible; each represents a real cognitive error residents make.
+   3 = Most distractors are good; one or two feel forced or unrealistic.
+   1 = Distractors are obvious wrong answers; a resident would never choose most of them.
+
+5. GUIDELINE ALIGNMENT (1–5)
+   5 = Fully aligned with current ACC/AHA, AAP, or ESC guidelines; cites guideline class/level appropriately.
+   3 = Mostly aligned; minor outdated reference that doesn't affect the correct answer.
+   1 = Misaligned with current guidelines or teaches discredited practice.
+
+DECISION:
+
+Mark ONE: APPROVE | MINOR_REVISIONS | MAJOR_REVISIONS | REJECT
+
+- APPROVE: Ready for bank as-is (scores ≥4 on all dimensions).
+- MINOR_REVISIONS: Approve after SME fixes ~1–2 specific items (e.g., clarify a citation, tighten one distractor).
+- MAJOR_REVISIONS: Approve only after significant overhaul (e.g., rewrite stem, change correct answer, replace 2+ distractors).
+- REJECT: Do not include in bank; recommend re-draft or removal.
+
+NOTES &amp; PROPOSED EDITS:
+
+For each item, provide:
+- Brief summary of your findings (≤100 words).
+- Specific edits if MINOR_REVISIONS or MAJOR_REVISIONS (≤75 words per edit; e.g., "Replace option B with '...' because current B confuses [concept].").
+- Confidence in any citations flagged as VERIFY_NEEDED.
+
+CITATION VERIFICATION:
+
+For all citations marked certainty: "VERIFY_NEEDED":
+- Confirm or correct the citation.
+- If you cannot verify, recommend human researcher follow up (e.g., "Check ACC/AHA 2018 Guidelines, Section 7.3 for definitive statement on PGE1 dosing.").
+
+OUTPUT:
+
+Return JSON array with fields:
+[
+  {
+    "qid": "PEDCARD-00001",
+    "decision": "APPROVE",
+    "scores": {
+      "accuracy": 5,
+      "clarity": 5,
+      "cognitive_level": 4,
+      "distractor_quality": 5,
+      "guideline_alignment": 5
+    },
+    "notes": "Excellent question. All distractors represent real clinical errors. Citation on tet spells confirmed in 2018 ACC/AHA guidelines.",
+    "proposed_edits": [],
+    "citation_verification": []
+  },
+  {
+    "qid": "PEDCARD-00002",
+    "decision": "MINOR_REVISIONS",
+    "scores": { ... },
+    "notes": "Good foundation. Stem is clear. One distractor (E) is too obviously wrong; it confuses ASD with mitral stenosis, which is unlikely.",
+    "proposed_edits": [
+      {
+        "field": "options.E",
+        "current_text": "The patient has mitral stenosis with a diastolic murmur.",
+        "suggested_text": "The patient has partial anomalous pulmonary venous return (PAPVR) with a secundum ASD variant.",
+        "rationale": "PAPVR is a more plausible distractor for learners who confuse venous return anomalies."
+      }
+    ],
+    "citation_verification": [
+      {
+        "claim": "PR interval &lt;120 ms in a 7-year-old indicates WPW.",
+        "status": "VERIFY_NEEDED",
+        "recommendation": "Cite age-specific PR norms; normal PR at age 7 is ~120–150 ms. Condition PR &lt;100 ms + delta wave = WPW."
+      }
+    ]
+  }
+]</pre>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>K. Batch Acceptance Criteria</summary>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <h3>Acceptance Criteria</h3>
+              <button type="button" class="copy-btn" data-copy-target="acceptance-criteria">Copy</button>
+            </div>
+            <pre id="acceptance-criteria" class="prompt-text">PER-BATCH QUALITY THRESHOLDS
+
+For each batch of 100 items submitted for SME review, sample 20 items (random selection) and score each on the 5-dimension rubric.
+
+PASS CRITERIA:
+
+- ≥18/20 items (90%) score ≥4 on Accuracy
+- ≥18/20 items (90%) score ≥4 on Clarity
+- ≥18/20 items (90%) score ≥4 on Cognitive_level
+- ≥17/20 items (85%) score ≥4 on Distractor_quality
+- ≥17/20 items (85%) score ≥4 on Guideline_alignment
+- ≤3 items (15%) require MAJOR_REVISIONS or REJECT
+
+IF BATCH FAILS:
+- Reject all 100; request re-draft with corrected prompts or retraining.
+
+IF BATCH PASSES:
+- Approve the 20-item sample; flag any MINOR_REVISIONS for rapid fix; generate full explanations and move to full bank.
+
+REVISION WORKFLOW:
+1. Minor revisions (≤3 edits per item): Author fixes inline; SME spot-checks; item moves to bank.
+2. Major revisions (≥4 edits or major conceptual issue): Re-draft item from scratch using Explanations Pass prompt; resubmit for SME review.
+3. Rejected items: Remove from batch; use QID slot for new item on a different learning objective.</pre>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>L. Ready-to-Use Prompts</summary>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <h3>Option A — Topic Batch (TOF)</h3>
+              <button type="button" class="copy-btn" data-copy-target="option-a">Copy</button>
+            </div>
+            <pre id="option-a" class="prompt-text">Draft 10 MCQs on Tetralogy of Fallot (TOF) for pediatric residents.
+
+COVERAGE:
+- 3 on pathophysiology/diagnosis
+- 3 on clinical presentation and acute management
+- 2 on complications
+- 2 on imaging interpretation (1 ECG, 1 echo)
+
+CONSTRAINTS:
+- Difficulty: Intermediate (most residents should get ≥70%, but ≥1 question should be challenging)
+- Question type mix: 7 Single Best Answer, 2 Case-Based, 1 Image-Based (echo)
+- Answer letter distribution: A=2, B=2, C=2, D=2, E=2
+- Cognitive levels: 2 Application, 1 Analysis (per case-based question)
+- Stem: 1–3 sentences, explicit lead-in, realistic pediatric scenario
+- Distractors: Each must represent a real clinical error (name the trap in why_wrong)
+
+CLINICAL CONTEXT &amp; REFERENCES:
+- Use current ACC/AHA 2018 Congenital Heart Disease Guidelines
+- For acute management: emphasize tet spells and first-line therapy (knee-chest position + propranolol)
+- For imaging: include both ECG findings (RVH, RAD) and echo findings (VSD, RVOT obstruction, overriding aorta)
+- Normal values used: age-specific HR, PR interval, QTc, echo dimensions for ages 6 months–10 years
+
+SPECIFIC LEARNING OBJECTIVES (Test These):
+1. Recognize the 4 components of TOF and understand why VSD + RVOT obstruction creates right-to-left shunt
+2. Differentiate tet spells (acute hypercyanosis) from chronic cyanosis; know acute management
+3. Interpret ECG findings (RVH, RAD, prolonged PR if WPW association)
+4. Interpret echo findings distinguishing TOF from other cyanotic lesions (e.g., TGA, truncus arteriosus)
+5. Understand surgical repair (VSD closure + RVOT enlargement) and post-op complications
+
+BOARD RELEVANCE:
+- All 10 questions: High board relevance (TOF appears on ≥90% of pediatric cardiology boards)
+
+OUTPUT:
+- Valid JSON per schema (Section C), full explanations included
+- QIDs: PEDCARD-04001 to PEDCARD-04010
+- All metadata, validation, citations, distractor_traps populated
+- Image descriptions for the 1 echo question detailed (we'll insert actual echo image later)</pre>
+          </div>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <h3>Option B — Image-Based ECG Batch</h3>
+              <button type="button" class="copy-btn" data-copy-target="option-b">Copy</button>
+            </div>
+            <pre id="option-b" class="prompt-text">Draft 3 image-based MCQs on pediatric ECG interpretation.
+
+TOPICS:
+1. Normal pediatric ECG vs. RVH pattern (age 8-year-old with TOF)
+2. Supraventricular tachycardia (SVT) vs. sinus tachycardia (age 2-year-old)
+3. Hyperkalemia ECG changes (peaked T waves, widened QRS) (age newborn with acute kidney injury)
+
+CONSTRAINTS:
+- Difficulty: Intermediate to Advanced (Q1–Q2: Intermediate; Q3: Advanced)
+- Question type: Image-Based (all three)
+- Cognitive level: Q1–Q2 Application; Q3 Analysis
+- Stem: 1–3 sentences; include age, clinical context, why the image matters
+
+IMAGE DESCRIPTIONS:
+- Q1: "12-lead ECG from an 8-year-old boy with known TOF. Describe axis (right axis deviation expected ~90–120°), QRS duration (normal for age), ST-segment, and specific signs of RVH (tall R wave in V1, prominent S wave in V6). Note: normal QRS in child &lt;2 years is &lt;80 ms; in child 2–10 years, &lt;90 ms."
+- Q2: "12-lead ECG from a 2-year-old with sudden onset tachycardia. Show either regular rhythm at ~280 bpm (concerning for SVT/AVRT) vs. gradual onset at ~140 bpm with beat-to-beat variation (sinus tach). Include P wave analysis."
+- Q3: "12-lead ECG from a newborn with acute kidney injury and serum K+ 7.2 mmol/L. Show peaked T waves (tall, narrow), widened QRS (&gt;100 ms even for newborn), peaked P wave, and ST-segment depression. Contrast with normal newborn ECG."
+
+DISTRACTORS:
+- Q1 traps: Normal axis confusion, adult RVH criteria applied to child, overlooking TOF physiology
+- Q2 traps: Confusing SVT with sinus tach, misreading P waves, missing delta wave if WPW
+- Q3 traps: Confusing hyperkalemia with hypocalcemia (different T wave morphology), missing the clinical urgency
+
+CLINICAL REASONING:
+- Q1: Why recognizing RVH matters for TOF (severity, surgical planning)
+- Q2: Why distinguishing SVT from sinus tach matters (different acute management: adenosine vs. observation)
+- Q3: Why ECG changes signal medical emergency (cardiac dysrhythmia risk, need for K+ reduction)
+
+OUTPUT:
+- Valid JSON per schema (Section C), full explanations included
+- QIDs: PEDCARD-05001 to PEDCARD-05003
+- metadata.image_type: "ECG" for all three
+- metadata.image_description: Very detailed (detailed description of each finding, normal ranges for age, abnormalities)
+- All distractors named with trap type (TRAP_NORMAL_VARIANT, TRAP_ADULT_PHYSIOLOGY, etc.)
+- Citations verified for age-specific ECG norms and hyperkalemia criteria</pre>
+          </div>
+        </details>
+      </section>
+
+      <section
+        id="quality"
+        class="panel"
+        data-panel-title="O. Quality Control Checklist"
+        data-panel-description="Reviewer rubric, statistical acceptance rules, and QA checklist"
+      >
+        <div class="panel-heading">
+          <h2>O. Quality Control Checklist</h2>
+          <div class="panel-actions">
+            <button
+              type="button"
+              class="pin-toggle"
+              data-panel-target="quality"
+              aria-pressed="false"
+            >
+              📌 Pin
+            </button>
+          </div>
+        </div>
+        <p class="panel-intro">Use this before sending any batch to SME review. It locks in accuracy, pediatric specificity, and metadata completeness.</p>
+        <div class="prompt-block">
+          <div class="prompt-header">
+            <h3>Quality Control Checklist</h3>
+            <button type="button" class="copy-btn" data-copy-target="quality-checklist">Copy</button>
+          </div>
+          <pre id="quality-checklist" class="prompt-text">CONTENT ACCURACY
+
+- [ ] Correct answer is unambiguously correct and aligns with guidelines
+- [ ] All pediatric norms (HR, BP, intervals, dimensions, labs) are age-specific and cited
+- [ ] Medication doses are pediatric-specific (weight-based or age-based); no adult dosing
+- [ ] Guidelines cited are current (no VERIFY_NEEDED without flagging)
+- [ ] Distractors represent real clinical errors, not random wrong facts
+- [ ] No contradictions between stem and explanations
+
+PEDIATRIC SPECIFICITY
+
+- [ ] Age group explicitly stated in stem
+- [ ] Normal ranges cited with age context
+- [ ] Developmental considerations reflected (e.g., fetal vs. postnatal physiology)
+- [ ] No adult physiology misapplied to pediatric case
+
+QUESTION QUALITY
+
+- [ ] Stem is 1–3 sentences (check word_counts)
+- [ ] Lead-in is explicit and matches approved pattern
+- [ ] Task is clear (no ambiguity)
+- [ ] No grammatical hints reveal answer
+- [ ] Options are 5, plausible, balanced in length (±10 words)
+- [ ] Each option teaches or represents real trap
+
+EXPLANATION QUALITY
+
+- [ ] Why-right is 150–300 words (check word_counts)
+- [ ] Why-right starts with 1-sentence answer, includes pathophysiology, key facts, citations
+- [ ] Why-wrong is 50–100 words per option (check word_counts)
+- [ ] Each why-wrong names the cognitive trap and explains the error
+- [ ] Clinical pearl is exactly 1 sentence
+- [ ] All citations are either “Certain” or flagged “VERIFY_NEEDED” (no guesses)
+
+DISTRACTOR QUALITY
+
+- [ ] All distractors are plausible (junior resident might choose)
+- [ ] Distractor traps match taxonomy (not generic “wrong” labels)
+- [ ] Each trap is named and explained in why_wrong
+- [ ] No distractor is obviously absurd
+
+METADATA &amp; VALIDATION
+
+- [ ] metadata.age_group matches stem age
+- [ ] metadata.normal_values_used true if any norm cited; false otherwise
+- [ ] metadata.dosing_used true if any drug dose cited; false otherwise
+- [ ] metadata.image_description detailed when image_required = true
+- [ ] distractor_traps populated for all options; correct answer marked “CORRECT_ANSWER”
+- [ ] cognitive_level matches question difficulty and objective
+- [ ] validation.single_best_answer_check = true
+- [ ] validation.option_length_balance_check = true (if true, options within ±10 words)
+- [ ] validation.guideline_alignment_check = “Aligned” or “Flagged_for_review”
+- [ ] validation.duplication_check noted (“No similar prior item” or “Possible overlap—needs review”)
+- [ ] validation.word_counts populated with actual counts
+
+SAFETY &amp; PHI
+
+- [ ] No real names (pseudonyms only)
+- [ ] No precise dates (year-only)
+- [ ] No specific locations (use regions/3-digit ZIP)
+- [ ] No provider identifiers</pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>Built for teams scaling pediatric cardiology mastery—copy, run, and keep every batch exam-ready.</p>
+    </footer>
+
+    <div id="command-palette-backdrop" class="command-backdrop" hidden></div>
+    <div
+      id="command-palette"
+      class="command-palette"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="command-palette-title"
+      hidden
+    >
+      <div class="command-header">
+        <h2 id="command-palette-title">Command palette</h2>
+        <button type="button" class="command-close" id="command-close" aria-label="Close command palette">✖</button>
+      </div>
+      <div class="command-body">
+        <label class="sr-only" for="command-search">Search sections and actions</label>
+        <input
+          id="command-search"
+          type="search"
+          name="command-search"
+          placeholder="Jump to a section, copy content, or pin it…"
+          autocomplete="off"
+          aria-controls="command-results"
+        />
+        <p id="command-hint" class="command-hint">Enter to open · Shift+Enter to copy · Alt+Enter to pin/unpin</p>
+        <ul
+          id="command-results"
+          class="command-results"
+          role="listbox"
+          aria-labelledby="command-palette-title"
+        ></ul>
+      </div>
+    </div>
+
+    <button type="button" class="back-to-top" aria-label="Scroll back to the top">⬆ Back to top</button>
+
+    <div id="live-region" class="sr-only" aria-live="polite"></div>
+
+    <script src="script.js" type="module"></script>
+  </body>
 </html>
