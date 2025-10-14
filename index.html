@@ -7,14 +7,116 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Pediatric Cardiology QBank</h1>
-  <div id="quiz-container">
-    <p id="question-text">Question will appear here</p>
-    <div id="options"></div>
-    <button id="submit-btn">Submit Answer</button>
-    <p id="feedback"></p>
-    <p id="score">Score: 0</p>
-  </div>
-  <script src="script.js"></script>
+  <header class="page-header">
+    <h1>Pediatric Cardiology QBank</h1>
+    <p class="tagline">Quickly review key murmurs and their likely causes.</p>
+  </header>
+
+  <main class="content-layout">
+    <section id="quiz-section" class="card">
+      <h2>Warm-up Quiz</h2>
+
+      <div class="quiz-top">
+        <div class="quiz-meta">
+          <p id="question-count" class="question-count">Question 1 of 5</p>
+          <p id="score" class="score">Score: 0/5</p>
+        </div>
+        <div
+          id="progress-track"
+          class="progress-track"
+          role="progressbar"
+          aria-label="Quiz progress"
+          aria-valuemin="0"
+          aria-valuemax="5"
+          aria-valuenow="0"
+        >
+          <span id="progress-bar" class="progress-value"></span>
+        </div>
+      </div>
+
+      <p id="question-text" class="question-text">Question will appear here</p>
+
+      <form id="quiz-form" class="quiz-form" novalidate>
+        <fieldset class="quiz-fieldset">
+          <legend class="visually-hidden">Answer choices</legend>
+          <div id="options" class="options"></div>
+        </fieldset>
+
+        <div class="quiz-feedback">
+          <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+          <p id="explanation" class="explanation" aria-live="polite"></p>
+        </div>
+
+        <div class="quiz-actions">
+          <button id="submit-btn" type="submit" class="primary">Check answer</button>
+          <button id="restart-btn" type="button" class="secondary" hidden>Restart quiz</button>
+        </div>
+      </form>
+
+      <div
+        id="result-summary"
+        class="result-summary"
+        role="status"
+        aria-live="polite"
+        hidden
+      ></div>
+    </section>
+
+    <section id="murmur-diagram" class="card">
+      <h2>Heart Murmur Diagnostic Flow</h2>
+      <p class="card-intro">
+        Use this flowchart to narrow the differential diagnosis when a heart murmur is
+        detected on exam. Follow the timing, quality, and radiation of the sound to focus
+        your differential.
+      </p>
+      <div class="mermaid">
+graph TD
+    A[Heart Murmur Detected] --> B{Timing in Cardiac Cycle}
+    B -->|Systolic| C{Quality and Location}
+    B -->|Diastolic| L{Type of Diastolic Murmur}
+    B -->|Continuous| T[Continuous Murmur<br/>(machine-like?): PDA until proven otherwise]
+    C -->|Harsh, holosystolic<br/>LLSB| D[VSD (check if small vs large; differential: TR)]
+    C -->|Harsh, systolic ejection<br/>LUSB +/- click| E[PS (pulmonic stenosis); if click varies with inspiration, PS confirmed]
+    C -->|Harsh, systolic ejection<br/>RUSB +/- click| F[AS (aortic stenosis); check carotid pulse (parvus et tardus) and BP difference UE vs LE (coarc?)]
+    C -->|Blowing holosystolic<br/>LLSB, radiates to liver| G[TR (tricuspid regurgitation); consider Ebstein if neonatal cyanosis]
+    C -->|Blowing holosystolic<br/>apex, radiates to axilla| H[MR (mitral regurgitation); not primary CHD cause in neonate (think AV canal or MVP in older child)]
+    C -->|Crescendo-decrescendo<br/>LLSB increases on inspiration| I[Hypertrophic Cardiomyopathy (rare in infant, inborn errors or maternal diabetes); in older child with syncope]
+    C -->|High-pitched ejection<br/>infraclavicular, radiates to back| J[Branch Pulmonary Artery Stenosis (common newborn benign murmur, esp. in preemies)]
+    D --> U[Small VSD: loud murmur, thrill, asymptomatic; Large VSD: softer murmur, heart failure]
+    E --> V[Noonan syndrome? Valvuloplasty indicated if gradient high]
+    F --> W[If suprasternal thrill and BP UE&lt;LE, consider supravalvular AS (Williams) vs coarctation]
+    L -->|Rumbling diastolic, apex<br/>with opening snap| M[MS (unlikely congenital except cor triatriatum or neonatal lupus); think rheumatic in teen]
+    L -->|Rumbling diastolic, LLSB<br/>increases on inspiration| N[TS (very rare; think Carcinoid in adult, or neonatal Epstein Barr - not common)]
+    L -->|High-pitched diastolic decrescendo<br/>LUSB| O[Pulmonary Regurgitation (post-TOF repair or PHTN)]
+    L -->|High-pitched diastolic decrescendo<br/>RUSB| P[Aortic Regurgitation (bicuspid AV with regurg, or truncal valve regurg); in infant, think truncus if with cyanosis]
+    L -->|Continuous machine-like<br/>infraclavicular| Q[PDA (or surgical shunt); bounding pulses if large PDA]
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>
+      Built for rapid pediatric cardiology review. Pair the flowchart with targeted practice
+      questions for best retention.
+    </p>
+  </footer>
+
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "forest",
+      themeVariables: {
+        fontFamily: "'Poppins', 'Segoe UI', sans-serif",
+        primaryColor: "#0f766e",
+        primaryTextColor: "#0f172a",
+        primaryBorderColor: "#0f766e",
+        lineColor: "#0891b2",
+        secondaryColor: "#ccfbf1",
+        tertiaryColor: "#f8fafc"
+      }
+    });
+  </script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
