@@ -9,10 +9,9 @@
 - Documented end-to-end functional and non-functional requirements for the gamified congenital heart disease learning platform in `DEVELOPER_GUIDE.md`.
 - Produced a user-facing walkthrough in `USER_GUIDE.md` and a landing-page style prompt pack in `index.html`, `script.js`, and `styles.css`.
 - Added a lightweight Node build pipeline (`build.js` and npm `build` script) to minify and package static assets into `dist/` for distribution.
-- Bootstrapped a Django backend skeleton (`backend/`) with custom user, question, and gamification apps, REST API endpoints, and environment-aware settings.
 
 ## In Progress / Outstanding
-- Harden backend endpoints with permission policies, pagination, and validation; implement content upload tooling and admin workflows.
+- No backend services (Django REST API, database models, authentication) have been created yet.
 - Frontend React application, routing, state management, and quiz experiences are not started.
 - Content ingestion tooling (PowerPoint handling, bulk question import) and admin workflows remain to be implemented.
 - Analytics, gamification logic, leaderboards, and collaborative classroom features are still conceptual only.
@@ -35,8 +34,8 @@
 | Phase 6 – QA, Accessibility, & Deployment | Weeks 10–11 | Conduct accessibility and security reviews, finalize automated tests, prepare deployment pipelines, and launch beta. | WCAG audit fixes, security hardening, CI/CD pipelines, staging & production deployments, monitoring setup. |
 
 ## Immediate Next Steps (Week 1 Checklist)
-1. Resolve package installation restrictions, install Python dependencies, and run initial Django migrations locally.
-2. Configure CI-friendly environment variables and add automated checks for the new backend project scaffold.
+1. Stand up local development environment (Python 3.12, Node.js 20, PostgreSQL) and verify migrations run on an empty database.
+2. Create Django project `chd_platform` with `users`, `questions`, and `gamification` apps; commit initial settings (including DRF and CORS configuration).
 3. Initialize React frontend (TypeScript) with routing, authentication guard scaffolds, and shared UI component library.
 4. Define issue tracker or project board to manage backlog aligned with roadmap phases.
 
