@@ -1,0 +1,8 @@
+{
+  "name": "peds-cardiology-qbank",
+  "version": "1.0.0",
+  "description": "Static build tooling for the pediatric cardiology QBank prompt pack.",
+  "scripts": {
+    "build": "node build.js"
+  }
+}
