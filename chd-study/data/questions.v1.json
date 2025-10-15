@@ -1,0 +1,1406 @@
+[
+  {
+    "id": "ASD_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Atrial Septal Defect (secundum/primum/sinus venosus)",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "A 6-year-old with a secundum ASD has right atrial and ventricular dilation on echocardiogram. Which physiologic consequence best explains this finding?",
+    "options": [
+      "Right atrial and ventricular volume overload from chronic left-to-right shunt",
+      "Systemic hypoxemia from reduced pulmonary blood flow",
+      "Pressure overload of the left ventricle from systemic hypertension",
+      "Obstruction to pulmonary venous return across the atrial septum"
+    ],
+    "answerIndex": 0,
+    "explanation": "Because left atrial pressure exceeds right atrial pressure, secundum ASDs create a left-to-right shunt that chronically volume loads the right heart and pulmonary circulation.",
+    "tags": [
+      "left-to-right shunt",
+      "fixed split S2"
+    ],
+    "difficulty": 2,
+    "objective": "Revisit the hemodynamics that produce right-sided dilation and a fixed, split S2 in ASD.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "ASD_EXAM_2",
+    "topic": "acyanotic",
+    "lesion": "Atrial Septal Defect (secundum/primum/sinus venosus)",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "On physical exam, which auscultatory finding most strongly suggests an atrial septal defect?",
+    "options": [
+      "Fixed, widely split S2 that does not vary with respiration",
+      "Continuous machinery murmur at the left infraclavicular area",
+      "Late systolic murmur with mid-systolic click at the apex",
+      "Holosystolic murmur at the apex radiating to the axilla"
+    ],
+    "answerIndex": 0,
+    "explanation": "A fixed and wide splitting of S2 reflects prolonged right ventricular ejection time from the ASD shunt and is classic for ASD.",
+    "tags": [
+      "fixed split S2",
+      "murmur"
+    ],
+    "difficulty": 1,
+    "objective": "Pair auscultation practice with diagrams of S2 splitting patterns to reinforce ASD recognition.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "VSD_PRESENT_1",
+    "topic": "acyanotic",
+    "lesion": "Ventricular Septal Defect (perimembranous/muscular)",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 2-month-old with a moderate perimembranous VSD has tachypnea, poor weight gain, and a harsh holosystolic murmur at the left lower sternal border. What drives these symptoms?",
+    "options": [
+      "Excess pulmonary blood flow causing pulmonary overcirculation and heart failure",
+      "Systemic hypoxemia from obligate right-to-left shunt",
+      "Acute closure of the ductus arteriosus reducing systemic flow",
+      "Arrhythmia-mediated cardiogenic shock"
+    ],
+    "answerIndex": 0,
+    "explanation": "Large or moderate VSDs deliver significant left-to-right shunting once pulmonary vascular resistance falls, overloading the pulmonary circulation and left heart, leading to CHF symptoms in infancy.",
+    "tags": [
+      "failure to thrive",
+      "holosystolic murmur"
+    ],
+    "difficulty": 1,
+    "objective": "Connect VSD size with timing of symptoms as pulmonary vascular resistance normalizes after birth.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "VSD_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Ventricular Septal Defect (perimembranous/muscular)",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "An infant with a large VSD and failure to thrive remains symptomatic despite adequate calories. What is the best initial management step while awaiting surgical evaluation?",
+    "options": [
+      "Start diuretics and afterload reduction to control pulmonary overcirculation",
+      "Begin prostaglandin E1 to maintain ductal patency",
+      "Recommend endocardial cushion defect repair immediately",
+      "Switch to low-iron formula to reduce metabolic demand"
+    ],
+    "answerIndex": 0,
+    "explanation": "Medical management with diuretics (\u00b1ACE inhibition) alleviates congestive symptoms while definitive repair is arranged for a large VSD.",
+    "tags": [
+      "heart failure therapy"
+    ],
+    "difficulty": 2,
+    "objective": "Review the bridge-to-surgery measures for volume-overload lesions like sizable VSDs.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AVSD_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Atrioventricular Septal Defect (partial/complete)",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "Complete AVSD in a neonate with Down syndrome most commonly causes which hemodynamic issue?",
+    "options": [
+      "Common AV valve regurgitation with massive left-to-right shunting at both atrial and ventricular levels",
+      "Isolated obstruction to pulmonary venous return into the left atrium",
+      "Right ventricular outflow tract obstruction leading to cyanosis",
+      "Severe systemic outflow obstruction causing differential cyanosis"
+    ],
+    "answerIndex": 0,
+    "explanation": "Failure of endocardial cushion fusion creates defects at both septa and a common AV valve, producing significant left-to-right shunting and AV valve regurgitation.",
+    "tags": [
+      "endocardial cushion",
+      "Down syndrome"
+    ],
+    "difficulty": 2,
+    "objective": "Map the shared AV valve anatomy to understand regurgitation and pulmonary overcirculation in AVSD.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AVSD_IMAGING_2",
+    "topic": "acyanotic",
+    "lesion": "Atrioventricular Septal Defect (partial/complete)",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which study best confirms the diagnosis of an atrioventricular septal defect in a symptomatic infant?",
+    "options": [
+      "Transthoracic echocardiogram demonstrating a common AV valve and primum defect",
+      "Chest radiograph showing boot-shaped cardiac silhouette",
+      "Electrocardiogram with right axis deviation and RVH",
+      "Cardiac MRI showing anomalous pulmonary venous return"
+    ],
+    "answerIndex": 0,
+    "explanation": "Echocardiography delineates the common AV valve, inlet VSD, and primum ASD that define AVSD.",
+    "tags": [
+      "echocardiogram",
+      "left axis deviation"
+    ],
+    "difficulty": 2,
+    "objective": "Practice reading apical four-chamber echo views that highlight the primum defect and common valve leaflets.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PDA_EXAM_1",
+    "topic": "acyanotic",
+    "lesion": "Patent Ductus Arteriosus",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "A premature infant has a continuous \u201cmachinery\u201d murmur best heard at the left infraclavicular area. Which lesion does this finding suggest?",
+    "options": [
+      "Patent ductus arteriosus with left-to-right shunt",
+      "Pulmonary stenosis with ejection click",
+      "Coarctation of the aorta with collateral flow",
+      "Tricuspid regurgitation from Ebstein anomaly"
+    ],
+    "answerIndex": 0,
+    "explanation": "The classic continuous machinery murmur localized to the left infraclavicular region signifies persistent ductal flow in PDA.",
+    "tags": [
+      "continuous murmur"
+    ],
+    "difficulty": 1,
+    "objective": "Link murmur timing to hemodynamics\u2014continuous murmurs reflect persistent systolic and diastolic gradients as in PDA.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PDA_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Patent Ductus Arteriosus",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A preterm neonate with respiratory distress syndrome develops a hemodynamically significant PDA. Which initial therapy is most appropriate?",
+    "options": [
+      "Administer indomethacin or ibuprofen to promote ductal closure",
+      "Begin prostaglandin E1 infusion",
+      "Schedule immediate surgical ligation without medical trial",
+      "Start propranolol to reduce ductal flow"
+    ],
+    "answerIndex": 0,
+    "explanation": "Cyclooxygenase inhibitors such as indomethacin/ibuprofen are first-line to close a symptomatic PDA in a premature infant.",
+    "tags": [
+      "indomethacin",
+      "prematurity"
+    ],
+    "difficulty": 2,
+    "objective": "Remember the opposing roles of prostaglandins: inhibit them to close PDA, infuse them to keep duct-dependent lesions open.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PAPVR_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Partial Anomalous Pulmonary Venous Return",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "Partial anomalous pulmonary venous return (PAPVR) most commonly produces which physiologic effect?",
+    "options": [
+      "Left-to-right shunt with right-sided volume overload due to anomalous pulmonary veins draining to the right atrium",
+      "Right-to-left shunt causing profound cyanosis in the newborn period",
+      "Obstruction to pulmonary venous return with pulmonary edema and hemoptysis",
+      "Systemic outflow obstruction leading to upper extremity hypertension"
+    ],
+    "answerIndex": 0,
+    "explanation": "When one or more pulmonary veins drain anomalously to the right atrium or SVC, oxygenated blood recirculates to the right heart, creating a left-to-right shunt and right-sided dilation.",
+    "tags": [
+      "right heart dilation"
+    ],
+    "difficulty": 3,
+    "objective": "Contrast PAPVR with TAPVR\u2014partial lesions are often acyanotic and mimic ASD physiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PAPVR_IMAGING_2",
+    "topic": "acyanotic",
+    "lesion": "Partial Anomalous Pulmonary Venous Return",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which imaging modality best defines the anomalous pulmonary venous connection in PAPVR when echocardiography is inconclusive?",
+    "options": [
+      "Cardiac CT angiography delineating anomalous pulmonary venous drainage",
+      "Chest radiograph demonstrating rib notching",
+      "Electrocardiogram with delta waves",
+      "Holter monitor capturing junctional tachycardia"
+    ],
+    "answerIndex": 0,
+    "explanation": "Cross-sectional imaging (CT or MRI) clearly visualizes anomalous pulmonary venous pathways when transthoracic echo windows are limited.",
+    "tags": [
+      "MRI",
+      "CT angiography"
+    ],
+    "difficulty": 2,
+    "objective": "Know when to escalate from echo to advanced imaging to map pulmonary venous anatomy.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AP_WINDOW_PRESENT_1",
+    "topic": "acyanotic",
+    "lesion": "Aortopulmonary Window",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 3-week-old presents with tachypnea, bounding pulses, and a continuous murmur. Echo shows a communication between the ascending aorta and main pulmonary artery. What explains the rapid heart failure?",
+    "options": [
+      "Massive left-to-right flow from systemic to pulmonary circulation causing pulmonary overcirculation",
+      "Obstruction of pulmonary venous return at the level of the atrium",
+      "Right-to-left shunting across an unrestrictive VSD",
+      "Loss of ductal flow leading to systemic hypoperfusion"
+    ],
+    "answerIndex": 0,
+    "explanation": "An aortopulmonary window allows unregulated systemic flow into the pulmonary artery, driving severe overcirculation and heart failure early in life.",
+    "tags": [
+      "heart failure",
+      "continuous murmur"
+    ],
+    "difficulty": 2,
+    "objective": "Differentiate aortopulmonary window from PDA\u2014location is proximal, but physiology is similar high-flow left-to-right shunt.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AP_WINDOW_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Aortopulmonary Window",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "Initial stabilization of an infant with an aortopulmonary window and heart failure should prioritize which action?",
+    "options": [
+      "Initiate intravenous diuretics and arrange urgent surgical closure",
+      "Begin prostaglandin E1 to maintain ductal flow",
+      "Start high-dose beta blockers to reduce heart rate",
+      "Delay intervention until pulmonary vascular resistance falls"
+    ],
+    "answerIndex": 0,
+    "explanation": "Medical stabilization with diuretics and rapid surgical repair is critical because uncorrected aortopulmonary windows can lead quickly to pulmonary vascular disease.",
+    "tags": [
+      "surgical emergency"
+    ],
+    "difficulty": 3,
+    "objective": "Recognize that aortopulmonary window demands expedited surgical closure similar to large PDA physiology but often more urgent.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "COARC_PRESENT_1",
+    "topic": "acyanotic",
+    "lesion": "Coarctation of the Aorta",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 5-day-old develops poor feeding, lethargy, and lower extremity mottling shortly after the ductus arteriosus closes. Upper extremity pulses are bounding while lower pulses are weak. What lesion best explains this?",
+    "options": [
+      "Coarctation of the aorta causing duct-dependent systemic perfusion",
+      "Tetralogy of Fallot with severe pulmonary stenosis",
+      "Patent ductus arteriosus with large left-to-right shunt",
+      "Total anomalous pulmonary venous return"
+    ],
+    "answerIndex": 0,
+    "explanation": "Critical coarctation relies on a patent ductus for lower body perfusion; closure precipitates shock with differential pulses.",
+    "tags": [
+      "differential pulses"
+    ],
+    "difficulty": 1,
+    "objective": "Associate ductal closure with acute decompensation in duct-dependent systemic lesions like coarctation.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "COARC_IMAGING_2",
+    "topic": "acyanotic",
+    "lesion": "Coarctation of the Aorta",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which chest radiograph finding is classically associated with long-standing coarctation of the aorta in older children?",
+    "options": [
+      "Rib notching from collateral intercostal arteries",
+      "Egg-on-a-string heart silhouette",
+      "Snowman (figure-of-eight) mediastinum",
+      "Boot-shaped heart with upturned apex"
+    ],
+    "answerIndex": 0,
+    "explanation": "Chronic coarctation produces collateral circulation via intercostal arteries, eroding the inferior margins of ribs seen as rib notching.",
+    "tags": [
+      "rib notching",
+      "figure 3 sign"
+    ],
+    "difficulty": 2,
+    "objective": "Link radiographic figure-3 sign and rib notching with coarctation to differentiate from cyanotic imaging patterns.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AS_STEN_EXAM_1",
+    "topic": "acyanotic",
+    "lesion": "Aortic Stenosis (valvar/subvalvar/supravalvar)",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "Which physical exam finding is most consistent with valvar aortic stenosis in an adolescent?",
+    "options": [
+      "Harsh systolic ejection murmur with systolic click at the right upper sternal border",
+      "Diastolic rumble with opening snap at the apex",
+      "Continuous murmur over the left infraclavicular area",
+      "Holosystolic murmur at the left lower sternal border"
+    ],
+    "answerIndex": 0,
+    "explanation": "Valvar aortic stenosis classically produces a systolic ejection murmur and click at the right upper sternal border.",
+    "tags": [
+      "systolic ejection murmur",
+      "click"
+    ],
+    "difficulty": 1,
+    "objective": "Remember that systolic ejection clicks indicate semilunar valve stenosis such as valvar AS or PS.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "AS_STEN_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Aortic Stenosis (valvar/subvalvar/supravalvar)",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A neonate with critical valvar aortic stenosis presents in shock after the ductus arteriosus closes. What is the most important immediate intervention?",
+    "options": [
+      "Start prostaglandin E1 to reopen the ductus and restore systemic perfusion",
+      "Administer high-dose beta blockers",
+      "Schedule elective balloon valvuloplasty next week",
+      "Begin ACE inhibitor therapy alone"
+    ],
+    "answerIndex": 0,
+    "explanation": "Critical neonatal AS is duct-dependent for systemic flow; prostaglandin E1 is lifesaving until balloon valvuloplasty or surgery can be performed.",
+    "tags": [
+      "duct-dependent systemic flow"
+    ],
+    "difficulty": 2,
+    "objective": "Identify which obstructive lesions become duct-dependent systemically and respond to prostaglandin infusion.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PS_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Pulmonary Stenosis (valvar/subvalvar/supravalvar)",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "How does moderate valvar pulmonary stenosis affect right ventricular physiology?",
+    "options": [
+      "Creates systolic pressure overload and post-stenotic dilation of the pulmonary artery",
+      "Causes volume overload with pulmonary overcirculation",
+      "Leads to fixed split S2 from delayed aortic valve closure",
+      "Results in left ventricular hypertrophy due to increased afterload"
+    ],
+    "answerIndex": 0,
+    "explanation": "Pulmonary stenosis imposes pressure overload on the RV, which hypertrophies and produces post-stenotic dilation of the pulmonary artery due to turbulent flow.",
+    "tags": [
+      "right ventricular pressure overload"
+    ],
+    "difficulty": 1,
+    "objective": "Differentiate pressure overload patterns (stenosis) from volume overload (shunts) in lesion pathophysiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PS_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Pulmonary Stenosis (valvar/subvalvar/supravalvar)",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A symptomatic adolescent with valvar pulmonary stenosis has a peak gradient of 70 mm Hg. What is the preferred initial intervention?",
+    "options": [
+      "Balloon pulmonary valvuloplasty to relieve the obstruction",
+      "Observation only because the lesion is benign",
+      "Systemic anticoagulation with warfarin",
+      "Propranolol therapy to reduce myocardial oxygen demand"
+    ],
+    "answerIndex": 0,
+    "explanation": "For significant valvar pulmonary stenosis with symptoms or high gradients, catheter-based balloon valvuloplasty is first-line.",
+    "tags": [
+      "balloon valvuloplasty"
+    ],
+    "difficulty": 2,
+    "objective": "Match severity thresholds with interventions for semilunar valve stenosis in pediatrics.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "BAV_IMAGING_1",
+    "topic": "acyanotic",
+    "lesion": "Bicuspid Aortic Valve",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which echocardiographic feature defines a bicuspid aortic valve?",
+    "options": [
+      "Two functional leaflets with a raphe between fused commissures",
+      "Doming pulmonary valve leaflets in systole",
+      "Membranous ridge below the aortic valve causing subvalvar obstruction",
+      "Supravalvar hourglass narrowing of the ascending aorta"
+    ],
+    "answerIndex": 0,
+    "explanation": "Bicuspid valves have two functional cusps and often a raphe reflecting fused commissures, readily seen on parasternal short-axis echocardiography.",
+    "tags": [
+      "echocardiogram",
+      "raphe"
+    ],
+    "difficulty": 1,
+    "objective": "Review parasternal short-axis views to distinguish bicuspid from tricuspid semilunar valves.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "BAV_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Bicuspid Aortic Valve",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A 14-year-old is incidentally found to have a bicuspid aortic valve with normal gradients. What initial management is recommended?",
+    "options": [
+      "Obtain baseline transthoracic echocardiography and screen first-degree relatives",
+      "Schedule emergent surgical valve replacement",
+      "Start prophylactic indomethacin therapy",
+      "Restrict from all athletics immediately"
+    ],
+    "answerIndex": 0,
+    "explanation": "Bicuspid valves warrant longitudinal surveillance of valve function and aortopathy; family screening is advised due to heritability.",
+    "tags": [
+      "screening relatives"
+    ],
+    "difficulty": 2,
+    "objective": "Pair incidental bicuspid valve findings with counseling on surveillance imaging and family screening.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "SHONE_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Shone Complex",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "What defines the pathophysiology of Shone complex?",
+    "options": [
+      "Multiple left-sided obstructive lesions including supravalvar mitral membrane, parachute mitral valve, subaortic stenosis, and coarctation",
+      "Combination of right ventricular outflow tract obstructions and ASD",
+      "Single ventricle physiology with pulmonary atresia",
+      "Anomalous origin of coronary arteries from the pulmonary artery"
+    ],
+    "answerIndex": 0,
+    "explanation": "Shone complex is a spectrum of left-sided obstructive lesions that together impair pulmonary venous inflow and systemic output.",
+    "tags": [
+      "multilevel left-sided obstruction"
+    ],
+    "difficulty": 3,
+    "objective": "Create a mental checklist of the four classic Shone components to anticipate combined obstruction physiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "SHONE_PRESENT_2",
+    "topic": "acyanotic",
+    "lesion": "Shone Complex",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "An infant with Shone complex presents with tachypnea and pulmonary edema. Which finding is most consistent with the underlying anatomy?",
+    "options": [
+      "Obstruction at multiple levels causing elevated left atrial pressure and pulmonary congestion",
+      "Primary pulmonary venous atresia",
+      "Right-to-left shunting causing systemic cyanosis",
+      "Coronary steal phenomenon from an anomalous origin"
+    ],
+    "answerIndex": 0,
+    "explanation": "Combined mitral and aortic level obstructions in Shone complex raise left atrial pressure, resulting in pulmonary congestion and heart failure symptoms.",
+    "tags": [
+      "pulmonary edema",
+      "mitral obstruction"
+    ],
+    "difficulty": 2,
+    "objective": "Trace the pressure build-up proximally from each obstructive lesion to explain pulmonary edema in Shone complex.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "COR_TRI_PRESENT_1",
+    "topic": "acyanotic",
+    "lesion": "Cor Triatriatum",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 4-month-old has tachypnea, poor feeding, and pulmonary venous congestion despite a structurally normal mitral valve. Echo reveals a membrane within the left atrium. What is the diagnosis?",
+    "options": [
+      "Cor triatriatum causing obstruction to pulmonary venous inflow",
+      "Partial anomalous pulmonary venous return",
+      "Ebstein anomaly",
+      "Total anomalous pulmonary venous return"
+    ],
+    "answerIndex": 0,
+    "explanation": "Cor triatriatum features a fibromuscular membrane dividing the left atrium, obstructing pulmonary venous return and mimicking mitral stenosis.",
+    "tags": [
+      "pulmonary venous obstruction"
+    ],
+    "difficulty": 3,
+    "objective": "Differentiate cor triatriatum from mitral stenosis by noting the intra-atrial membrane on imaging.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "COR_TRI_IMAGING_2",
+    "topic": "acyanotic",
+    "lesion": "Cor Triatriatum",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which imaging study most clearly defines the anatomy of cor triatriatum for surgical planning?",
+    "options": [
+      "Transesophageal echocardiography demonstrating the intra-atrial membrane and fenestration",
+      "Electrocardiogram with left axis deviation",
+      "Chest radiograph with boot-shaped heart",
+      "CT scan showing rib notching"
+    ],
+    "answerIndex": 0,
+    "explanation": "TEE delineates the membrane, its attachments, and fenestrations essential for surgical resection.",
+    "tags": [
+      "transesophageal echo"
+    ],
+    "difficulty": 3,
+    "objective": "Plan imaging escalation\u2014TEE or MRI\u2014to map rare left atrial obstructive lesions like cor triatriatum.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DCRV_PATHO_1",
+    "topic": "acyanotic",
+    "lesion": "Double-Chambered Right Ventricle",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "Double-chambered right ventricle (DCRV) results from which anatomic abnormality?",
+    "options": [
+      "Hypertrophied muscular bundle dividing the right ventricle into high- and low-pressure chambers",
+      "Failure of endocardial cushion fusion",
+      "Absence of the tricuspid valve orifice",
+      "Single arterial trunk overriding a VSD"
+    ],
+    "answerIndex": 0,
+    "explanation": "In DCRV, aberrant muscular bundles create obstruction within the RV cavity, effectively partitioning it.",
+    "tags": [
+      "muscular bundle"
+    ],
+    "difficulty": 3,
+    "objective": "Visualize the intraventricular muscle bundle that produces subinfundibular obstruction in DCRV.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DCRV_IMAGING_2",
+    "topic": "acyanotic",
+    "lesion": "Double-Chambered Right Ventricle",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "What imaging modality best characterizes the obstructing muscle bundle in double-chambered right ventricle?",
+    "options": [
+      "Cardiac MRI or advanced echocardiography showing the anomalous muscle bundle",
+      "Chest radiograph showing snowman sign",
+      "Electrocardiogram with delta wave",
+      "Abdominal ultrasound evaluating the liver"
+    ],
+    "answerIndex": 0,
+    "explanation": "High-resolution imaging (MRI or specialized echo views) is needed to visualize and plan resection of the obstructing RV muscle bundle.",
+    "tags": [
+      "cardiac MRI",
+      "subinfundibular stenosis"
+    ],
+    "difficulty": 2,
+    "objective": "Pair DCRV diagnosis with the role of multimodality imaging for intracardiac anatomy.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "ALCAPA_PRESENT_1",
+    "topic": "acyanotic",
+    "lesion": "Anomalous Left Coronary Artery from the Pulmonary Artery",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 2-month-old develops diaphoresis with feeds, irritability, and signs of heart failure. Echocardiogram shows dilated LV and mitral regurgitation. Which diagnosis best fits?",
+    "options": [
+      "Anomalous left coronary artery from the pulmonary artery causing myocardial ischemia",
+      "Coarctation of the aorta",
+      "Tetralogy of Fallot",
+      "Pulmonary atresia with intact septum"
+    ],
+    "answerIndex": 0,
+    "explanation": "ALCAPA results in coronary steal once pulmonary artery pressures fall, leading to ischemia, LV dysfunction, and MR in early infancy.",
+    "tags": [
+      "ischemia",
+      "infant heart failure"
+    ],
+    "difficulty": 2,
+    "objective": "Connect feeding intolerance, ischemic ECG changes, and MR in infancy with anomalous coronary origin.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "ALCAPA_MGMT_2",
+    "topic": "acyanotic",
+    "lesion": "Anomalous Left Coronary Artery from the Pulmonary Artery",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "What is the key initial management for an infant with suspected ALCAPA presenting in heart failure?",
+    "options": [
+      "Stabilize with inotropes and diuretics while expediting surgical reimplantation of the left coronary artery into the aorta",
+      "Start prostaglandin E1 infusion to open the ductus",
+      "Recommend beta-blocker therapy as definitive treatment",
+      "Advise watchful waiting because it often resolves"
+    ],
+    "answerIndex": 0,
+    "explanation": "Myocardial ischemia mandates urgent surgical correction after stabilizing perfusion; medical therapy alone is insufficient.",
+    "tags": [
+      "surgical emergency"
+    ],
+    "difficulty": 3,
+    "objective": "Remember that ischemic cardiomyopathy in infancy from ALCAPA requires surgical revascularization.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TOF_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "Tetralogy of Fallot",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "What combination of defects causes cyanosis in Tetralogy of Fallot?",
+    "options": [
+      "VSD with overriding aorta, pulmonary stenosis, and right ventricular hypertrophy",
+      "ASD with anomalous pulmonary venous return",
+      "Tricuspid atresia with intact ventricular septum",
+      "Single ventricle physiology with common AV valve"
+    ],
+    "answerIndex": 0,
+    "explanation": "Pulmonary outflow obstruction forces right-to-left shunting across the VSD with overriding aorta, producing cyanosis in TOF.",
+    "tags": [
+      "right-to-left shunt",
+      "RVOT obstruction"
+    ],
+    "difficulty": 1,
+    "objective": "Memorize the four classic components of TOF to reason through cyanosis pathophysiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TOF_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Tetralogy of Fallot",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A toddler with repaired TOF develops a hypercyanotic \u201ctet\u201d spell during play. What immediate maneuver should be attempted first?",
+    "options": [
+      "Place the child in a knee-chest position and provide oxygen",
+      "Administer loop diuretics",
+      "Start high-dose beta blockers long term",
+      "Begin prostaglandin E1 infusion"
+    ],
+    "answerIndex": 0,
+    "explanation": "Knee-chest positioning increases systemic vascular resistance, reducing right-to-left shunting; supplemental oxygen and calming measures follow.",
+    "tags": [
+      "tet spell"
+    ],
+    "difficulty": 2,
+    "objective": "Rehearse the sequence for managing tet spells: knee-chest, oxygen, morphine, beta blockers as needed.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TOF_PA_PRESENT_1",
+    "topic": "cyanotic",
+    "lesion": "TOF with Pulmonary Atresia (VSD + PA)",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A newborn is profoundly cyanotic with no audible pulmonary flow murmur. Echocardiography shows TOF with pulmonary atresia. Why is the ductus arteriosus critical?",
+    "options": [
+      "Pulmonary blood flow depends on the ductus arteriosus supplying the pulmonary arteries",
+      "Systemic blood flow requires ductal runoff to the descending aorta",
+      "Coronary perfusion relies on ductal flow into the coronary arteries",
+      "The ductus is unnecessary once the foramen ovale remains patent"
+    ],
+    "answerIndex": 0,
+    "explanation": "With pulmonary atresia, antegrade flow from the RV is absent; pulmonary circulation is supplied by ductus arteriosus or collateral vessels.",
+    "tags": [
+      "duct-dependent pulmonary flow"
+    ],
+    "difficulty": 3,
+    "objective": "Identify lesions that are duct-dependent for pulmonary flow, including TOF with pulmonary atresia.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TOF_PA_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "TOF with Pulmonary Atresia (VSD + PA)",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "Initial management of a neonate with TOF and pulmonary atresia includes which step?",
+    "options": [
+      "Start prostaglandin E1 to maintain ductal patency and plan staged surgical reconstruction",
+      "Administer indomethacin to close the ductus",
+      "Give diuretics to treat pulmonary congestion",
+      "Delay intervention because cyanosis will self-resolve"
+    ],
+    "answerIndex": 0,
+    "explanation": "Maintaining the ductus is essential to sustain pulmonary blood flow until definitive unifocalization or shunt placement can be performed.",
+    "tags": [
+      "prostaglandin"
+    ],
+    "difficulty": 3,
+    "objective": "Remember: any duct-dependent pulmonary lesion needs prostaglandin infusion upon presentation.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TRICUSPID_ATRESIA_IMAGING_1",
+    "topic": "cyanotic",
+    "lesion": "Tricuspid Atresia",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which ECG finding is classic for tricuspid atresia in the newborn period?",
+    "options": [
+      "Left axis deviation with diminished R waves in the right precordium",
+      "Right axis deviation with tall R waves in V1",
+      "Short PR interval with delta waves",
+      "Diffuse ST elevations with PR depressions"
+    ],
+    "answerIndex": 0,
+    "explanation": "Tricuspid atresia lacks right ventricular forces, yielding left axis deviation and LV-dominant forces on neonatal ECG.",
+    "tags": [
+      "left axis deviation",
+      "single ventricle physiology"
+    ],
+    "difficulty": 2,
+    "objective": "Associate left axis deviation in a cyanotic neonate with tricuspid atresia or AVSD.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TRICUSPID_ATRESIA_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Tricuspid Atresia",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "What is the initial management for a neonate with tricuspid atresia and decreased pulmonary blood flow?",
+    "options": [
+      "Initiate prostaglandin E1 and arrange for atrial septostomy with staged palliation",
+      "Start indomethacin to close the ductus arteriosus",
+      "Begin high-dose diuretics to reduce preload",
+      "Delay intervention until the child is symptomatic with exercise"
+    ],
+    "answerIndex": 0,
+    "explanation": "Maintaining ductal patency ensures pulmonary blood flow while planning staged palliation (BT shunt, Glenn, Fontan).",
+    "tags": [
+      "duct-dependent pulmonary flow"
+    ],
+    "difficulty": 2,
+    "objective": "Pair tricuspid atresia with early prostaglandin therapy and staged single-ventricle palliation.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PAIVS_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "Pulmonary Atresia with Intact Ventricular Septum",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "Pulmonary atresia with intact ventricular septum typically leads to which structural change?",
+    "options": [
+      "Severely hypoplastic right ventricle with hypertrophied tricuspid valve annulus",
+      "Hypertrophied right ventricle with coronary sinusoids due to outflow obstruction",
+      "Dilated left ventricle with mitral regurgitation",
+      "Enlarged pulmonary arteries with high flow murmurs"
+    ],
+    "answerIndex": 1,
+    "explanation": "Severe RV outflow obstruction in PA/IVS results in RV hypertrophy and sinusoids connecting to the coronary circulation, limiting decompression options.",
+    "tags": [
+      "hypoplastic right ventricle"
+    ],
+    "difficulty": 3,
+    "objective": "Differentiate PA/IVS from TOF: intact septum, hypoplastic RV, and coronary sinusoids are hallmarks.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "PAIVS_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Pulmonary Atresia with Intact Ventricular Septum",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "Initial stabilization for a neonate with pulmonary atresia and intact ventricular septum should include which step?",
+    "options": [
+      "Start prostaglandin E1 and plan for urgent valvotomy or shunt with atrial septostomy",
+      "Administer indomethacin to close the ductus",
+      "Begin chronic beta-blocker therapy alone",
+      "Recommend watchful waiting because pulmonary flow is adequate"
+    ],
+    "answerIndex": 0,
+    "explanation": "Maintaining ductal flow plus decompressing the right heart via valvotomy or shunt is required to establish pulmonary blood flow.",
+    "tags": [
+      "prostaglandin",
+      "atrial septostomy"
+    ],
+    "difficulty": 3,
+    "objective": "Remember the dual goals in PA/IVS: keep the duct open and provide a route for pulmonary blood flow.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "EBSTEIN_PRESENT_1",
+    "topic": "cyanotic",
+    "lesion": "Ebstein Anomaly",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "An adolescent with Ebstein anomaly presents with cyanosis, exercise intolerance, and episodes of supraventricular tachycardia. What anatomic feature explains these findings?",
+    "options": [
+      "Apical displacement of the tricuspid valve causing severe tricuspid regurgitation and atrialization of the RV",
+      "Absent pulmonary valve leaflets leading to free pulmonary regurgitation",
+      "Common AV valve with primum defect",
+      "Isolated pulmonary venous obstruction"
+    ],
+    "answerIndex": 0,
+    "explanation": "Ebstein anomaly features apically displaced tricuspid leaflets, severe regurgitation, right atrial dilation, and accessory pathways predisposing to arrhythmias.",
+    "tags": [
+      "tricuspid regurgitation",
+      "arrhythmia"
+    ],
+    "difficulty": 2,
+    "objective": "Link arrhythmia risk and cyanosis in Ebstein anomaly to the atrialized RV and ASD/PFO.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "EBSTEIN_EXAM_2",
+    "topic": "cyanotic",
+    "lesion": "Ebstein Anomaly",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "Which auscultatory finding is expected in Ebstein anomaly?",
+    "options": [
+      "Holosystolic murmur at the left lower sternal border increasing with inspiration",
+      "Continuous machinery murmur at the infraclavicular area",
+      "Ejection click with systolic murmur at the right upper sternal border",
+      "Diastolic rumble with opening snap at the apex"
+    ],
+    "answerIndex": 0,
+    "explanation": "Severe tricuspid regurgitation in Ebstein anomaly produces a holosystolic murmur that intensifies with inspiration due to increased venous return.",
+    "tags": [
+      "murmur",
+      "tricuspid regurgitation"
+    ],
+    "difficulty": 1,
+    "objective": "Remember Carvallo sign\u2014inspiration accentuates right-sided regurgitant murmurs.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DTGA_IMAGING_1",
+    "topic": "cyanotic",
+    "lesion": "d-Transposition of the Great Arteries",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "A term neonate with profound cyanosis has a chest radiograph showing a narrow mediastinum with an \u201cegg-on-a-string\u201d appearance. Which diagnosis is most likely?",
+    "options": [
+      "d-Transposition of the great arteries",
+      "Tetralogy of Fallot",
+      "Total anomalous pulmonary venous return",
+      "Pulmonary atresia with intact septum"
+    ],
+    "answerIndex": 0,
+    "explanation": "The narrow mediastinum and globular heart silhouette (egg-on-a-string) are classic for d-TGA due to great artery malposition.",
+    "tags": [
+      "egg on a string"
+    ],
+    "difficulty": 1,
+    "objective": "Match hallmark CXR findings with cyanotic lesions: egg-on-a-string for d-TGA, boot-shaped heart for TOF.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DTGA_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "d-Transposition of the Great Arteries",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "What initial management is essential for a newborn with d-TGA and restrictive atrial septum?",
+    "options": [
+      "Start prostaglandin E1 and perform balloon atrial septostomy to improve mixing",
+      "Administer indomethacin to close the ductus arteriosus",
+      "Begin ACE inhibitor therapy for afterload reduction",
+      "Schedule elective repair at 6 months without interim intervention"
+    ],
+    "answerIndex": 0,
+    "explanation": "Maintaining ductal patency and creating an adequate atrial level shunt allow systemic oxygenation until arterial switch surgery.",
+    "tags": [
+      "balloon atrial septostomy",
+      "prostaglandin"
+    ],
+    "difficulty": 2,
+    "objective": "Remember the neonatal sequence for d-TGA: PGE1, balloon atrial septostomy if restrictive, arterial switch.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "LTGA_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "l-Transposition / Congenitally Corrected TGA",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "In congenitally corrected transposition (l-TGA), which statement best describes the circulation?",
+    "options": [
+      "The morphologic right ventricle supports systemic circulation due to atrioventricular and ventriculoarterial discordance",
+      "Pulmonary veins drain directly to the right atrium without an atrial septum",
+      "Both great arteries arise from the right ventricle with no VSD",
+      "Systemic and pulmonary venous blood mix fully in a single ventricle"
+    ],
+    "answerIndex": 0,
+    "explanation": "l-TGA features atrioventricular and ventriculoarterial discordance, so the morphologic RV pumps to the aorta, predisposing it to failure and conduction disease.",
+    "tags": [
+      "ventricular inversion",
+      "systemic RV"
+    ],
+    "difficulty": 3,
+    "objective": "Remember that \u201ccorrected\u201d TGA still requires surveillance because the systemic RV eventually fails and AV block is common.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "LTGA_PRESENT_2",
+    "topic": "cyanotic",
+    "lesion": "l-Transposition / Congenitally Corrected TGA",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "An adolescent with l-TGA develops fatigue and presyncope. ECG shows complete heart block. What explains this finding?",
+    "options": [
+      "Progressive fibrosis of the conduction system in l-TGA leading to AV block",
+      "Electrolyte-induced arrhythmia from dehydration",
+      "Accessory pathway-mediated tachycardia",
+      "Acute myocarditis due to viral infection"
+    ],
+    "answerIndex": 0,
+    "explanation": "The conduction axis is displaced in l-TGA, so progressive AV block is a common presentation in adolescence or adulthood.",
+    "tags": [
+      "conduction block"
+    ],
+    "difficulty": 2,
+    "objective": "Associate l-TGA with conduction abnormalities and the need for pacing in symptomatic block.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TAPVR_IMAGING_1",
+    "topic": "cyanotic",
+    "lesion": "Total Anomalous Pulmonary Venous Return",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which chest radiograph finding suggests unobstructed supracardiac TAPVR?",
+    "options": [
+      "\u201cSnowman\u201d or figure-of-eight mediastinal silhouette",
+      "Boot-shaped heart with decreased pulmonary markings",
+      "Rib notching from collateral flow",
+      "Egg-on-a-string appearance"
+    ],
+    "answerIndex": 0,
+    "explanation": "The snowman sign reflects enlarged vertical vein and SVC in unobstructed supracardiac TAPVR.",
+    "tags": [
+      "snowman sign"
+    ],
+    "difficulty": 1,
+    "objective": "Correlate chest radiograph patterns with cyanotic CHD differentials to speed recognition.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TAPVR_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Total Anomalous Pulmonary Venous Return",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A neonate with obstructed infracardiac TAPVR is in respiratory distress with severe hypoxemia. What is the priority management?",
+    "options": [
+      "Urgent surgical repair to relieve pulmonary venous obstruction",
+      "Observation because pulmonary blood flow is adequate",
+      "Start indomethacin to close the ductus arteriosus",
+      "Administer high-dose diuretics and wait"
+    ],
+    "answerIndex": 0,
+    "explanation": "Obstructed TAPVR is a surgical emergency requiring immediate repair to restore pulmonary venous drainage.",
+    "tags": [
+      "obstructed TAPVR"
+    ],
+    "difficulty": 3,
+    "objective": "Recognize the difference between unobstructed (stable) and obstructed (emergent) TAPVR presentations.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TRUNCUS_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "Truncus Arteriosus",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "What anatomic lesion defines truncus arteriosus?",
+    "options": [
+      "Single arterial trunk giving rise to systemic, pulmonary, and coronary circulations with VSD",
+      "Absent pulmonary valve leaflets with free regurgitation",
+      "Single ventricle receiving systemic and pulmonary venous return",
+      "Right ventricular outflow obstruction with intact ventricular septum"
+    ],
+    "answerIndex": 0,
+    "explanation": "Truncus arteriosus features a single arterial trunk overriding a VSD, supplying both systemic and pulmonary circulations.",
+    "tags": [
+      "single arterial trunk"
+    ],
+    "difficulty": 1,
+    "objective": "Connect persistent truncus arteriosus with failure of conotruncal septation and DiGeorge associations.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "TRUNCUS_EXAM_2",
+    "topic": "cyanotic",
+    "lesion": "Truncus Arteriosus",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "Which physical finding is typical in an infant with truncus arteriosus?",
+    "options": [
+      "Single loud S2 with bounding pulses due to diastolic runoff",
+      "Fixed split S2 with right ventricular heave",
+      "Harsh crescendo-decrescendo murmur at the right upper sternal border",
+      "Holosystolic murmur at the apex radiating to the axilla"
+    ],
+    "answerIndex": 0,
+    "explanation": "Truncus arteriosus often has a single S2 (single semilunar valve) and bounding pulses from diastolic runoff into the pulmonary circulation.",
+    "tags": [
+      "single S2",
+      "bounding pulses"
+    ],
+    "difficulty": 2,
+    "objective": "Link single S2 and wide pulse pressure with truncus arteriosus pathophysiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DORV_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "Double Outlet Right Ventricle",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "What defines double outlet right ventricle?",
+    "options": [
+      "Both great arteries arise predominantly from the right ventricle with a VSD supplying systemic output",
+      "Single arterial trunk overrides a VSD",
+      "Right ventricular outflow obstruction with intact septum",
+      "Left ventricular outflow tract obstruction with ductal dependence"
+    ],
+    "answerIndex": 0,
+    "explanation": "In DORV, both aorta and pulmonary artery originate from the RV; systemic flow depends on VSD location relative to the great vessels.",
+    "tags": [
+      "VSD location"
+    ],
+    "difficulty": 2,
+    "objective": "Relate VSD position in DORV to physiology\u2014subaortic VSD behaves like VSD, subpulmonic like TGA (Taussig-Bing).",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "DORV_IMAGING_2",
+    "topic": "cyanotic",
+    "lesion": "Double Outlet Right Ventricle",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which imaging study best characterizes the relationship of the VSD to the great arteries in DORV?",
+    "options": [
+      "Echocardiography delineating VSD location and outflow tract relationships",
+      "Chest radiograph with boot-shaped heart",
+      "Electrocardiogram showing left axis deviation",
+      "Pulse oximetry trend showing differential saturations"
+    ],
+    "answerIndex": 0,
+    "explanation": "Detailed echocardiography demonstrates whether the VSD is subaortic, subpulmonic, or doubly committed, guiding surgical planning.",
+    "tags": [
+      "echocardiogram"
+    ],
+    "difficulty": 3,
+    "objective": "Practice interpreting segmental echocardiographic anatomy to plan DORV repairs.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "HLHS_PRESENT_1",
+    "topic": "cyanotic",
+    "lesion": "Hypoplastic Left Heart Syndrome",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A 2-day-old with hypoplastic left heart syndrome becomes gray and hypotensive after the ductus arteriosus begins to close. What explains this deterioration?",
+    "options": [
+      "Loss of ductal flow eliminates systemic perfusion because the right ventricle supplies the body",
+      "Pulmonary overcirculation from increased left-to-right shunting",
+      "Sudden obstruction of pulmonary venous return",
+      "Acute arrhythmia due to accessory pathways"
+    ],
+    "answerIndex": 0,
+    "explanation": "In HLHS, systemic output depends on the ductus; closure results in shock and acidosis.",
+    "tags": [
+      "duct-dependent systemic flow"
+    ],
+    "difficulty": 2,
+    "objective": "Connect ductal dependency of systemic lesions (HLHS, critical AS, coarctation) with the need for emergent PGE1.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "HLHS_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Hypoplastic Left Heart Syndrome",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "What is the immediate management for a neonate with HLHS who develops shock as the ductus closes?",
+    "options": [
+      "Initiate prostaglandin E1 infusion and stabilize for Stage I Norwood palliation",
+      "Administer high-dose diuretics only",
+      "Delay intervention until ventricular function improves",
+      "Close the ductus to prevent pulmonary steal"
+    ],
+    "answerIndex": 0,
+    "explanation": "Reopening the ductus with prostaglandin restores systemic perfusion while preparing for staged surgical palliation.",
+    "tags": [
+      "prostaglandin",
+      "staged palliation"
+    ],
+    "difficulty": 3,
+    "objective": "Remember the Norwood-Glenn-Fontan sequence and the need for PGE1 in duct-dependent systemic lesions.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "SINGLE_V_PATHO_1",
+    "topic": "cyanotic",
+    "lesion": "Single-Ventricle Physiology (e.g., double inlet LV, Fontan)",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "What hemodynamic principle underlies Fontan circulation in single-ventricle physiology?",
+    "options": [
+      "Systemic venous blood flows passively to the pulmonary arteries without a subpulmonary ventricle",
+      "Pulmonary venous blood drains directly into the right atrium causing cyanosis",
+      "Right-to-left shunt across an atrial septal defect provides systemic output",
+      "Left ventricle pumps both systemic and pulmonary circulations simultaneously"
+    ],
+    "answerIndex": 0,
+    "explanation": "Fontan physiology depends on low pulmonary vascular resistance so venous blood can flow passively to the lungs, freeing the single ventricle for systemic output.",
+    "tags": [
+      "Fontan circulation"
+    ],
+    "difficulty": 2,
+    "objective": "Recall the vulnerabilities of Fontan circulation\u2014elevated pulmonary pressures or dehydration compromise preload.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "SINGLE_V_MGMT_2",
+    "topic": "cyanotic",
+    "lesion": "Single-Ventricle Physiology (e.g., double inlet LV, Fontan)",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A newborn with suspected single-ventricle physiology and diminished systemic perfusion is evaluated. What initial management is appropriate?",
+    "options": [
+      "Start prostaglandin E1 to maintain ductal patency while planning staged palliation",
+      "Discontinue oxygen to promote ductal closure",
+      "Treat with loop diuretics only",
+      "Delay evaluation until symptoms worsen"
+    ],
+    "answerIndex": 0,
+    "explanation": "Many single-ventricle lesions are duct-dependent for either systemic or pulmonary blood flow; prostaglandin buys time for diagnostic workup and surgical planning.",
+    "tags": [
+      "duct-dependent",
+      "staged palliation"
+    ],
+    "difficulty": 2,
+    "objective": "Recognize the consistent role of PGE1 in stabilizing duct-dependent single-ventricle neonates.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_MURMUR_VSD",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Murmurs",
+    "category": "exam/murmur",
+    "type": "mcq",
+    "stem": "A harsh holosystolic murmur with a palpable thrill at the left lower sternal border is most consistent with which lesion?",
+    "options": [
+      "Ventricular septal defect",
+      "Pulmonary stenosis",
+      "Patent ductus arteriosus",
+      "Aortic regurgitation"
+    ],
+    "answerIndex": 0,
+    "explanation": "A loud holosystolic murmur with thrill at the left lower sternal border typifies a sizable VSD.",
+    "tags": [
+      "murmur recognition"
+    ],
+    "difficulty": 1,
+    "objective": "Use location, timing, and thrill to distinguish murmurs: VSD (LLSB holosystolic), PDA (continuous), AS (RUSB ejection).",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_SHUNT_EISENMENGER",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Shunt Physiology",
+    "category": "pathophysiology",
+    "type": "mcq",
+    "stem": "A teenager with unrepaired large VSD develops exertional cyanosis and clubbing. What pathophysiologic change best explains this?",
+    "options": [
+      "Pulmonary vascular remodeling increased resistance leading to reversal of shunt (Eisenmenger syndrome)",
+      "Acute ductal closure decreasing pulmonary blood flow",
+      "Sudden drop in systemic vascular resistance producing right-to-left atrial shunting",
+      "Loss of atrial septal tissue causing free mixing"
+    ],
+    "answerIndex": 0,
+    "explanation": "Long-standing large left-to-right shunts cause pulmonary vascular disease that reverses the shunt direction, producing cyanosis.",
+    "tags": [
+      "eisenmenger"
+    ],
+    "difficulty": 2,
+    "objective": "Connect chronic volume-loaded lesions to pulmonary hypertension and Eisenmenger physiology.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_HYPEROXIA",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Hyperoxia Test",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "A cyanotic neonate has a PaO2 that remains &lt;100 mm Hg after breathing 100% oxygen. What does this hyperoxia test result suggest?",
+    "options": [
+      "Presence of cyanotic congenital heart disease with mixing rather than primary lung disease",
+      "Severe surfactant deficiency as the primary cause of hypoxemia",
+      "Normal transition to extrauterine life",
+      "Methemoglobinemia due to oxidant stress"
+    ],
+    "answerIndex": 0,
+    "explanation": "Failure to raise PaO2 with 100% oxygen implies shunting/mixing typical of cyanotic CHD rather than parenchymal lung disease.",
+    "tags": [
+      "diagnostics"
+    ],
+    "difficulty": 2,
+    "objective": "Incorporate hyperoxia test interpretation into neonatal cyanosis algorithms.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_PGE1",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Prostaglandin Strategy",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "Which scenario most clearly requires immediate prostaglandin E1 infusion?",
+    "options": [
+      "Newborn with suspected duct-dependent systemic flow (shock after ductal closure)",
+      "Term infant with mild PPS murmur and normal perfusion",
+      "Adolescent with asymptomatic bicuspid aortic valve",
+      "Infant with small muscular VSD and no heart failure"
+    ],
+    "answerIndex": 0,
+    "explanation": "Duct-dependent systemic lesions such as HLHS or critical coarctation require emergent prostaglandin to restore systemic perfusion.",
+    "tags": [
+      "duct-dependent"
+    ],
+    "difficulty": 2,
+    "objective": "When in doubt in a shocky neonate with differential pulses, start PGE1 while obtaining imaging.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_ECG_AXIS",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: ECG Patterns",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "Which lesion is classically associated with left axis deviation on neonatal ECG?",
+    "options": [
+      "Tricuspid atresia",
+      "Tetralogy of Fallot",
+      "Pulmonary stenosis",
+      "d-Transposition of the great arteries"
+    ],
+    "answerIndex": 0,
+    "explanation": "Left axis deviation with diminished right-sided forces suggests tricuspid atresia or AVSD.",
+    "tags": [
+      "axis deviation"
+    ],
+    "difficulty": 2,
+    "objective": "Memorize hallmark ECG axes: left axis for AV canal/tricuspid atresia, right axis for TOF/PA-IVS.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_PULM_FLOW",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Pulmonary Blood Flow",
+    "category": "imaging_ecg_cxr",
+    "type": "mcq",
+    "stem": "A cyanotic infant\u2019s chest radiograph shows oligemic (dark) lung fields. What does this pattern indicate?",
+    "options": [
+      "Decreased pulmonary blood flow such as severe pulmonary stenosis or TOF",
+      "Pulmonary edema from TAPVR obstruction",
+      "Increased pulmonary blood flow from large left-to-right shunts",
+      "Normal transitional circulation"
+    ],
+    "answerIndex": 0,
+    "explanation": "Dark lung fields with paucity of vascular markings signal decreased pulmonary blood flow common in TOF spectrum lesions.",
+    "tags": [
+      "CXR interpretation"
+    ],
+    "difficulty": 2,
+    "objective": "Compare oligemic vs plethoric lung fields when differentiating cyanotic lesions on imaging.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_SAT_GAP",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Saturation Gaps",
+    "category": "presentation",
+    "type": "mcq",
+    "stem": "A neonate has higher preductal (right arm) oxygen saturation than postductal (leg) saturation. Which physiology best explains this differential cyanosis?",
+    "options": [
+      "Duct-dependent systemic lesion such as coarctation causing lower-body hypoxemia after ductal constriction",
+      "Primary lung disease with uniform shunting",
+      "Patent foramen ovale with transient right-to-left shunt",
+      "Methemoglobinemia"
+    ],
+    "answerIndex": 0,
+    "explanation": "Lower extremity desaturation with preserved right arm saturation indicates ductal flow supplying systemic circulation, as in coarctation or interrupted aortic arch.",
+    "tags": [
+      "differential cyanosis"
+    ],
+    "difficulty": 2,
+    "objective": "Use pre/postductal saturation gaps to triage duct-dependent systemic lesions.",
+    "references": [],
+    "version": "v1"
+  },
+  {
+    "id": "CROSS_IMAGING_FIRST",
+    "topic": "cross-cutting",
+    "lesion": "Cross-cutting: Initial Imaging",
+    "category": "management_initial",
+    "type": "mcq",
+    "stem": "For a stable infant with suspected CHD after abnormal pulse oximetry screening, what is the best initial imaging modality?",
+    "options": [
+      "Transthoracic echocardiography to define anatomy and physiology",
+      "Cardiac catheterization in all patients",
+      "MRI of the chest as first-line",
+      "No imaging is needed if the infant is stable"
+    ],
+    "answerIndex": 0,
+    "explanation": "Echocardiography is the noninvasive gold standard to evaluate suspected congenital heart disease in infants.",
+    "tags": [
+      "diagnostic strategy"
+    ],
+    "difficulty": 2,
+    "objective": "Remember to escalate to echo promptly after abnormal screens; advanced imaging follows as needed.",
+    "references": [],
+    "version": "v1"
+  }
+]
