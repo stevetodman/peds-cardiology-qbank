@@ -10,6 +10,7 @@
 - Produced a user-facing walkthrough in `USER_GUIDE.md` and a landing-page style prompt pack in `index.html`, `script.js`, and `styles.css`.
 - Added a lightweight Node build pipeline (`build.js` and npm `build` script) to minify and package static assets into `dist/` for distribution.
 - Delivered a self-contained Python backend (`backend/`) with JSON persistence, reusable service logic, and an HTTP API implemented via the standard library.
+- Streamlined local execution with a `python backend/manage.py demo` workflow that seeds the database and launches the API in a single step.
 
 ## In Progress / Outstanding
 - Integrate the static site (or a future React app) with the live API for quiz play, authentication, and progress dashboards.

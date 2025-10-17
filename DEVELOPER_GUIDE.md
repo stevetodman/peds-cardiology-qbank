@@ -54,13 +54,13 @@ Only Python 3.11+ and Node.js 18+ are required. No package downloads are necessa
 
 ### Backend Quick Start
 ```bash
-# 1. Optionally seed the JSON database with sample content
-python backend/manage.py seed
+# 1. Run the demo workflow (seeds bundled data and starts the server)
+python backend/manage.py demo
 
 # 2. Validate the storage schema and content integrity
 python backend/manage.py check
 
-# 3. Run the HTTP API on http://127.0.0.1:8000
+# 3. (Optional) Run the HTTP API without reseeding
 python backend/manage.py runserver
 ```
 
@@ -111,7 +111,7 @@ The backend is broken into focused modules so the core logic remains portable.
 - Provides permissive CORS headers so the static frontend or external tools can call the API.
 
 ### `manage.py`
-- Supplies three commands: `check`, `seed`, and `runserver`.
+- Supplies four commands: `check`, `seed`, `runserver`, and the new `demo` helper that seeds and serves in one step.
 - Works whether invoked as `python backend/manage.py check` or `python -m backend.manage check` thanks to path bootstrapping logic.
 
 ---

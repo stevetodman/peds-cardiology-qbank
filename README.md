@@ -8,7 +8,7 @@ Alongside the documentation, the repository now includes a lightweight Python ba
 
 1. Open `index.html` in your browser to load the prompt pack experience.
 2. Follow the "Quick Start Workflow" section on the page to see the recommended four-step process.
-3. If you want to experiment with the interactive backend, run `python backend/manage.py seed` and `python backend/manage.py runserver` to expose the REST API locally.
+3. If you want to experiment with the interactive backend, run `python backend/manage.py demo` to seed sample data and expose the REST API locally in one step.
 4. Use the sticky navigation to jump to system instructions, blueprint tables, batch prompts, and quality controls as needed.
 
 For a non-technical walkthrough, tips, and troubleshooting advice, read the [User Guide](USER_GUIDE.md).

@@ -21,8 +21,12 @@ else:
     from .storage import Database
 
 
+def _database_from_args(args: argparse.Namespace) -> Database:
+    return Database(Path(args.database)) if args.database else Database.default()
+
+
 def command_check(args: argparse.Namespace) -> int:
-    db = Database(Path(args.database) if args.database else Database.default().path)
+    db = _database_from_args(args)
     try:
         db.ensure_schema()
         objectives = list_objectives(db)
@@ -34,14 +38,27 @@ def command_check(args: argparse.Namespace) -> int:
 
 
 def command_runserver(args: argparse.Namespace) -> int:
-    run_server(host=args.host, port=args.port, db_path=args.database)
+    db = _database_from_args(args)
+    db.ensure_schema()
+    run_server(host=args.host, port=args.port, db_path=str(db.path))
     return 0
 
 
 def command_seed(args: argparse.Namespace) -> int:
-    db = Database(Path(args.database) if args.database else Database.default().path)
+    db = _database_from_args(args)
     db.wipe_and_seed(sample_data.SEED_STATE)
     print(f"Seeded database with {len(sample_data.OBJECTIVES)} objectives and {len(sample_data.QUESTIONS)} questions.")
+    return 0
+
+
+def command_demo(args: argparse.Namespace) -> int:
+    db = _database_from_args(args)
+    db.wipe_and_seed(sample_data.SEED_STATE)
+    print(
+        "Database refreshed with bundled sample data. "
+        "Starting server; press Ctrl+C to stop."
+    )
+    run_server(host=args.host, port=args.port, db_path=str(db.path))
     return 0
 
 
@@ -61,6 +78,14 @@ def build_parser() -> argparse.ArgumentParser:
 
     seed_cmd = subcommands.add_parser("seed", help="Reset the database with bundled sample data")
     seed_cmd.set_defaults(func=command_seed)
+
+    demo_cmd = subcommands.add_parser(
+        "demo",
+        help="Seed the database with sample data and start the HTTP API server in one step",
+    )
+    demo_cmd.add_argument("--host", default=DEFAULT_HOST)
+    demo_cmd.add_argument("--port", default=DEFAULT_PORT, type=int)
+    demo_cmd.set_defaults(func=command_demo)
 
     return parser
 
