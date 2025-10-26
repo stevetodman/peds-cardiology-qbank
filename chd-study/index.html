@@ -1,0 +1,690 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M2 CHD Study & Quiz Companion</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --text: #1d1f2b;
+      --muted: #5a6272;
+      --accent: #0b7285;
+      --accent-light: #96d9e4;
+      --danger: #b00020;
+      --success: #0f7b0f;
+      --shadow: 0 8px 20px rgba(15, 30, 80, 0.12);
+      --border: #d8deed;
+      --font-stack: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    body.dark {
+      --bg: #0e1016;
+      --surface: #181b24;
+      --text: #e9edf5;
+      --muted: #a5adc4;
+      --accent: #63c4d6;
+      --accent-light: rgba(99, 196, 214, 0.2);
+      --danger: #ff6b6b;
+      --success: #58d68d;
+      --border: #2c3242;
+      --shadow: 0 12px 28px rgba(5, 8, 18, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-stack);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 10px;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      z-index: 2000;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    header {
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .banner {
+      background: linear-gradient(120deg, rgba(11,114,133,0.85), rgba(15,21,70,0.85));
+      color: #fff;
+      padding: 0.75rem 1.2rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .topbar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    .dark-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      cursor: pointer;
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    nav button {
+      border: 1px solid transparent;
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      background: transparent;
+      cursor: pointer;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    nav button.active, nav button:focus {
+      outline: none;
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    main {
+      flex: 1;
+      padding: 1rem;
+      width: min(1100px, 100%);
+      margin: 0 auto 4rem auto;
+    }
+
+    .panel {
+      display: none;
+      background: var(--surface);
+      border-radius: 18px;
+      padding: clamp(1rem, 2vw, 2.5rem);
+      box-shadow: var(--shadow);
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .card {
+      background: rgba(255,255,255,0.6);
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    body.dark .card {
+      background: rgba(24, 27, 36, 0.7);
+    }
+
+    button.primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(11,114,133,0.4);
+    }
+
+    button.primary:focus-visible {
+      outline: 3px solid var(--accent-light);
+    }
+
+    button.secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    button.secondary:focus-visible {
+      outline: 3px solid var(--accent-light);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .quick-actions button {
+      flex: 1 1 180px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-right: 0.4rem;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    select, input, textarea {
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.65rem;
+      font: inherit;
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .question {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: rgba(11,114,133,0.05);
+    }
+
+    body.dark .question {
+      background: rgba(99,196,214,0.1);
+    }
+
+    .choices {
+      display: grid;
+      gap: 0.6rem;
+      margin: 1rem 0;
+    }
+
+    .choice {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.6rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .choice input {
+      margin-top: 0.2rem;
+    }
+
+    .choice.correct {
+      border-color: var(--success);
+      background: rgba(15,123,15,0.12);
+    }
+
+    .choice.incorrect {
+      border-color: var(--danger);
+      background: rgba(176,0,32,0.12);
+    }
+
+    .feedback {
+      min-height: 2rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 10px;
+      background: rgba(10, 120, 100, 0.08);
+      border: 1px solid transparent;
+      margin-top: 0.6rem;
+    }
+
+    .feedback.error {
+      background: rgba(176,0,32,0.12);
+      border-color: rgba(176,0,32,0.3);
+      color: var(--danger);
+    }
+
+    .feedback.success {
+      background: rgba(15,123,15,0.12);
+      border-color: rgba(15,123,15,0.3);
+      color: var(--success);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: rgba(12,60,80,0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0.6rem 0 1rem;
+    }
+
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), #4cc2d4);
+      transition: width 0.3s ease;
+    }
+
+    .timer {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .pill-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .result-table th, .result-table td {
+      padding: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .result-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .flagged {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    .review-controls {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+
+    .review-controls button {
+      flex: 1 1 120px;
+      padding: 0.6rem;
+      border-radius: 999px;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .again { background: #d0455f; }
+    .hard { background: #ff9f1c; color: #3b2d04; }
+    .good { background: #2b9348; }
+    .easy { background: #40916c; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (min-width: 900px) {
+      .topbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav {
+        justify-content: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header>
+    <div class="banner" role="status">Educational resource only — not a substitute for medical advice or emergency management. No PHI stored.</div>
+    <div class="topbar">
+      <div class="brand">
+        <h1>Congenital Heart Disease Companion</h1>
+        <button id="darkToggle" class="dark-toggle" aria-pressed="false" type="button">
+          <span aria-hidden="true">🌙</span>
+          <span>Toggle dark mode</span>
+        </button>
+      </div>
+      <nav aria-label="Primary">
+        <button class="active" data-panel="home" type="button">Home</button>
+        <button data-panel="study" type="button">Study</button>
+        <button data-panel="quiz" type="button">Quiz</button>
+        <button data-panel="review" type="button">Review</button>
+        <button data-panel="admin" type="button">Admin</button>
+      </nav>
+    </div>
+  </header>
+  <main id="main-content">
+    <section id="home" class="panel active" tabindex="-1">
+      <h2>Welcome, M2!</h2>
+      <p>Master congenital heart disease with targeted study, adaptive quizzing, and an on-device authoring workflow.</p>
+      <div class="grid two">
+      <div class="card">
+        <h3>Quick actions</h3>
+        <div class="actions quick-actions">
+          <button class="primary" data-action="start-quiz">Start Quiz</button>
+          <button class="secondary" data-action="open-study">Study by Topic</button>
+          <button class="secondary" data-action="continue-review">Continue Review</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Import / Export</h3>
+        <p>Back up or load your local question edits, quiz history, and review queue. Data stays on this device.</p>
+        <div class="actions">
+          <button class="secondary" id="exportJson" type="button">Download JSON</button>
+          <button class="secondary" id="copyExport" type="button">Copy export to clipboard</button>
+        </div>
+        <label>Paste JSON to import
+          <textarea id="importArea" aria-label="Paste JSON data"></textarea>
+        </label>
+        <div class="actions">
+          <button class="primary" id="importJson" type="button">Import data</button>
+          <button class="secondary" id="clearData" type="button">Reset local data</button>
+        </div>
+        <div id="importSummary" class="status-pill" aria-live="polite"></div>
+      </div>
+    </div>
+    <p id="loaderNotice" class="status-pill" aria-live="polite">Loading question bank…</p>
+      <article class="card" style="margin-top:1rem;">
+        <h3>How this tool works</h3>
+        <ul>
+          <li>Study mode walks through filtered questions with instant feedback, anchored around CHD lesion categories.</li>
+          <li>Quiz mode builds configurable assessments with timer, keyboard shortcuts, and targeted remediation.</li>
+          <li>Review mode surfaces missed items via an SM-2 spaced schedule that lives in your browser.</li>
+          <li>Admin mode lets you locally author, bulk import, or tweak questions—ideal for collaborative team study.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="study" class="panel" tabindex="-1">
+      <h2>Study by Topic</h2>
+      <p>Select filters to focus on specific lesions, pathophysiology themes, or difficulty tiers. Work one question at a time with immediate rationale.</p>
+      <div class="filters" role="group" aria-label="Study filters">
+        <label for="studyClassification">Cyanosis</label>
+        <select id="studyClassification">
+          <option value="all">All</option>
+          <option value="acyanotic">Acyanotic</option>
+          <option value="cyanotic">Cyanotic</option>
+          <option value="cross">Cross-cutting</option>
+        </select>
+        <label for="studyLesion">Lesion group</label>
+        <select id="studyLesion">
+          <option value="all">All</option>
+        </select>
+        <label for="studyCategory">Category</label>
+        <select id="studyCategory">
+          <option value="all">All</option>
+        </select>
+        <label for="studyDifficulty">Difficulty</label>
+        <select id="studyDifficulty">
+          <option value="all">All</option>
+          <option value="foundation">Foundation</option>
+          <option value="core">Core</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </div>
+      <div class="question" aria-live="polite">
+        <div id="studyMeta" class="pill-group"></div>
+        <h3 id="studyPrompt"></h3>
+        <div id="studyChoices" class="choices"></div>
+        <div class="actions">
+          <button class="primary" id="studySubmit" type="button">Check answer</button>
+          <button class="secondary" id="studyReveal" type="button">Reveal rationale</button>
+          <button class="secondary" id="studyNext" type="button">Next question</button>
+        </div>
+        <div id="studyFeedback" class="feedback" aria-live="assertive"></div>
+      </div>
+      <p id="studyStatus" class="status-pill" aria-live="polite"></p>
+    </section>
+
+    <section id="quiz" class="panel" tabindex="-1">
+      <h2>Quiz yourself</h2>
+      <div id="quizConfig" class="card">
+        <h3>Configure quiz</h3>
+        <form id="quizForm">
+          <div class="filters" role="group" aria-label="Quiz filters">
+            <label for="quizLesions">Choose lesions / tags
+              <select id="quizLesions" multiple size="8" aria-describedby="lesionHelp"></select>
+            </label>
+            <label for="quizCategory">Category
+              <select id="quizCategory">
+                <option value="all">All</option>
+              </select>
+            </label>
+            <label for="quizDifficulty">Difficulty
+              <select id="quizDifficulty">
+                <option value="all">All</option>
+                <option value="foundation">Foundation</option>
+                <option value="core">Core</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </label>
+            <label for="quizCount">Number of questions
+              <input id="quizCount" type="number" min="1" max="60" value="10" />
+            </label>
+            <label for="quizTimer">Timer (minutes)
+              <input id="quizTimer" type="number" min="0" max="120" value="0" />
+            </label>
+          </div>
+          <p id="lesionHelp">Use Ctrl/Cmd + click to select multiple lesion groups.</p>
+          <div class="actions">
+            <button class="primary" type="submit">Start quiz</button>
+            <button class="secondary" type="button" id="loadMissed">Load missed items</button>
+          </div>
+        </form>
+      </div>
+      <div id="quizTake" class="card" hidden>
+        <div class="progress-bar" aria-hidden="true"><span id="quizProgress"></span></div>
+        <div class="pill-group" style="justify-content: space-between; align-items: center;">
+          <span id="quizCounter" class="pill"></span>
+          <span id="quizTimerDisplay" class="timer" aria-live="polite"></span>
+        </div>
+        <div id="quizMeta" class="pill-group" aria-live="polite"></div>
+        <h3 id="quizPrompt"></h3>
+        <div id="quizChoices" class="choices" role="radiogroup"></div>
+        <div class="actions">
+          <button class="secondary" id="quizFlag" type="button">Flag for review</button>
+          <button class="primary" id="quizSubmit" type="button">Submit</button>
+        </div>
+        <div id="quizFeedback" class="feedback" aria-live="assertive"></div>
+      </div>
+      <div id="quizResults" class="card" hidden>
+        <h3>Results</h3>
+        <p id="quizSummary"></p>
+        <div id="quizRemediation" class="pill-group"></div>
+        <table class="result-table" aria-label="Performance by lesion">
+          <thead>
+            <tr><th>Lesion</th><th>Correct / Total</th><th>Details</th></tr>
+          </thead>
+          <tbody id="resultTableBody"></tbody>
+        </table>
+        <div class="actions" style="margin-top:1rem;">
+          <button class="primary" type="button" id="retakeQuiz">Retake with same settings</button>
+          <button class="secondary" type="button" id="returnToConfig">Back to configure</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="review" class="panel" tabindex="-1">
+      <h2>Spaced Review</h2>
+      <p>Prioritize items you previously missed or flagged. Ratings use a simplified SM-2 algorithm to schedule future reviews.</p>
+      <div class="card">
+        <div id="reviewStatus" class="pill-group" aria-live="polite"></div>
+        <div id="reviewContent" hidden>
+          <div id="reviewMeta" class="pill-group"></div>
+          <h3 id="reviewPrompt"></h3>
+          <div id="reviewChoices" class="choices"></div>
+          <button class="secondary" id="reviewShow" type="button">Show rationale</button>
+          <div id="reviewRationale" class="feedback"></div>
+          <div class="review-controls">
+            <button class="again" data-quality="1" type="button">Again (1)</button>
+            <button class="hard" data-quality="3" type="button">Hard (3)</button>
+            <button class="good" data-quality="4" type="button">Good (4)</button>
+            <button class="easy" data-quality="5" type="button">Easy (5)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="admin" class="panel" tabindex="-1">
+      <h2>Admin-lite (local authoring)</h2>
+      <p>Create new questions or override existing ones. All edits stay on this device and merge with the core bank.</p>
+      <div class="grid two">
+        <div class="card">
+          <h3>Edit single question</h3>
+          <label for="adminSelect">Select question</label>
+          <select id="adminSelect" size="10" aria-label="Select question to edit"></select>
+          <button class="secondary" id="loadQuestion" type="button">Load question</button>
+          <form id="adminForm" style="margin-top:0.8rem;">
+            <label>ID
+              <input id="adminId" required />
+            </label>
+            <label>Lesion group
+              <input id="adminLesion" required />
+            </label>
+            <label>Short key
+              <input id="adminKey" required />
+            </label>
+            <label>Classification
+              <select id="adminClass">
+                <option value="acyanotic">Acyanotic</option>
+                <option value="cyanotic">Cyanotic</option>
+                <option value="cross">Cross-cutting</option>
+              </select>
+            </label>
+            <label>Category
+              <select id="adminCategory"></select>
+            </label>
+            <label>Difficulty
+              <select id="adminDifficulty">
+                <option value="foundation">Foundation</option>
+                <option value="core">Core</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </label>
+            <label>Tags (comma-separated)
+              <input id="adminTags" />
+            </label>
+            <label>Prompt
+              <textarea id="adminPrompt" required></textarea>
+            </label>
+            <label>Options JSON (array of {"key","text","correct"})
+              <textarea id="adminOptions" required></textarea>
+            </label>
+            <label>Rationale
+              <textarea id="adminRationale" required></textarea>
+            </label>
+            <label>Remediation tip
+              <textarea id="adminRemediation"></textarea>
+            </label>
+            <div class="actions">
+              <button class="primary" type="submit">Save / Override</button>
+              <button class="secondary" id="deleteOverride" type="button">Remove override</button>
+            </div>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Bulk add via JSON</h3>
+          <p>Paste an array of question objects matching the data model. Existing IDs will be overridden.</p>
+          <textarea id="bulkArea" aria-label="Bulk JSON"></textarea>
+          <div class="actions">
+            <button class="primary" id="bulkImport" type="button">Add questions</button>
+            <button class="secondary" id="downloadTemplate" type="button">Copy template</button>
+          </div>
+          <h3>Local question count</h3>
+          <p id="localCount"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>Designed for second-year medical students reviewing congenital heart disease. Feedback welcome—tune the question bank to your needs.</p>
+  </footer>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

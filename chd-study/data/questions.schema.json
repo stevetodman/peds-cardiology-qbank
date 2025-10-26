@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Congenital Heart Disease Question",
+  "description": "Schema for congenital heart disease study questions",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "topic": {
+      "type": "string",
+      "enum": ["acyanotic", "cyanotic", "cross-cutting"]
+    },
+    "lesion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "pathophysiology",
+        "presentation",
+        "exam/murmur",
+        "imaging_ecg_cxr",
+        "management_initial"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "enum": ["mcq", "tf", "multi"]
+    },
+    "stem": {
+      "type": "string",
+      "minLength": 1
+    },
+    "options": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 2
+    },
+    "answerIndex": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "answerIndices": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "minItems": 1
+    },
+    "answerBool": {
+      "type": "boolean"
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "default": 2
+    },
+    "objective": {
+      "type": "string",
+      "default": ""
+    },
+    "references": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "version": {
+      "type": "string",
+      "default": "v1"
+    }
+  },
+  "required": [
+    "id",
+    "topic",
+    "lesion",
+    "category",
+    "type",
+    "stem",
+    "explanation",
+    "tags",
+    "difficulty",
+    "objective",
+    "version"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "mcq" }
+        }
+      },
+      "then": {
+        "required": ["options", "answerIndex"],
+        "properties": {
+          "options": { "minItems": 2 }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "multi" }
+        }
+      },
+      "then": {
+        "required": ["options", "answerIndices"],
+        "properties": {
+          "answerIndices": { "minItems": 2 }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "tf" }
+        }
+      },
+      "then": {
+        "required": ["answerBool"]
+      }
+    }
+  ]
+}
