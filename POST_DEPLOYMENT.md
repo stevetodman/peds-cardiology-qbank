@@ -141,6 +141,35 @@ Enable Vercel Analytics:
 2. Click "Enable"
 3. Free tier includes 2,500 events/month
 
+## ⚠️ CRITICAL: Add Categories to Database
+
+**REQUIRED BEFORE TESTING QBANK**
+
+The QBank feature requires questions to be assigned to categories. Without this, the "Start Practice" button will be greyed out.
+
+### Option A: Quick Fix (if you have questions already)
+Run this in Supabase SQL Editor:
+```sql
+-- Insert categories
+INSERT INTO categories (name)
+VALUES
+  ('Congenital Heart Disease'),
+  ('Arrhythmias'),
+  ('Heart Failure'),
+  ('Acquired Heart Disease')
+ON CONFLICT (name) DO NOTHING;
+
+-- Update existing questions
+UPDATE questions
+SET category_id = (SELECT id FROM categories WHERE name = 'Congenital Heart Disease')
+WHERE category_id IS NULL;
+```
+
+### Option B: Complete Sample Data (fresh start)
+Run the SQL from `sample-data.sql` file in your Supabase SQL Editor.
+
+**See `QBANK-FIX.md` for detailed troubleshooting if button remains greyed out.**
+
 ## Testing Checklist
 
 After configuration:
@@ -150,11 +179,18 @@ After configuration:
 - [ ] Verify email (if enabled)
 - [ ] Log in successfully
 - [ ] Dashboard loads with correct user name
+- [ ] **Add categories to database (see above)**
+- [ ] Navigate to QBank
+- [ ] Verify categories appear as checkboxes
+- [ ] Verify "Start Practice" button is enabled
 - [ ] Start a quiz session
 - [ ] Answer questions
+- [ ] Submit answers
 - [ ] View results
-- [ ] Create a flashcard
+- [ ] Navigate to Flashcards
+- [ ] Test flashcard flip functionality
 - [ ] Add study plan item
+- [ ] Mark study plan item complete
 - [ ] Create a note
 - [ ] Sign out
 - [ ] Sign in again

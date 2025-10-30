@@ -93,16 +93,28 @@ NEXT_PUBLIC_SUPABASE_URL="your-supabase-project-url"
 NEXT_PUBLIC_SUPABASE_ANON_KEY="your-supabase-anon-key"
 ```
 
-### 5. Seed Sample Data (Optional)
+### 5. Seed Sample Data (REQUIRED for QBank to work)
 
-To populate the database with sample questions, flashcards, and categories:
+The QBank feature requires categories to be set up. You have two options:
 
+**Option A: Quick Fix (if you already have questions)**
 1. Go to Supabase SQL Editor
-2. Run the seed data SQL (see `supabase-schema.sql` comments for sample data)
-3. This will add:
-   - 4 categories (Mathematics, Science, History, Geography)
-   - 20 sample questions with options
-   - 10 sample flashcards
+2. Run the SQL from `add-categories.sql`
+3. This will:
+   - Add 4 categories (Congenital Heart Disease, Arrhythmias, Heart Failure, Acquired Heart Disease)
+   - Assign existing questions to "Congenital Heart Disease" category
+
+**Option B: Complete Sample Data (fresh start)**
+1. Go to Supabase SQL Editor
+2. Run the SQL from `sample-data.sql`
+3. This will:
+   - Delete existing data and start fresh
+   - Add 4 categories
+   - Add 3 sample questions with options
+   - Add 3 sample flashcards
+
+**Why is this required?**
+The QBank page requires questions to be assigned to categories. Without categories, the "Start Practice" button will be greyed out.
 
 ### 6. Run Development Server
 
@@ -118,6 +130,13 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 2. Click "Sign up"
 3. Create an account with your email and password
 4. You'll be redirected to the dashboard
+
+### 8. Troubleshoot QBank Button (if needed)
+
+If the "Start Practice" button is greyed out even after adding questions:
+- **Cause**: Questions don't have a category assigned
+- **Solution**: Run `add-categories.sql` in Supabase SQL Editor
+- **Details**: See `QBANK-FIX.md` for complete troubleshooting guide
 
 ## Project Structure
 
@@ -268,6 +287,10 @@ The codebase is modular and easy to extend:
 
 **Issue**: Middleware redirects not working
 - **Solution**: Ensure Supabase SSR package is installed and cookies are being set
+
+**Issue**: "Start Practice" button is greyed out
+- **Solution**: Questions need to be assigned to categories. Run `add-categories.sql` in Supabase SQL Editor
+- **Details**: See `QBANK-FIX.md` for the complete fix
 
 ## Contributing
 
