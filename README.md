@@ -47,6 +47,14 @@ A comprehensive question bank (QBank) learning platform built with Next.js 13+, 
 
 ## Setup Instructions
 
+## Deployment TODOs
+
+- [ ] Testing local app with real Supabase connection
+- [ ] Add sample questions and content to database
+- [ ] Test all features end-to-end
+- [ ] Deploy to Vercel production
+- [ ] Test production deployment
+
 ### 1. Clone the Repository
 
 ```bash
