@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import NavBar from '@/components/NavBar'
 import StudyPlanItem from '@/components/StudyPlanItem'
@@ -22,7 +22,7 @@ export default function StudyPlanPage() {
   const [newTaskDueDate, setNewTaskDueDate] = useState('')
   const [adding, setAdding] = useState(false)
 
-  const fetchTasks = async () => {
+  const fetchTasks = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return
 
@@ -36,11 +36,12 @@ export default function StudyPlanPage() {
       setTasks(data)
     }
     setLoading(false)
-  }
+  }, [supabase])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchTasks()
-  }, [supabase])
+  }, [fetchTasks])
 
   const handleAddTask = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -173,7 +174,7 @@ export default function StudyPlanPage() {
           ) : (
             <div className="bg-white rounded-lg shadow p-8 text-center">
               <p className="text-gray-600">
-                No pending tasks. Click "Add Task" to create one.
+                No pending tasks. Click &quot;Add Task&quot; to create one.
               </p>
             </div>
           )}

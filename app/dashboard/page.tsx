@@ -26,6 +26,7 @@ export default function DashboardPage() {
     upcomingTasks: []
   })
   const [userName, setUserName] = useState<string>('')
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -101,7 +102,7 @@ export default function DashboardPage() {
             Welcome back, {userName}!
           </h1>
           <p className="mt-2 text-gray-600">
-            Here's your learning progress and upcoming tasks
+            Here&apos;s your learning progress and upcoming tasks
           </p>
         </div>
 

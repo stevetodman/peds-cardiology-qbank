@@ -83,7 +83,6 @@ export default function SessionPage() {
 
   const currentQuestion = questions[currentIndex]
   const currentOptions = options.filter(o => o.question_id === currentQuestion?.id)
-  const currentAnswer = answers.find(a => a.question_id === currentQuestion?.id)
 
   const handleAnswer = async (questionId: number, selectedOptionId: number, isCorrect: boolean) => {
     const { data: { user } } = await supabase.auth.getUser()

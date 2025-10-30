@@ -22,6 +22,18 @@ interface AnswerDetail {
   is_correct: boolean
 }
 
+interface QuestionData {
+  id: number
+  question_text: string
+  explanation: string
+}
+
+interface AnswerWithQuestion {
+  is_correct: boolean | null
+  selected_option_id: number
+  questions: QuestionData
+}
+
 export default function ResultsPage() {
   const router = useRouter()
   const params = useParams()
@@ -69,7 +81,7 @@ export default function ResultsPage() {
       if (answers) {
         const details: AnswerDetail[] = []
 
-        for (const answer of answers) {
+        for (const answer of answers as unknown as AnswerWithQuestion[]) {
           // Get selected option text
           const { data: selectedOption } = await supabase
             .from('question_options')
@@ -81,12 +93,11 @@ export default function ResultsPage() {
           const { data: options } = await supabase
             .from('question_options')
             .select('option_text, question_id')
-            .eq('question_id', (answer as any).questions.id)
+            .eq('question_id', answer.questions.id)
             .eq('is_correct', true)
             .single()
 
-          // Fix type assertion
-          const question = answer.questions as any
+          const question = answer.questions
 
           details.push({
             question_text: question.question_text,

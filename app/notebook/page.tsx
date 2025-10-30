@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import NavBar from '@/components/NavBar'
 import { Plus, Trash2, Edit } from 'lucide-react'
@@ -23,7 +23,7 @@ export default function NotebookPage() {
   const [noteContent, setNoteContent] = useState('')
   const [saving, setSaving] = useState(false)
 
-  const fetchNotes = async () => {
+  const fetchNotes = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return
 
@@ -37,11 +37,12 @@ export default function NotebookPage() {
       setNotes(data)
     }
     setLoading(false)
-  }
+  }, [supabase])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchNotes()
-  }, [supabase])
+  }, [fetchNotes])
 
   const handleNewNote = () => {
     setEditingNote(null)
@@ -241,7 +242,7 @@ export default function NotebookPage() {
         ) : (
           <div className="bg-white rounded-lg shadow p-12 text-center">
             <p className="text-lg text-gray-600 mb-4">
-              You haven't created any notes yet.
+              You haven&apos;t created any notes yet.
             </p>
             <button
               onClick={handleNewNote}
